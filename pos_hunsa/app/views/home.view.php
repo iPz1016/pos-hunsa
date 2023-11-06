@@ -3,7 +3,7 @@
 
 <div class="d-flex">
     <div style="height:680px;" class="shadow-sm col-4 p-4">
-        <a href="index.php?pg=order">
+        <a href="index.php?pg=order&new_takehome=1">
             <div class="h5 text-md-center bg-black bg-opacity-10 p-3" style="width: 250px;">Take Home</div>
         </a>
 
@@ -21,7 +21,7 @@
             foreach ($order as $key => $value) :
             ?>
                 <!--card-->
-                <a href="index.php?pg=order">
+                <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id'];?>">
                     <div class="p-0">
                         <div class="table-box bg-black text-center" style="width:250px;height: 100px;">
                             <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $value['orders_id']; ?></p>
@@ -60,7 +60,7 @@
                 } elseif ($value['orders_id'] == NULL) {
                 ?>
                     <!--available table-->
-                    <a href="index.php?pg=order">
+                    <a href="index.php?pg=order&new_table_id=<?php echo $value['table_id'];?>">
                         <div class=" p-1 float-left">
                             <div class="table-box bg-black text-center" style="width: 100px;height: 100px;">
                                 <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $value['table_id'];?></p>
@@ -71,7 +71,7 @@
                 } else {
                 ?>
                     <!--busy table-->
-                    <a href="index.php?pg=order">
+                    <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id'];?>">
                         <div class=" p-1 float-left">
                             <div class="table-box bg-black bg-opacity-50 text-center" style="width: 100px;height: 100px;">
                                 <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $value['table_id'];?></p>

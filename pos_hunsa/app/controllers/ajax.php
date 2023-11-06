@@ -4,6 +4,7 @@ defined("ABSPATH") ? "":die();
 
 //capture ajax data
 $raw_data = file_get_contents("php://input");
+//echo $raw_data;
 if(!empty($raw_data))
 {
 
@@ -95,6 +96,16 @@ if(!empty($raw_data))
 
 			$info['data_type'] = "checkout";
 			$info['data'] = "items saved successfully!";
+				
+			echo json_encode($info);
+		}
+		else if($OBJ['data_type'] == "show_data"){
+			$orders_class = new Orders;
+            $order_id = $OBJ['orders_id'];
+            $order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "orders_id");
+			$order[0]['onhold_qty'] = $order[0]['onhold_qty']+10;
+			$info['data_type'] = "show_data";
+			$info['data'] = $order;
 				
 			echo json_encode($info);
 		}
