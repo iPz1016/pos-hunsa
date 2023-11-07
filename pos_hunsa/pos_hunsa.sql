@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2023 at 02:51 PM
+-- Generation Time: Nov 07, 2023 at 12:44 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -40,12 +40,15 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orders_id`, `menu_id`, `table_id`, `onhold_qty`, `served_qty`) VALUES
-(1, 1, 1, 0, 1),
-(1, 2, 1, 1, 1),
-(2, 2, NULL, 1, 1),
+(1, 3, 1, 2, 1),
+(2, 3, NULL, 1, 1),
 (2, 1, NULL, 1, 1),
 (3, 1, NULL, 0, 2),
-(4, 1, NULL, 1, 1);
+(4, 1, NULL, 1, 1),
+(1, 1, 1, 1, 0),
+(1, 5, 1, 1, 0),
+(1, 6, 1, 4, 0),
+(1, 4, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -62,19 +65,20 @@ CREATE TABLE `products` (
   `image` varchar(500) NOT NULL,
   `user_id` varchar(60) NOT NULL,
   `date` datetime NOT NULL,
-  `views` int(11) NOT NULL DEFAULT 0
+  `views` int(11) NOT NULL DEFAULT 0,
+  `menu_type` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `barcode`, `description`, `qty`, `amount`, `image`, `user_id`, `date`, `views`) VALUES
-(1, '2222472108593', 'Biscuits', 100, '10.95', 'uploads/019111ea60f176a07807d9be878b7b0ff5d4c52b_5812.jpg', '1', '2022-01-03 18:33:44', 31),
-(3, '2222947895764', 'Crisps', 100, '4.95', 'uploads/a376a3a3f34dc21971ca40ac6dd6664585c197a6_4817.jpg', '1', '2022-01-09 08:46:29', 45),
-(4, '2222881344444', 'Burger', 100, '10.00', 'uploads/c322c54a3249e75ca46347a2c4ec9385672cb8e3_5698.jpg', '1', '2022-01-09 08:47:02', 10),
-(5, '1234', 'So good milk', 100, '20.00', 'uploads/e149b8702ddb43e5cda3c10803c563203b27cfc0_6896.jpg', '1', '2022-01-09 08:47:54', 17),
-(6, '2222925913231', 'OMO SOFTENER', 100, '50.00', 'uploads/e80200cc753ea342725ba080f668144fe4c763b9_7977.jpg', 'Unknown', '2022-01-16 08:35:24', 44);
+INSERT INTO `products` (`id`, `barcode`, `description`, `qty`, `amount`, `image`, `user_id`, `date`, `views`, `menu_type`) VALUES
+(1, '2222472108593', 'Biscuits', 100, '10.95', 'uploads/019111ea60f176a07807d9be878b7b0ff5d4c52b_5812.jpg', '1', '2022-01-03 18:33:44', 31, 'food'),
+(3, '2222947895764', 'Crisps', 100, '4.95', 'uploads/a376a3a3f34dc21971ca40ac6dd6664585c197a6_4817.jpg', '1', '2022-01-09 08:46:29', 45, 'food'),
+(4, '2222881344444', 'Burger', 100, '10.00', 'uploads/c322c54a3249e75ca46347a2c4ec9385672cb8e3_5698.jpg', '1', '2022-01-09 08:47:02', 10, 'food'),
+(5, '1234', 'So good milk', 100, '20.00', 'uploads/e149b8702ddb43e5cda3c10803c563203b27cfc0_6896.jpg', '1', '2022-01-09 08:47:54', 17, 'drink'),
+(6, '2222925913231', 'OMO SOFTENER', 100, '50.00', 'uploads/e80200cc753ea342725ba080f668144fe4c763b9_7977.jpg', 'Unknown', '2022-01-16 08:35:24', 44, 'drink');
 
 -- --------------------------------------------------------
 
