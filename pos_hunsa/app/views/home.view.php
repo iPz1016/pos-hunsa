@@ -24,7 +24,7 @@
                 <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id'];?>">
                     <div class="p-0">
                         <div class="table-box bg-black text-center" style="width:250px;height: 100px;">
-                            <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $value['orders_id']; ?></p>
+                            <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $key+1; ?></p>
                         </div>
                     </div>
                 </a>

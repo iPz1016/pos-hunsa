@@ -29,7 +29,7 @@
 
 		</div>
 
-		<div onclick="add_item(event)" class="js-menu d-flex" style="flex-wrap: wrap;height: 90%;overflow-y: scroll;">
+		<div onclick="add_menu(event)" class="js-menu d-flex" style="flex-wrap: wrap;height: 90%;overflow-y: scroll;">
 
 
 		</div>
@@ -110,7 +110,7 @@
 
 
 	function show_menu(menu_type) {
-		console.log(menu_type);
+		//console.log(menu_type);
 		var button_div = document.querySelector(".js-select");
 		button_div.innerHTML = button_html(menu_type);
 
@@ -150,25 +150,16 @@
 
 				if (ajax.status == 200) {
 					if (ajax.responseText.trim() != "") {
+						//console.log(ajax.responseText);
 						handle_result(ajax.responseText);
 					} else {
-						if (BARCODE) {
-							alert("that item was not found");
-						}
+						
 					}
 				} else {
 
 					console.log("An error occured. Err Code:" + ajax.status + " Err message:" + ajax.statusText);
 					console.log(ajax);
 				}
-
-				//clear main input if enter was pressed
-				if (BARCODE) {
-					main_input.value = "";
-					main_input.focus();
-				}
-
-				BARCODE = false;
 
 			}
 
@@ -185,34 +176,13 @@
 		var obj = JSON.parse(result);
 		if (typeof obj != "undefined") {
 
-			//valid json
-
-			/*
-			if (obj.data_type == "search") {
-
-				var mydiv = document.querySelector(".js-menu");
-
-				mydiv.innerHTML = "";
-				PRODUCTS = [];
-
-				var mydiv = document.querySelector(".js-menu");
-				if (obj.data != "") {
-
-					PRODUCTS = obj.data;
-					for (var i = 0; i < obj.data.length; i++) {
-
-						mydiv.innerHTML += product_html(obj.data[i], i);
-					}
-
-					if (BARCODE && PRODUCTS.length == 1) {
-						add_item_from_index(0);
-					}
-				}
-			}
-
-			*/
 			if (obj.data_type == "show_data") {
 				console.log(obj.data);
+			}
+			if (obj.data_type == "add_one") {
+				console.log(ORDER);
+				ORDER = obj.data;
+				console.log(ORDER);
 			}
 
 		}
@@ -292,32 +262,28 @@
 
 
 
-	function add_item_from_index(index) {
+	function add_menu_id(menu_id) {
+		data = {
+			data_type:'add_one',
+			orders_id: ORDER_INFO['orders_id'],
+			table_id: ORDER_INFO['table_id'],
+			menu_id: menu_id
+		};
+		//console.log(data);
 
-		//check if items exists
-		for (var i = ITEMS.length - 1; i >= 0; i--) {
+		send_data(data);
 
-			if (ITEMS[i].id == PRODUCTS[index].id) {
-				ITEMS[i].qty += 1;
-				refresh_items_display();
-				return;
-			}
-		}
-
-		var temp = PRODUCTS[index];
-		temp.qty = 1;
-
-		ITEMS.push(temp);
-		refresh_items_display();
+		//refresh_items_display();
 
 	}
 
-	function add_item(e) {
+	function add_menu(e) {
 
 		if (e.target.tagName == "IMG") {
-			var index = e.target.getAttribute("index");
+			var menu_id = e.target.getAttribute("id");
+			console.log(menu_id);
+			add_menu_id(menu_id);
 
-			add_item_from_index(index);
 		}
 	}
 
