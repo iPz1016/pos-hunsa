@@ -108,13 +108,7 @@ if (!empty($raw_data)) {
 
 			$order_exist = $orders_class->where($data, 1, 0, 'asc', 'orders_id');
 
-
-
-
-
 			if ($order_exist) {
-
-
 				$order_data['orders_id'] = $order_exist[0]['orders_id'];
 				$order_data['menu_id'] = $order_exist[0]['menu_id'];
 				$order_data['table_id'] = $order_exist[0]['table_id'];
@@ -125,15 +119,26 @@ if (!empty($raw_data)) {
 				SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
 				WHERE orders_id =:orders_id AND menu_id =:menu_id AND table_id =:table_id";
 				$orders_class->query($query, $order_data);
-
-				$order_id = $OBJ['orders_id'];
-				$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "orders_id");
-
-				$info['data_type'] = "add_one";
-				$info['data'] = $order;
-
-				echo json_encode($info);
 			}
+			else
+			{
+				//INSERT NEW DATA
+				$order_data['orders_id'] =  $OBJ['orders_id'];
+				$order_data['menu_id'] = $OBJ['menu_id'];
+				$order_data['table_id'] = $OBJ['table_id'];
+				$order_data['onhold_qty'] = 1;
+				$order_data['served_qty'] = 0;
+				$orders_class->insert($order_data);
+
+			}
+
+			// REFRESH ORDER 
+
+			$order_id = $OBJ['orders_id'];
+			$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "orders_id");
+			$info['data_type'] = "add_one";
+			$info['data'] = $order;
+			echo json_encode($info);
 		}
 	}
 }
