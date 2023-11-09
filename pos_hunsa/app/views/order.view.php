@@ -35,7 +35,7 @@
 		<div class="table-responsive" style="height:450px;overflow-y: scroll;">
 			<table class="table table-striped table-hover">
 
-				<tbody class="js-onhold">
+				<tbody class="js-onhold" onclick="serve_event(event)">
 
 				</tbody>
 			</table>
@@ -43,16 +43,16 @@
 
 		<div class="">
 			<button onclick="clear_onhold()" class="btn btn-danger my-2 w-100 py-4">Clear All</button>
-			<button onclick="clear_onhold()" class="btn btn-success my-2 w-100 py-4">Serve All</button>
+			<button onclick="serve_all()" class="btn btn-success my-2 w-100 py-4">Serve All</button>
 		</div>
 	</div>
 
 
 	<div style="min-height:600px;" class="shadow-sm col-6 p-4">
 
-		<div class="js-select">
+		<div class="js-table"> </div>
 
-		</div>
+		<div class="js-select"> </div>
 
 		<div onclick="add_menu(event)" class="js-menu d-flex" style="flex-wrap: wrap;height: 90%;overflow-y: scroll;">
 
@@ -64,19 +64,15 @@
 
 		<div>
 			<center>
-				<h3>Cart</h3>
+				<h3>Served</h3>
 			</center>
 		</div>
 
 		<div class="table-responsive" style="height:400px;overflow-y: scroll;">
 			<table class="table table-striped table-hover">
-				<tr>
-					<th>Image</th>
-					<th>Description</th>
-					<th>Amount</th>
-				</tr>
 
-				<tbody class="js-item">
+
+				<tbody class="js-served">
 
 
 				</tbody>
@@ -85,8 +81,8 @@
 
 		<div class="js-gtotal alert alert-danger" style="font-size:30px">Total: $0.00</div>
 		<div class="">
-			<button onclick="show_modal('amount-paid')" class="btn btn-success my-2 w-100 py-4">Checkout</button>
-			<button onclick="clear_all()" class="btn btn-primary my-2 w-100">Clear All</button>
+			<button onclick="show_modal('amount-paid')" class="btn btn-primary my-2 w-100 py-4">Checkout</button>
+			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100">Clear All</button>
 		</div>
 	</div>
 </div>
@@ -134,6 +130,14 @@
 	//fetch menu for first run
 	show_menu("all");
 	refresh_order_display();
+	refresh_served_display();
+	show_table_id();
+
+	function show_table_id() {
+		var button_div = document.querySelector(".js-table");
+		if (ORDER_INFO['table_id'] != null)
+			button_div.innerHTML = "<h1>Table " + ORDER_INFO['table_id'] + "</h1>";
+	}
 
 	function show_menu(menu_type) {
 		//console.log(menu_type);
@@ -160,9 +164,6 @@
 
 
 	}
-
-	
-
 
 	function send_data(data) {
 
@@ -193,7 +194,7 @@
 		ajax.open('post', 'index.php?pg=ajax', true);
 		ajax.send(JSON.stringify(data));
 	}
-	
+
 
 	function handle_result(result) {
 
@@ -222,7 +223,6 @@
 			orders_id: orders_id,
 			number: number
 		});
-
 	}
 
 	function button_html(menu_type) {
@@ -239,7 +239,6 @@
 			var drink_button = `<button type="button" class="btn btn-primary btn-lg" onclick="show_menu('drink')">DRINK</button> `;
 		}
 		return all_button + food_button + drink_button;
-
 	}
 
 	function menu_html(data) {
@@ -257,8 +256,6 @@
 			</div>
 			<!--end card-->
 			`;
-
-
 	}
 
 	function onhold_html(menu, order) {
@@ -267,7 +264,7 @@
 			<!--item-->
 			<tr>
 				
-				<td class="text-primary">
+				<td class="text-primary" id=${menu.id}>
 					${menu.description}
 
 					<div class="input-group input-group-sm my-3" style="max-width:150px">
@@ -277,15 +274,38 @@
 					</div>
 
 				</td>
-				<td >
+				<td id=${menu.id}>	
 					<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
+					<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-success my-2 w-20 py-2">Serve All</button>
 				</td>
 			</tr>
 			<!--end item-->
 			`;
+	}
 
 
+	function served_html(menu, order) {
 
+		return `
+			<!--item-->
+			<tr>
+				
+				<td class="text-primary" id=${menu.id}>
+					${menu.description}
+
+					<div class="input-group input-group-sm my-3" style="max-width:150px">
+					<span id="${menu.id}" onclick="remove_serve(${order.menu_id},1)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-minus text-primary"></i></span>
+					<input id="${menu.id}" disabled type="number" class="form-control text-primary" placeholder="1" value="${order.served_qty}" >
+					</div>
+
+				</td>
+				<td id=${menu.id}>	
+					<button onclick="remove_serve_one(${order.menu_id},${order.served_qty})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
+					<div class = "h4 float-end py-3">${menu.amount}$</div>
+				</td>
+			</tr>
+			<!--end item-->
+			`;
 	}
 
 
@@ -310,7 +330,7 @@
 		send_data(data);
 	}
 
-	function update_menu_id(menu_id,qty) {
+	function update_menu_id(menu_id, qty) {
 		data = {
 			data_type: 'update_onhold',
 			orders_id: ORDER_INFO['orders_id'],
@@ -321,7 +341,7 @@
 		send_data(data);
 	}
 
-	function clear_menu_onhold(menu_id,type = 'one') {
+	function clear_menu_onhold(menu_id, type = 'one') {
 		if (type == 'one' && !confirm("Remove item??!!"))
 			return;
 
@@ -331,10 +351,73 @@
 			table_id: ORDER_INFO['table_id'],
 			menu_id: menu_id
 		};
-
 		send_data(data);
-
 	}
+
+	function remove_serve(menu_id = 0, qty = 'all') {
+
+		if (qty == 'all') {
+			for (var i = 0; i < ORDER.length; i++) {
+				remove_serve(ORDER[i]['menu_id'], ORDER[i]['served_qty']);
+			}
+			return;
+		}
+
+		data = {
+			data_type: 'remove_serve',
+			orders_id: ORDER_INFO['orders_id'],
+			table_id: ORDER_INFO['table_id'],
+			menu_id: menu_id,
+			qty: qty,
+		};
+
+		console.log("remove_serve", qty, menu_id);
+	}
+
+	function remove_serve_all() {
+		if (!confirm("Are you sure you want to clear all items in the SERVED list??!!"))
+			return;
+		remove_serve();
+	}
+
+	function remove_serve_one(menu_id,qty) {
+		if (!confirm("Remove Item??!!"))
+			return;
+		remove_serve(menu_id,qty);
+	}
+
+	function serve(menu_id = 0, qty = 'all') {
+
+		if (qty == 'all') {
+			for (var i = 0; i < ORDER.length; i++) {
+				serve(ORDER[i]['menu_id'], ORDER[i]['onhold_qty']);
+			}
+			return;
+		}
+
+		data = {
+			data_type: 'serve',
+			orders_id: ORDER_INFO['orders_id'],
+			table_id: ORDER_INFO['table_id'],
+			menu_id: menu_id,
+			qty: qty,
+		};
+
+		console.log("serve", qty, menu_id);
+	}
+
+	function serve_event(e) {
+		if (e.target.tagName == "TD") {
+			serve(e.target.getAttribute("id"), 1)
+		}
+	}
+
+	function serve_all() {
+		if (!confirm("Are you sure you want to serve all items in the ON HOLD list??!!"))
+			return;
+		serve();
+	}
+
 
 	function add_menu(e) {
 
@@ -346,36 +429,43 @@
 		}
 	}
 
-	function refresh_order_display() {
-
-
-		var items_div = document.querySelector(".js-onhold");
+	function refresh_served_display() {
+		var items_div = document.querySelector(".js-served");
 		items_div.innerHTML = "";
 
-		for (var i = 0; i < ORDER.length ; i++) {
-
-			if (ORDER[i]['onhold_qty'] > 0) {
+		for (var i = 0; i < ORDER.length; i++) {
+			if (ORDER[i]['served_qty'] > 0) {
 				for (var j = MENU.length - 1; j >= 0; j--) {
 					//console.log(ORDER[i]['menu_id'], MENU[j]['id'], i, j);
-
 					if (ORDER[i]['menu_id'] == MENU[j]['id']) {
-						items_div.innerHTML += onhold_html(MENU[j], ORDER[i]);
+						items_div.innerHTML += served_html(MENU[j], ORDER[i]);
 					}
-
 				}
 			}
 		}
+	}
 
+	function refresh_order_display() {
+		var items_div = document.querySelector(".js-onhold");
+		items_div.innerHTML = "";
+		for (var i = 0; i < ORDER.length; i++) {
+			if (ORDER[i]['onhold_qty'] > 0) {
+				for (var j = MENU.length - 1; j >= 0; j--) {
+					//console.log(ORDER[i]['menu_id'], MENU[j]['id'], i, j);
+					if (ORDER[i]['menu_id'] == MENU[j]['id']) {
+						items_div.innerHTML += onhold_html(MENU[j], ORDER[i]);
+					}
+				}
+			}
+		}
 	}
 
 	function clear_onhold() {
-
 		if (!confirm("Are you sure you want to clear all items in the ON HOLD list??!!"))
 			return;
 
-		for(var i = ORDER.length - 1 ; i>=0 ; i--)
-		{
-			clear_menu_onhold(ORDER[i].menu_id,'remove-all');
+		for (var i = ORDER.length - 1; i >= 0; i--) {
+			clear_menu_onhold(ORDER[i].menu_id, 'remove-all');
 		}
 
 	}
@@ -392,11 +482,10 @@
 			down_menu_id(id);
 		} else {
 			var qty = parseInt(e.currentTarget.value);
-			if(!(qty>0))
-			{
+			if (!(qty > 0)) {
 				qty = 1;
 			}
-			update_menu_id(id,qty);
+			update_menu_id(id, qty);
 		}
 	}
 

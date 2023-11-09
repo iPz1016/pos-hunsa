@@ -131,7 +131,7 @@ if (!empty($raw_data)) {
 
 					$delete_data['orders_id'] = $order_data['orders_id'];
 					$delete_data['menu_id'] = $order_data['menu_id'];
-					$delete_data['table_id'] = $order_data['table_id'];
+					
 
 					$orders_class->query($query, $delete_data);
 				} else {
