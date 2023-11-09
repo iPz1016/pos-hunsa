@@ -18,19 +18,20 @@
                 echo "Data query error";
             }
             //var_dump($order);
-
-            foreach ($order as $key => $value) :
+            if ($order) :
+                foreach ($order as $key => $value) :
             ?>
-                <!--card-->
-                <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id'];?>">
-                    <div class="p-0">
-                        <div class="table-box bg-black text-center" style="width:250px;height: 100px;">
-                            <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $key+1; ?></p>
+                    <!--card-->
+                    <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
+                        <div class="p-0">
+                            <div class="table-box bg-black text-center" style="width:250px;height: 100px;">
+                                <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $key + 1; ?></p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-                <!--end card-->
-            <?php endforeach; ?>
+                    </a>
+                    <!--end card-->
+            <?php endforeach;
+            endif; ?>
         </div>
     </div>
     <div style="height:680px;" class="shadow-sm col-8 p-4">
@@ -53,7 +54,7 @@
                     <a href="#">
                         <div class=" p-1 float-left">
                             <div class="table-box bg-danger text-center" style="width: 100px;height: 100px;">
-                                <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $value['table_id'];?></p>
+                                <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $value['table_id']; ?></p>
                             </div>
                         </div>
                     </a>
@@ -61,10 +62,10 @@
                 } elseif ($value['orders_id'] == NULL) {
                 ?>
                     <!--available table-->
-                    <a href="index.php?pg=order&new_table_id=<?php echo $value['table_id'];?>">
+                    <a href="index.php?pg=order&new_table_id=<?php echo $value['table_id']; ?>">
                         <div class=" p-1 float-left">
                             <div class="table-box bg-black text-center" style="width: 100px;height: 100px;">
-                                <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $value['table_id'];?></p>
+                                <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $value['table_id']; ?></p>
                             </div>
                         </div>
                     </a>
@@ -72,10 +73,10 @@
                 } else {
                 ?>
                     <!--busy table-->
-                    <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id'];?>">
+                    <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
                         <div class=" p-1 float-left">
                             <div class="table-box bg-black bg-opacity-50 text-center" style="width: 100px;height: 100px;">
-                                <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $value['table_id'];?></p>
+                                <p class="cl mb-0 text-white" style="font-size: 360%;"><?php echo $value['table_id']; ?></p>
                             </div>
                         </div>
                     </a>
