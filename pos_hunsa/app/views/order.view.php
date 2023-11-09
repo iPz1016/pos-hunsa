@@ -23,7 +23,32 @@
 	}
 </style>
 <div class="d-flex">
-	<div style="min-height:600px;" class="shadow-sm col-7 p-4">
+
+	<div class="col-3 bg-light p-2 pt-2">
+
+		<div>
+			<center>
+				<h3>On-hold</h3>
+			</center>
+		</div>
+
+		<div class="table-responsive" style="height:450px;overflow-y: scroll;">
+			<table class="table table-striped table-hover">
+
+				<tbody class="js-onhold">
+
+				</tbody>
+			</table>
+		</div>
+
+		<div class="">
+			<button onclick="clear_onhold()" class="btn btn-danger my-2 w-100 py-4">Clear All</button>
+			<button onclick="clear_onhold()" class="btn btn-success my-2 w-100 py-4">Serve All</button>
+		</div>
+	</div>
+
+
+	<div style="min-height:600px;" class="shadow-sm col-6 p-4">
 
 		<div class="js-select">
 
@@ -35,12 +60,11 @@
 		</div>
 	</div>
 
-	<div class="col-5 bg-light p-4 pt-2">
+	<div class="col-3 bg-light p-4 pt-2">
 
 		<div>
 			<center>
-				<h3>Cart <div class="js-item-count badge bg-primary rounded-circle">0</div>
-				</h3>
+				<h3>Cart</h3>
 			</center>
 		</div>
 
@@ -52,7 +76,7 @@
 					<th>Amount</th>
 				</tr>
 
-				<tbody class="js-items">
+				<tbody class="js-item">
 
 
 				</tbody>
@@ -107,7 +131,9 @@
 	var CHANGE = 0;
 	var RECEIPT_WINDOW = null;
 
-
+	//fetch menu for first run
+	show_menu("all");
+	refresh_order_display();
 
 	function show_menu(menu_type) {
 		//console.log(menu_type);
@@ -134,9 +160,8 @@
 
 
 	}
+
 	
-	//fetch menu for first run
-	show_menu("all");
 
 
 	function send_data(data) {
@@ -150,10 +175,10 @@
 
 				if (ajax.status == 200) {
 					if (ajax.responseText.trim() != "") {
-						//console.log(ajax.responseText);
+						console.log(ajax.responseText);
 						handle_result(ajax.responseText);
 					} else {
-						
+
 					}
 				} else {
 
@@ -168,7 +193,7 @@
 		ajax.open('post', 'index.php?pg=ajax', true);
 		ajax.send(JSON.stringify(data));
 	}
-
+	
 
 	function handle_result(result) {
 
@@ -179,10 +204,12 @@
 			if (obj.data_type == "show_data") {
 				console.log(obj.data);
 			}
-			if (obj.data_type == "add_one") {
-				console.log(ORDER);
+			if (obj.data_type == "add_one" || obj.data_type == "down_one" ||
+				obj.data_type == "remove_onhold" || obj.data_type == "update_onhold") {
+				//console.log(ORDER);
 				ORDER = obj.data;
-				console.log(ORDER);
+				//console.log(ORDER);
+				refresh_order_display();
 			}
 
 		}
@@ -219,7 +246,7 @@
 
 		return `
 			<!--card-->
-			<div class="card m-2 border-0 mx-auto" style="min-width: 190px;max-width: 190px;">
+			<div class="card m-2 border-0 mx-auto" style="min-width: 128;max-width: 128;">
 				<a href="#">
 					<img id="${data.id}" src="${data.image}" class="w-100 rounded border">
 				</a>
@@ -234,29 +261,30 @@
 
 	}
 
-	function item_html(data, index) {
+	function onhold_html(menu, order) {
 
 		return `
 			<!--item-->
 			<tr>
-				<td style="width:110px"><img src="${data.image}" class="rounded border" style="width:100px;height:100px"></td>
+				
 				<td class="text-primary">
-					${data.description}
+					${menu.description}
 
-					<div class="input-group my-3" style="max-width:150px">
-					  <span index="${index}" onclick="change_qty('down',event)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-minus text-primary"></i></span>
-					  <input index="${index}" onblur="change_qty('input',event)" type="text" class="form-control text-primary" placeholder="1" value="${data.qty}" >
-					  <span index="${index}" onclick="change_qty('up',event)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-plus text-primary"></i></span>
+					<div class="input-group input-group-sm my-3" style="max-width:150px">
+					  <span id="${menu.id}" onclick="change_qty('down',event)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-minus text-primary"></i></span>
+					  <input id="${menu.id}" onblur="change_qty('input',event)" type="number" class="form-control text-primary" placeholder="1" value="${order.onhold_qty}" >
+					  <span id="${menu.id}" onclick="change_qty('up',event)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-plus text-primary"></i></span>
 					</div>
 
 				</td>
-				<td style="font-size:20px">
-					<b>$${data.amount}</b>
-					<button onclick="clear_item(${index})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
+				<td >
+					<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
 				</td>
 			</tr>
 			<!--end item-->
 			`;
+
+
 
 	}
 
@@ -264,16 +292,47 @@
 
 	function add_menu_id(menu_id) {
 		data = {
-			data_type:'add_one',
+			data_type: 'add_one',
 			orders_id: ORDER_INFO['orders_id'],
 			table_id: ORDER_INFO['table_id'],
 			menu_id: menu_id
 		};
-		//console.log(data);
+		send_data(data);
+	}
+
+	function down_menu_id(menu_id) {
+		data = {
+			data_type: 'down_one',
+			orders_id: ORDER_INFO['orders_id'],
+			table_id: ORDER_INFO['table_id'],
+			menu_id: menu_id
+		};
+		send_data(data);
+	}
+
+	function update_menu_id(menu_id,qty) {
+		data = {
+			data_type: 'update_onhold',
+			orders_id: ORDER_INFO['orders_id'],
+			table_id: ORDER_INFO['table_id'],
+			menu_id: menu_id,
+			onhold_qty: qty
+		};
+		send_data(data);
+	}
+
+	function clear_menu_onhold(menu_id,type = 'one') {
+		if (type == 'one' && !confirm("Remove item??!!"))
+			return;
+
+		data = {
+			data_type: 'remove_onhold',
+			orders_id: ORDER_INFO['orders_id'],
+			table_id: ORDER_INFO['table_id'],
+			menu_id: menu_id
+		};
 
 		send_data(data);
-
-		//refresh_items_display();
 
 	}
 
@@ -281,82 +340,66 @@
 
 		if (e.target.tagName == "IMG") {
 			var menu_id = e.target.getAttribute("id");
-			console.log(menu_id);
+
 			add_menu_id(menu_id);
 
 		}
 	}
 
-	function refresh_items_display() {
+	function refresh_order_display() {
 
-		var item_count = document.querySelector(".js-item-count");
-		item_count.innerHTML = ITEMS.length;
 
-		var items_div = document.querySelector(".js-items");
+		var items_div = document.querySelector(".js-onhold");
 		items_div.innerHTML = "";
-		var grand_total = 0;
 
-		for (var i = ITEMS.length - 1; i >= 0; i--) {
+		for (var i = 0; i < ORDER.length ; i++) {
 
-			items_div.innerHTML += item_html(ITEMS[i], i);
-			grand_total += (ITEMS[i].qty * ITEMS[i].amount);
+			if (ORDER[i]['onhold_qty'] > 0) {
+				for (var j = MENU.length - 1; j >= 0; j--) {
+					//console.log(ORDER[i]['menu_id'], MENU[j]['id'], i, j);
+
+					if (ORDER[i]['menu_id'] == MENU[j]['id']) {
+						items_div.innerHTML += onhold_html(MENU[j], ORDER[i]);
+					}
+
+				}
+			}
 		}
 
-		var gtotal_div = document.querySelector(".js-gtotal");
-		gtotal_div.innerHTML = "Total: $" + grand_total.toFixed(2);
-		GTOTAL = grand_total;
-
 	}
 
-	function clear_all() {
+	function clear_onhold() {
 
-		if (!confirm("Are you sure you want to clear all items in the list??!!"))
+		if (!confirm("Are you sure you want to clear all items in the ON HOLD list??!!"))
 			return;
 
-		ITEMS = [];
-		refresh_items_display();
+		for(var i = ORDER.length - 1 ; i>=0 ; i--)
+		{
+			clear_menu_onhold(ORDER[i].menu_id,'remove-all');
+		}
 
 	}
 
-
-	function clear_item(index) {
-
-		if (!confirm("Remove item??!!"))
-			return;
-
-		ITEMS.splice(index, 1);
-		refresh_items_display();
-
-	}
 
 	function change_qty(direction, e) {
 
-		var index = e.currentTarget.getAttribute("index");
+
+		var id = e.currentTarget.getAttribute("id");
+		//console.log("Delete",id);
 		if (direction == "up") {
-			ITEMS[index].qty += 1;
-		} else
-		if (direction == "down") {
-			ITEMS[index].qty -= 1;
+			add_menu_id(id);
+		} else if (direction == "down") {
+			down_menu_id(id);
 		} else {
-
-			ITEMS[index].qty = parseInt(e.currentTarget.value);
-		}
-
-		//make sure its not less than 1
-		if (ITEMS[index].qty < 1) {
-			ITEMS[index].qty = 1;
-		}
-
-		refresh_items_display();
-	}
-	/*
-		function check_for_enter_key(e) {
-
-			if (e.keyCode == 13) {
-				BARCODE = true;
-				search_item(e);
+			var qty = parseInt(e.currentTarget.value);
+			if(!(qty>0))
+			{
+				qty = 1;
 			}
-		}*/
+			update_menu_id(id,qty);
+		}
+	}
+
 
 	function show_modal(modal) {
 

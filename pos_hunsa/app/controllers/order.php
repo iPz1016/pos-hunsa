@@ -28,7 +28,7 @@ if (Auth::access('cashier')) {
     if (isset($_GET['orders_id'])) {
         $orders_class = new Orders;
         $order_id = $_GET['orders_id'];
-        $order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "orders_id");
+        $order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "menu_id");
         if (!$order) {
             redirect('home');
         }

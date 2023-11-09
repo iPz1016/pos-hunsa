@@ -9,37 +9,7 @@ if (!empty($raw_data)) {
 
 	$OBJ = json_decode($raw_data, true);
 	if (is_array($OBJ)) {
-		if ($OBJ['data_type'] == "search") {
 
-			$productClass = new Product();
-			$limit = 20;
-
-			if (!empty($OBJ['text'])) {
-				//search
-				$barcode = $OBJ['text'];
-				$text = "%" . $OBJ['text'] . "%";
-				$query = "select * from products where description like :find || barcode = :barcode order by views desc limit $limit";
-				$rows = $productClass->query($query, ['find' => $text, 'barcode' => $barcode]);
-			} else {
-				//get all
-				//$limit = 10,$offset = 0,$order = "desc",$order_column = "id"
-				$rows = $productClass->getAll($limit, 0, 'desc', 'views');
-			}
-
-			if ($rows) {
-
-				foreach ($rows as $key => $row) {
-
-					$rows[$key]['description'] = strtoupper($row['description']);
-					$rows[$key]['image'] = crop($row['image']);
-				}
-
-				$info['data_type'] = "search";
-				$info['data'] = $rows;
-
-				echo json_encode($info);
-			}
-		} else
 		if ($OBJ['data_type'] == "checkout") {
 
 			$data 		= $OBJ['text'];
@@ -91,7 +61,7 @@ if (!empty($raw_data)) {
 		if ($OBJ['data_type'] == "show_data") {
 			$orders_class = new Orders;
 			$order_id = $OBJ['orders_id'];
-			$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "orders_id");
+			$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "menu_id");
 
 			$info['data_type'] = "show_data";
 			$info['data'] = $order;
@@ -106,7 +76,7 @@ if (!empty($raw_data)) {
 			$data['table_id'] = $OBJ['table_id'];
 			$data['menu_id'] = $OBJ['menu_id'];
 
-			$order_exist = $orders_class->where($data, 1, 0, 'asc', 'orders_id');
+			$order_exist = $orders_class->where($data, 1, 0, 'asc', 'menu_id');
 
 			if ($order_exist) {
 				$order_data['orders_id'] = $order_exist[0]['orders_id'];
@@ -114,14 +84,12 @@ if (!empty($raw_data)) {
 				$order_data['table_id'] = $order_exist[0]['table_id'];
 				$order_data['onhold_qty'] = $order_exist[0]['onhold_qty'] + 1;
 				$order_data['served_qty'] = $order_exist[0]['served_qty'];
-				
+
 				$query = "UPDATE orders
 				SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
 				WHERE orders_id =:orders_id AND menu_id =:menu_id AND table_id =:table_id";
 				$orders_class->query($query, $order_data);
-			}
-			else
-			{
+			} else {
 				//INSERT NEW DATA
 				$order_data['orders_id'] =  $OBJ['orders_id'];
 				$order_data['menu_id'] = $OBJ['menu_id'];
@@ -129,14 +97,133 @@ if (!empty($raw_data)) {
 				$order_data['onhold_qty'] = 1;
 				$order_data['served_qty'] = 0;
 				$orders_class->insert($order_data);
-
 			}
 
 			// REFRESH ORDER 
 
 			$order_id = $OBJ['orders_id'];
-			$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "orders_id");
+			$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "menu_id");
 			$info['data_type'] = "add_one";
+			$info['data'] = $order;
+			echo json_encode($info);
+		}
+
+
+		if ($OBJ['data_type'] == "down_one") {
+			$orders_class = new Orders;
+
+			$data['orders_id'] = $OBJ['orders_id'];
+			$data['table_id'] = $OBJ['table_id'];
+			$data['menu_id'] = $OBJ['menu_id'];
+
+			$order_exist = $orders_class->where($data, 1, 0, 'asc', 'orders_id');
+
+			if ($order_exist) {
+				$order_data['orders_id'] = $order_exist[0]['orders_id'];
+				$order_data['menu_id'] = $order_exist[0]['menu_id'];
+				$order_data['table_id'] = $order_exist[0]['table_id'];
+				$order_data['onhold_qty'] = $order_exist[0]['onhold_qty'] - 1;
+				$order_data['served_qty'] = $order_exist[0]['served_qty'];
+
+				//DELETE ORDER IF MENU QTY < 0 
+				if ($order_data['onhold_qty'] <= 0 && $order_data['served_qty'] <= 0) {
+
+					$query = "DELETE FROM orders
+					WHERE orders_id=:orders_id AND menu_id=:menu_id AND table_id=:table_id";
+
+					$delete_data['orders_id'] = $order_data['orders_id'];
+					$delete_data['menu_id'] = $order_data['menu_id'];
+					$delete_data['table_id'] = $order_data['table_id'];
+
+					$orders_class->query($query, $delete_data);
+				} else {
+					$query = "UPDATE orders
+					SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
+					WHERE orders_id =:orders_id AND menu_id =:menu_id AND table_id =:table_id";
+					$orders_class->query($query, $order_data);
+				}
+			}
+
+			// REFRESH ORDER 
+
+			$order_id = $OBJ['orders_id'];
+			$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "menu_id");
+			$info['data_type'] = "down_one";
+			$info['data'] = $order;
+			echo json_encode($info);
+		}
+
+		if ($OBJ['data_type'] == "update_onhold") {
+			$orders_class = new Orders;
+
+			$data['orders_id'] = $OBJ['orders_id'];
+			$data['table_id'] = $OBJ['table_id'];
+			$data['menu_id'] = $OBJ['menu_id'];
+
+			$order_exist = $orders_class->where($data, 1, 0, 'asc', 'menu_id');
+
+			if ($order_exist) {
+				$order_data['orders_id'] = $order_exist[0]['orders_id'];
+				$order_data['menu_id'] = $order_exist[0]['menu_id'];
+				$order_data['table_id'] = $order_exist[0]['table_id'];
+				$order_data['onhold_qty'] = $OBJ['onhold_qty'];
+				$order_data['served_qty'] = $order_exist[0]['served_qty'];
+
+				$query = "UPDATE orders
+				SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
+				WHERE orders_id =:orders_id AND menu_id =:menu_id AND table_id =:table_id";
+				$orders_class->query($query, $order_data);
+			} 
+			// REFRESH ORDER 
+
+			$order_id = $OBJ['orders_id'];
+			$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "menu_id");
+			$info['data_type'] = "add_one";
+			$info['data'] = $order;
+			echo json_encode($info);
+		}
+
+
+		if ($OBJ['data_type'] == "remove_onhold") {
+			$orders_class = new Orders;
+
+			$data['orders_id'] = $OBJ['orders_id'];
+			$data['table_id'] = $OBJ['table_id'];
+			$data['menu_id'] = $OBJ['menu_id'];
+
+			$order_exist = $orders_class->where($data, 1, 0, 'asc', 'menu_id');
+
+			if ($order_exist) {
+				$order_data['orders_id'] = $order_exist[0]['orders_id'];
+				$order_data['menu_id'] = $order_exist[0]['menu_id'];
+				$order_data['table_id'] = $order_exist[0]['table_id'];
+				$order_data['onhold_qty'] = 0;
+				$order_data['served_qty'] = $order_exist[0]['served_qty'];
+
+				//DELETE ORDER IF MENU QTY < 0 
+				if ($order_data['onhold_qty'] <= 0 && $order_data['served_qty'] <= 0) {
+
+					$query = "DELETE FROM orders
+					WHERE orders_id=:orders_id AND menu_id=:menu_id AND table_id=:table_id";
+
+					$delete_data['orders_id'] = $order_data['orders_id'];
+					$delete_data['menu_id'] = $order_data['menu_id'];
+					$delete_data['table_id'] = $order_data['table_id'];
+
+					$orders_class->query($query, $delete_data);
+				} else {
+					$query = "UPDATE orders
+					SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
+					WHERE orders_id =:orders_id AND menu_id =:menu_id AND table_id =:table_id";
+					$orders_class->query($query, $order_data);
+				}
+			}
+
+			// REFRESH ORDER 
+
+			$order_id = $OBJ['orders_id'];
+			$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "menu_id");
+			$info['data_type'] = "down_one";
 			$info['data'] = $order;
 			echo json_encode($info);
 		}

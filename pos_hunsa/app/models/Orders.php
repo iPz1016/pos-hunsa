@@ -28,7 +28,7 @@ class Orders extends Model
     {
         $query = "SELECT DISTINCT o.orders_id
         FROM $this->table o 
-        WHERE (o.table_id IS NULL and o.onhold_qty > 0)
+        WHERE (o.table_id IS NULL)
         ORDER BY o.orders_id asc;";
         $db = new Database;
         return $db->query($query);

@@ -17,6 +17,7 @@
             } catch (Exception $e) {
                 echo "Data query error";
             }
+            //var_dump($order);
 
             foreach ($order as $key => $value) :
             ?>
