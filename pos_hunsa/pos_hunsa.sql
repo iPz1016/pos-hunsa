@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2023 at 12:44 PM
+-- Generation Time: Nov 11, 2023 at 10:29 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -24,13 +24,56 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `orders_id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL,
+  `table_id` int(11) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `menu_name` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `menu_price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_info`
+--
+
+CREATE TABLE `menu_info` (
+  `menu_id` int(11) NOT NULL,
+  `menu_name` text NOT NULL,
+  `menu_price` int(11) NOT NULL,
+  `disable` tinyint(4) NOT NULL,
+  `menu_type` text NOT NULL,
+  `menu_img` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `menu_info`
+--
+
+INSERT INTO `menu_info` (`menu_id`, `menu_name`, `menu_price`, `disable`, `menu_type`, `menu_img`) VALUES
+(1, 'americano iced', 65, 0, 'drink', 'assets/images/beverages/americano-iced.jpg'),
+(2, 'cappuccino iced', 70, 0, 'drink', 'assets/images/beverages/cappuccino-iced.jpg'),
+(3, 'chocobanana toast', 105, 0, 'toast', 'assets/images/toast/chocobanana-toast.jpg'),
+(4, 'chocostrawberry toast', 110, 0, 'toast', 'assets/images/toast/chocostrawberry-toast.jpg'),
+(5, 'hojicha bingsu', 150, 0, 'bing-su', 'assets/images/bing-su/hojicha-bingsu.jpg'),
+(6, 'mango-bingsu', 140, 0, 'bing-su', 'assets/images/BING-SU/mango-bingsu.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
   `orders_id` int(11) NOT NULL,
-  `menu_id` int(11) NOT NULL,
   `table_id` int(11) DEFAULT NULL,
+  `menu_id` int(11) NOT NULL,
   `onhold_qty` int(11) NOT NULL,
   `served_qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,16 +82,21 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`orders_id`, `menu_id`, `table_id`, `onhold_qty`, `served_qty`) VALUES
-(1, 3, 1, 2, 1),
-(2, 3, NULL, 1, 1),
-(2, 1, NULL, 1, 1),
-(3, 1, NULL, 0, 2),
-(4, 1, NULL, 1, 1),
-(1, 1, 1, 1, 0),
-(1, 5, 1, 1, 0),
-(1, 6, 1, 4, 0),
-(1, 4, 1, 1, 0);
+INSERT INTO `orders` (`orders_id`, `table_id`, `menu_id`, `onhold_qty`, `served_qty`) VALUES
+(1699519675, NULL, 1, 6, 10),
+(1699519675, NULL, 4, 3, 0),
+(1699519675, NULL, 3, 0, 4),
+(1, 1, 3, 0, 1),
+(1, 1, 5, 0, 1),
+(1, 1, 6, 0, 1),
+(1, 1, 2, 4, 0),
+(1699674302, 2, 5, 0, 1),
+(1699674302, 2, 6, 0, 1),
+(1699674302, 2, 4, 4, 0),
+(1699694929, NULL, 1, 1, 0),
+(1699694929, NULL, 2, 1, 0),
+(1699694929, NULL, 3, 1, 0),
+(1699694929, NULL, 4, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -311,6 +359,12 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `date`, `image`, `ro
 --
 
 --
+-- Indexes for table `menu_info`
+--
+ALTER TABLE `menu_info`
+  ADD PRIMARY KEY (`menu_id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -345,6 +399,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `menu_info`
+--
+ALTER TABLE `menu_info`
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`

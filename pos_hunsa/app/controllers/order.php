@@ -3,25 +3,22 @@
 defined("ABSPATH") ? "" : die();
 
 if (Auth::access('cashier')) {
-    $product_class = new Product;
-    $menu = $product_class->getAll(100, 0, "asc", "id");
+    $menu_class = new Menu_info;
+    $menu = $menu_class->getAll(100, 0, "asc", "menu_id");
 
     foreach ($menu as $key => $row) {
 
-        $menu[$key]['description'] = strtoupper($row['description']);
-        $menu[$key]['image'] = crop($row['image']);
+        $menu[$key]['menu_name'] = strtoupper($row['menu_name']);
+        $menu[$key]['menu_img'] = crop($row['menu_img']);
     }
+    $menu_type = $menu_class->get_menu_type();
+
 ?>
     <script>
-        try {
-            isset(MENU);
-            unset(MENU);
-        } catch (e) {
-            //
-        }
+        var MENU_TYPE = <?php echo json_encode($menu_type); ?>;
         var ORDER = [];
         var MENU = <?php echo json_encode($menu); ?>;
-        //console.log(MENU);
+        console.log(MENU_TYPE);
     </script>
     <?php
 

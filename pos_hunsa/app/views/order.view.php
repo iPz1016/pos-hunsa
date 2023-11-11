@@ -124,6 +124,7 @@
 	var GTOTAL = 0;
 	var CHANGE = 0;
 	var RECEIPT_WINDOW = null;
+	console.log(MENU);
 
 	//fetch menu for first run
 	show_menu("all");
@@ -134,18 +135,27 @@
 
 	function button_html(menu_type) {
 
-		var all_button = `<button type="button" class="btn btn-secondary btn-lg" onclick="show_menu('all')">ALL</button> `;
-		var food_button = `<button type="button" class="btn btn-secondary btn-lg" onclick="show_menu('food')">FOOD</button> `;
-		var drink_button = `<button type="button" class="btn btn-secondary btn-lg" onclick="show_menu('drink')">DRINK</button> `;
-
 		if (menu_type == "all") {
-			var all_button = `<button type="button" class="btn btn-primary btn-lg" onclick="show_menu('all')">ALL</button> `;
-		} else if (menu_type == "food") {
-			var food_button = `<button type="button" class="btn btn-primary btn-lg" onclick="show_menu('food')">FOOD</button> `;
-		} else if (menu_type == "drink") {
-			var drink_button = `<button type="button" class="btn btn-primary btn-lg" onclick="show_menu('drink')">DRINK</button> `;
+			var html = `<button type="button" class="btn btn-primary btn-lg" onclick="show_menu('all')">ALL</button> `;
 		}
-		return all_button + food_button + drink_button;
+		else
+		{
+			var html = `<button type="button" class="btn btn-secondary btn-lg" onclick="show_menu('all')">ALL</button> `;
+		}
+
+		for(var i = 0; i < MENU_TYPE.length; i++)
+		{
+			if(menu_type == MENU_TYPE[i]['menu_type'])
+			{
+				html += `<button type="button" class="btn btn-primary btn-lg" onclick="show_menu('${MENU_TYPE[i]['menu_type']}')">${MENU_TYPE[i]['menu_type'].toUpperCase()}</button> `;	
+			}
+			else
+			{
+				html += `<button type="button" class="btn btn-secondary btn-lg" onclick="show_menu('${MENU_TYPE[i]['menu_type']}')">${MENU_TYPE[i]['menu_type'].toUpperCase()}</button> `;	
+			}
+		}
+		
+		return html;
 	}
 
 	function menu_html(data) {
@@ -154,11 +164,11 @@
 	<!--card-->
 	<div class="card m-2 border-0 mx-auto" style="min-width: 128;max-width: 128;">
 		<a href="#">
-			<img id="${data.id}" src="${data.image}" class="w-100 rounded border">
+			<img menu_id="${data.menu_id}" src="${data.menu_img}" class="w-100 rounded border">
 		</a>
 		<div class="p-2">
-			<div class="text-muted">${data.description}</div>
-			<div class="" style="font-size:20px"><b>$${data.amount}</b></div>
+			<div class="text-muted">${data.menu_name}</div>
+			<div class="" style="font-size:20px"><b>$${data.menu_price}</b></div>
 		</div>
 	</div>
 	<!--end card-->
@@ -171,17 +181,17 @@
 	<!--item-->
 	<tr>
 		
-		<td class="text-primary" id=${menu.id}>
-			${menu.description}
+		<td class="text-primary" menu_id=${menu.menu_id}>
+			${menu.menu_name}
 
 			<div class="input-group input-group-sm my-3" style="max-width:150px">
-			  <span id="${menu.id}" onclick="change_qty('down',event)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-minus text-primary"></i></span>
-			  <input id="${menu.id}" onblur="change_qty('input',event)" type="number" class="form-control text-primary" placeholder="1" value="${order.onhold_qty}" >
-			  <span id="${menu.id}" onclick="change_qty('up',event)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-plus text-primary"></i></span>
+			  <span menu_id="${menu.menu_id}" onclick="change_qty('down',event)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-minus text-primary"></i></span>
+			  <input menu_id="${menu.menu_id}" onblur="change_qty('input',event)" type="number" class="form-control text-primary" placeholder="1" value="${order.onhold_qty}" >
+			  <span menu_id="${menu.menu_id}" onclick="change_qty('up',event)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-plus text-primary"></i></span>
 			</div>
 
 		</td>
-		<td id=${menu.id}>	
+		<td menu_id=${menu.menu_id}>	
 			<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
 			<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-success my-2 w-20 py-2">Serve All</button>
 		</td>
@@ -197,18 +207,18 @@
 	<!--item-->
 	<tr>
 		
-		<td class="text-primary" id=${menu.id}>
-			${menu.description}
+		<td class="text-primary" menu_id=${order.menu_id}>
+			${menu.menu_name}
 
 			<div class="input-group input-group-sm my-3" style="max-width:150px">
-			<span id="${menu.id}" onclick="remove_serve(${order.menu_id},1)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-minus text-primary"></i></span>
-			<input id="${menu.id}" disabled type="number" class="form-control text-primary" placeholder="1" value="${order.served_qty}" >
+			<span menu_id="${order.menu_id}" onclick="remove_serve(${order.menu_id},1)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-minus text-primary"></i></span>
+			<input menu_id="${order.menu_id}" disabled type="number" class="form-control text-primary" placeholder="1" value="${order.served_qty}" >
 			</div>
 
 		</td>
-		<td id=${menu.id}>	
+		<td menu_id=${order.menu_id}>	
 			<button onclick="remove_serve_one(${order.menu_id},${order.served_qty})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
-			<div class = "h4 float-end py-3">${menu.amount}$</div>
+			<div class = "h4 float-end py-3">${menu.menu_price}$</div>
 		</td>
 	</tr>
 	<!--end item-->
@@ -225,10 +235,10 @@
 			if (ORDER[i]['served_qty'] > 0) {
 				for (var j = MENU.length - 1; j >= 0; j--) {
 					//console.log(ORDER[i]['menu_id'], MENU[j]['id'], i, j);
-					if (ORDER[i]['menu_id'] == MENU[j]['id']) {
+					if (ORDER[i]['menu_id'] == MENU[j]['menu_id']) {
 						items_div.innerHTML += served_html(MENU[j], ORDER[i]);
 
-						grand_total = grand_total + MENU[j]['amount'] * ORDER[i]['served_qty'];
+						grand_total = grand_total + MENU[j]['menu_price'] * ORDER[i]['served_qty'];
 					}
 				}
 			}
@@ -246,7 +256,7 @@
 			if (ORDER[i]['onhold_qty'] > 0) {
 				for (var j = MENU.length - 1; j >= 0; j--) {
 					//console.log(ORDER[i]['menu_id'], MENU[j]['id'], i, j);
-					if (ORDER[i]['menu_id'] == MENU[j]['id']) {
+					if (ORDER[i]['menu_id'] == MENU[j]['menu_id']) {
 						items_div.innerHTML += onhold_html(MENU[j], ORDER[i]);
 					}
 				}

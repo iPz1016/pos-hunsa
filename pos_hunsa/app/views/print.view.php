@@ -40,7 +40,16 @@
 	<center>
 		<h1><?=$obj['company']?></h1>
 		<h4>Receipt</h4>
-		<div><i><?=date("jS F, Y H:i a")?></i></div>
+		<div>
+				<i>
+					<?php
+					$datetime = new DateTime();
+					$timezone = new DateTimeZone(TIME_ZONE);
+					$datetime->setTimezone($timezone);
+					echo $datetime->format("jS F, Y H:i a");
+					?>
+				</i>
+			</div>
 	</center>
 
 	<table class="table table-striped">

@@ -162,7 +162,7 @@ function serve_all() {
 function add_menu(e) {
 
     if (e.target.tagName == "IMG") {
-        var menu_id = e.target.getAttribute("id");
+        var menu_id = e.target.getAttribute("menu_id");
 
         add_menu_id(menu_id);
 
@@ -182,9 +182,7 @@ function clear_onhold() {
 
 
 function change_qty(direction, e) {
-
-
-    var id = e.currentTarget.getAttribute("id");
+    var id = e.currentTarget.getAttribute("menu_id");
     //console.log("Delete",id);
     if (direction == "up") {
         add_menu_id(id);
@@ -223,8 +221,6 @@ function show_modal(modal) {
             mydiv.querySelector(".js-change-input").innerHTML = CHANGE;
             mydiv.querySelector(".js-btn-close-change").focus();
         }
-
-
 }
 
 function hide_modal(e, modal) {
@@ -298,13 +294,6 @@ function validate_amount_paid(e) {
     ITEMS = [];
     refresh_items_display();
 
-    //reload products
-    /*
-    send_data({
-
-        data_type: "search",
-        text: ""
-    });*/
 }
 
 function print_receipt(obj) {
@@ -319,9 +308,3 @@ function print_receipt(obj) {
 function close_receipt_window() {
     RECEIPT_WINDOW.close();
 }
-/*
-    send_data({
-
-        data_type: "search",
-        text: ""
-    });*/
