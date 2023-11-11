@@ -67,16 +67,10 @@ if (!empty($raw_data)) {
 			$order_exist = $orders_class->where($data, 1, 0, 'asc', 'menu_id');
 
 			if ($order_exist) {
-				$order_data['orders_id'] = $order_exist[0]['orders_id'];
-				$order_data['menu_id'] = $order_exist[0]['menu_id'];
-				$order_data['table_id'] = $order_exist[0]['table_id'];
-				$order_data['onhold_qty'] = $order_exist[0]['onhold_qty'] + 1;
-				$order_data['served_qty'] = $order_exist[0]['served_qty'];
 
-				$query = "UPDATE orders
-				SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
-				WHERE orders_id =:orders_id AND menu_id =:menu_id";
-				$orders_class->query($query, $order_data);
+				$order_exist[0]['onhold_qty'] = $order_exist[0]['onhold_qty'] + 1;
+				$orders_class->update_order($order_exist[0]);
+
 			} else {
 				//INSERT NEW DATA
 				$order_data['orders_id'] =  $OBJ['orders_id'];
@@ -106,28 +100,19 @@ if (!empty($raw_data)) {
 			$order_exist = $orders_class->where($data, 1, 0, 'asc', 'orders_id');
 
 			if ($order_exist) {
-				$order_data['orders_id'] = $order_exist[0]['orders_id'];
-				$order_data['menu_id'] = $order_exist[0]['menu_id'];
-				$order_data['table_id'] = $order_exist[0]['table_id'];
-				$order_data['onhold_qty'] = $order_exist[0]['onhold_qty'] - 1;
-				$order_data['served_qty'] = $order_exist[0]['served_qty'];
+
+				$order_exist[0]['onhold_qty'] = $order_exist[0]['onhold_qty'] - 1;
 
 				//DELETE ORDER IF MENU QTY < 0 
-				if ($order_data['onhold_qty'] <= 0 && $order_data['served_qty'] <= 0) {
+				if ($order_exist[0]['onhold_qty'] <= 0 && $order_exist[0]['served_qty'] <= 0) {
 
-					$query = "DELETE FROM orders
-					WHERE orders_id=:orders_id AND menu_id=:menu_id";
+					
+					$delete_data['orders_id'] = $order_exist[0]['orders_id'];
+					$delete_data['menu_id'] = $order_exist[0]['menu_id'];
 
-					$delete_data['orders_id'] = $order_data['orders_id'];
-					$delete_data['menu_id'] = $order_data['menu_id'];
-
-
-					$orders_class->query($query, $delete_data);
+					$orders_class->delete_order($delete_data);
 				} else {
-					$query = "UPDATE orders
-					SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
-					WHERE orders_id =:orders_id AND menu_id =:menu_id";
-					$orders_class->query($query, $order_data);
+					$orders_class->update_order($order_exist[0]);
 				}
 			}
 
@@ -149,16 +134,9 @@ if (!empty($raw_data)) {
 			$order_exist = $orders_class->where($data, 1, 0, 'asc', 'menu_id');
 
 			if ($order_exist) {
-				$order_data['orders_id'] = $order_exist[0]['orders_id'];
-				$order_data['menu_id'] = $order_exist[0]['menu_id'];
-				$order_data['table_id'] = $order_exist[0]['table_id'];
-				$order_data['onhold_qty'] = $OBJ['onhold_qty'];
-				$order_data['served_qty'] = $order_exist[0]['served_qty'];
 
-				$query = "UPDATE orders
-				SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
-				WHERE orders_id =:orders_id AND menu_id =:menu_id";
-				$orders_class->query($query, $order_data);
+				$order_exist[0]['onhold_qty'] = $OBJ['onhold_qty'];
+				$orders_class->update_order($order_exist[0]);
 			}
 			// REFRESH ORDER 
 
@@ -179,26 +157,18 @@ if (!empty($raw_data)) {
 			$order_exist = $orders_class->where($data, 1, 0, 'asc', 'menu_id');
 
 			if ($order_exist) {
-				$order_data['orders_id'] = $order_exist[0]['orders_id'];
-				$order_data['menu_id'] = $order_exist[0]['menu_id'];
-				$order_data['table_id'] = $order_exist[0]['table_id'];
-				$order_data['onhold_qty'] = 0;
-				$order_data['served_qty'] = $order_exist[0]['served_qty'];
-
+				
+				$order_exist[0]['onhold_qty'] = 0;
+				
 				//DELETE ORDER IF MENU QTY <= 0 
-				if ($order_data['onhold_qty'] <= 0 && $order_data['served_qty'] <= 0) {
+				if ($order_exist[0]['onhold_qty'] <= 0 && $order_exist[0]['served_qty'] <= 0) {
 
-					$query = "DELETE FROM orders
-					WHERE orders_id=:orders_id AND menu_id=:menu_id";
-					$delete_data['orders_id'] = $order_data['orders_id'];
-					$delete_data['menu_id'] = $order_data['menu_id'];
+					$delete_data['orders_id'] = $order_exist[0]['orders_id'];
+					$delete_data['menu_id'] = $order_exist[0]['menu_id'];
+					$orders_class->delete_order($delete_data);
 
-					$orders_class->query($query, $delete_data);
 				} else {
-					$query = "UPDATE orders
-					SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
-					WHERE orders_id =:orders_id AND menu_id =:menu_id";
-					$orders_class->query($query, $order_data);
+					$orders_class->update_order($order_exist[0]);
 				}
 			}
 
@@ -222,23 +192,16 @@ if (!empty($raw_data)) {
 			if ($order_exist) {
 				$qty = $OBJ['qty'];
 
-				$order_data['orders_id'] = $order_exist[0]['orders_id'];
-				$order_data['table_id'] = $order_exist[0]['table_id'];
-				$order_data['menu_id'] = $order_exist[0]['menu_id'];
-				$order_data['onhold_qty'] = $order_exist[0]['onhold_qty'] - $qty;
-				$order_data['served_qty'] = $order_exist[0]['served_qty'] + $qty;
+				$order_exist[0]['onhold_qty'] = $order_exist[0]['onhold_qty'] - $qty;
+				$order_exist[0]['served_qty'] = $order_exist[0]['served_qty'] + $qty;
 
-				if ($order_data['onhold_qty'] < 0) {
-					$order_data['served_qty'] = $order_data['served_qty'] + $order_data['served_qty'];
-					$order_data['onhold_qty'] = 0;
+				if ($order_exist[0]['onhold_qty'] < 0) {
+					$order_exist[0]['served_qty'] = $order_exist[0]['served_qty'] + $order_exist[0]['onhold_qty'];
+					$order_exist[0]['onhold_qty'] = 0;
 				}
 
 				// Update to database
-
-				$query = "UPDATE orders
-				SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
-				WHERE orders_id =:orders_id AND menu_id =:menu_id";
-				$orders_class->query($query, $order_data);
+				$orders_class->update_order($order_exist[0]);
 			}
 
 			// REFRESH ORDER 
@@ -261,31 +224,22 @@ if (!empty($raw_data)) {
 			if ($order_exist) {
 				$qty = $OBJ['qty'];
 
-				$order_data['orders_id'] = $order_exist[0]['orders_id'];
-				$order_data['table_id'] = $order_exist[0]['table_id'];
-				$order_data['menu_id'] = $order_exist[0]['menu_id'];
-				$order_data['onhold_qty'] = $order_exist[0]['onhold_qty'];
-				$order_data['served_qty'] = $order_exist[0]['served_qty'] - $qty;
+				$order_exist[0]['served_qty'] = $order_exist[0]['served_qty'] - $qty;
 
-				if ($order_data['served_qty'] < 0) {
-					$order_data['served_qty'] = 0;
+				if ($order_exist[0]['served_qty'] < 0) {
+					$order_exist[0]['served_qty'] = 0;
 				}
 
 				// Update to database
 
-				if ($order_data['onhold_qty'] <= 0 && $order_data['served_qty'] <= 0) {
+				if ($order_exist[0]['onhold_qty'] <= 0 && $order_exist[0]['served_qty'] <= 0) {
 
-					$query = "DELETE FROM orders
-					WHERE orders_id=:orders_id AND menu_id=:menu_id";
-					$delete_data['orders_id'] = $order_data['orders_id'];
-					$delete_data['menu_id'] = $order_data['menu_id'];
+					$delete_data['orders_id'] = $order_exist[0]['orders_id'];
+					$delete_data['menu_id'] = $order_exist[0]['menu_id'];
 
-					$orders_class->query($query, $delete_data);
+					$orders_class->delete_order($delete_data);
 				} else {
-					$query = "UPDATE orders
-					SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
-					WHERE orders_id =:orders_id AND menu_id =:menu_id";
-					$orders_class->query($query, $order_data);
+					$orders_class->update_order($order_exist[0]);
 				}
 			}
 

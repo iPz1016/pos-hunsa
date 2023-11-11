@@ -49,4 +49,24 @@ class Orders extends Model
         $db = new Database;
         return $db->query($query);
     }
+
+    public function update_order($data)
+    {
+        $clean_array = $this->get_allowed_columns($data, $this->table);
+        $query = "UPDATE $this->table
+					SET orders_id = :orders_id, menu_id =:menu_id, table_id =:table_id, onhold_qty =:onhold_qty, served_qty =:served_qty 
+					WHERE orders_id =:orders_id AND menu_id =:menu_id";
+        $db = new Database;
+        $db->query($query, $clean_array);
+    }
+
+    public function delete_order($data)
+    {
+        $clean_array = $this->get_allowed_columns($data, $this->table);
+        $query = "DELETE FROM $this->table
+					WHERE orders_id=:orders_id AND menu_id=:menu_id";
+
+        $db = new Database;
+        $db->query($query, $clean_array);
+    }
 }

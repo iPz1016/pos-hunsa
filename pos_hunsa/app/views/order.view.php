@@ -124,7 +124,7 @@
 	var GTOTAL = 0;
 	var CHANGE = 0;
 	var RECEIPT_WINDOW = null;
-	console.log(MENU);
+	
 
 	//fetch menu for first run
 	show_menu("all");

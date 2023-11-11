@@ -9,7 +9,7 @@ function send_data(data) {
 
             if (ajax.status == 200) {
                 if (ajax.responseText.trim() != "") {
-                    console.log(ajax.responseText);
+                    //console.log(ajax.responseText);
                     handle_result(ajax.responseText);
                 } else {
 
@@ -17,7 +17,7 @@ function send_data(data) {
             } else {
 
                 console.log("An error occured. Err Code:" + ajax.status + " Err message:" + ajax.statusText);
-                console.log(ajax);
+                //console.log(ajax);
             }
 
         }
@@ -41,7 +41,7 @@ function handle_result(result) {
             obj.data_type == "serve" || obj.data_type == "remove_serve") {
             //console.log(ORDER);
             ORDER = obj.data;
-            console.log(ORDER);
+            //console.log(ORDER);
             refresh_order_display();
             refresh_served_display();
             refresh_checkout_button();
@@ -147,8 +147,10 @@ function serve(menu_id = 0, qty = 'all') {
 }
 
 function serve_event(e) {
+    
     if (e.target.tagName == "TD") {
-        serve(e.target.getAttribute("id"), 1)
+        
+        serve(e.target.getAttribute("menu_id"), 1)
     }
 }
 
