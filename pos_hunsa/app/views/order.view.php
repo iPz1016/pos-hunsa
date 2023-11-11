@@ -120,7 +120,7 @@
 <!--end modals-->
 
 <script>
-	;
+	
 	var GTOTAL = 0;
 	var CHANGE = 0;
 	var RECEIPT_WINDOW = null;

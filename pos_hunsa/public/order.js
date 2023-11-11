@@ -204,7 +204,7 @@ function show_modal(modal) {
 
     if (modal == "amount-paid") {
 
-        if (ITEMS.length == 0) {
+        if (ORDER.length == 0) {
 
             alert("Please add at least one item to the cart");
             return;
@@ -237,6 +237,7 @@ function hide_modal(e, modal) {
             if (modal == "change") {
                 var mydiv = document.querySelector(".js-change-modal");
                 mydiv.classList.add("hide");
+                window.location.href = "index.php?pg=home";
             }
 
     }
