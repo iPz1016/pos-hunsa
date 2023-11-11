@@ -19,6 +19,7 @@ if (Auth::access('cashier')) {
         } catch (e) {
             //
         }
+        var ORDER = [];
         var MENU = <?php echo json_encode($menu); ?>;
         //console.log(MENU);
     </script>
