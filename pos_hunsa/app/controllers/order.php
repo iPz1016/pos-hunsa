@@ -87,17 +87,13 @@ if (Auth::access('cashier')) {
         $data['disable'] = 0;
         $table_id = $table_info_class->where($data, 1, 0, 'desc', 'table_id');
 
-        if ($table_id) {
+        $order_class = new Orders;
+        $order_table_exist = $order_class->where(['table_id'=>$data['table_id']],1,0,'desc','orders_id');
+        
+        if ($table_id && !$order_table_exist) {
 
         ?>
             <script>
-                try {
-                    isset(ORDER_INFO);
-                    unset(ORDER_INFO);
-                } catch (e) {
-                    //
-                }
-
                 var ORDER_INFO = {
                     table_id: <?php echo $table_id[0]['table_id']; ?>,
                     orders_id: <?php echo time(); ?>
