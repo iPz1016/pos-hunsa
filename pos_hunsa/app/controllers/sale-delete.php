@@ -3,7 +3,7 @@
 $errors = [];
 
 $id = $_GET['id'] ?? null;
-$sale = new Sale();
+$sale = new History();
 
 $row = $sale->first(['id'=>$id]);
 

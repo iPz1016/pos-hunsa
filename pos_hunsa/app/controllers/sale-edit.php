@@ -3,7 +3,7 @@
 $errors = [];
 
 $id = $_GET['id'] ?? null;
-$sale = new Sale();
+$sale = new History();
 
 $row = $sale->first(['id'=>$id]);
 
@@ -13,7 +13,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 	$errors = $sale->validate($_POST,$row['id']);
 	if(empty($errors)){
 		
-		$_POST['total'] = $_POST['qty'] * $_POST['amount'];
+	
+		$data['menu_name'] = $_POST['menu_name'];
+		$data['qty'] = $_POST['qty'];
+		$data['menu_price'] = $_POST['menu_price'];
 		
 		$sale->update($row['id'],$_POST);
 

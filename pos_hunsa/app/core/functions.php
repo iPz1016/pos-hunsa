@@ -187,7 +187,7 @@ function get_user_by_id($id)
 function generate_daily_data($records)
 {
 	$arr = [];
-
+	
 	for ($i=0; $i < 24; $i++) { 
 		
 		if(!isset($arr[$i])){
@@ -197,7 +197,7 @@ function generate_daily_data($records)
 
 		foreach ($records as $row) {
 			
-			$hour = date('H',strtotime($row['date']));
+			$hour = date('H',strtotime($row['time']));
 			if($hour == $i){
 
 				$arr[$i] += $row['total'];
@@ -223,7 +223,7 @@ function generate_monthly_data($records)
 
 		foreach ($records as $row) {
 			
-			$day = date('d',strtotime($row['date']));
+			$day = date('d',strtotime($row['time']));
 			if($day == $i){
 
 				$arr[$i] += $row['total'];
@@ -248,7 +248,7 @@ function generate_yearly_data($records)
 
 		foreach ($records as $row) {
 			
-			$month = date('m',strtotime($row['date']));
+			$month = date('m',strtotime($row['time']));
 			if($month == $i){
 
 				$arr[$months[$i]] += $row['total'];

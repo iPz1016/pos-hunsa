@@ -12,21 +12,27 @@
 
 			<div class="mb-3">
 			  <label for="saleControlInput1" class="form-label">Sale description</label>
-			  <input disabled value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="saleControlInput1" placeholder="Sale description">
+			  <input disabled value="<?=set_value('menu_name',$row['menu_name'])?>" name="menu_name" type="text" class="form-control" id="saleControlInput1" placeholder="Sale description">
 			</div>
-			
+			 
 			<div class="mb-3">
-			  <label for="barcodeControlInput1" class="form-label">Barcode</small></label>
-			  <input disabled value="<?=set_value('barcode',$row['barcode'])?>" name="barcode" type="text" class="form-control <?=!empty($errors['barcode']) ? 'border-danger':''?>" id="barcodeControlInput1" placeholder="Sale barcode">
+			  <label for="barcodeControlInput1" class="form-label">Qty</small></label>
+			  <input disabled value="<?=set_value('qty',$row['qty'])?>" name="qty" type="text" class="form-control " id="barcodeControlInput1" placeholder="Qty">
 			</div>
- 
+
+			<div class="mb-3">
+			  <label for="barcodeControlInput1" class="form-label">Menu price</small></label>
+			  <input disabled value="<?=set_value('menu_price',$row['menu_price'])?>" name="menu_price" type="text" class="form-control " id="barcodeControlInput1" placeholder="Menu price">
+			</div>
+
 			<div class="mb-3">
 			  <label for="barcodeControlInput1" class="form-label">Total</small></label>
-			  <input disabled value="<?=set_value('total',$row['total'])?>" name="total" type="text" class="form-control <?=!empty($errors['barcode']) ? 'border-danger':''?>" id="barcodeControlInput1" placeholder="Sale barcode">
+			  <input disabled value="<?=set_value('menu_price',$row['menu_price'])*set_value('qty',$row['qty'])?>" name="total" type="text" class="form-control " id="barcodeControlInput1" placeholder="Total">
 			</div>
+
 			<div class="mb-3">
 			  <label for="barcodeControlInput1" class="form-label">Date</small></label>
-			  <input disabled value="<?=set_value('date',$row['date'])?>" name="date" type="text" class="form-control <?=!empty($errors['barcode']) ? 'border-danger':''?>" id="barcodeControlInput1" placeholder="Sale barcode">
+			  <input disabled value="<?=set_value('time',$row['time'])?>" name="time" type="text" class="form-control " id="barcodeControlInput1" placeholder="Time">
 			</div>
 			
 			<br>

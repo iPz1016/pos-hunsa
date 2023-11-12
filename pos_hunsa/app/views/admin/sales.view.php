@@ -44,7 +44,7 @@
 	<h2>Today's Total: $<?=number_format($sales_total,2)?></h2>
 	<table class="table table-striped table-hover">
 		<tr>
-			<th>Barcode</th><th>Receipt No</th><th>Description</th><th>Qty</th><th>Amount</th><th>Total</th><th>Cashier</th><th>Date</th>
+			<th>Orders id</th><th>Menu name</th><th>Qty</th><th>Amount</th><th>Total</th><th>Cashier</th><th>Date</th>
 			<th>
 				<a href="index.php?pg=home">
 					<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
@@ -55,16 +55,16 @@
 		<?php if (!empty($sales)):?>
 			<?php foreach ($sales as $sale):?>
 	 		<tr>
-				<td><?=esc($sale['barcode'])?></td>
-				<td><?=esc($sale['receipt_no'])?></td>
+				<td><?=esc($sale['orders_id'])?></td>
+				
 				<td>
- 					<?=esc($sale['description'])?>
+ 					<?=esc($sale['menu_name'])?>
  				</td>
 				<td><?=esc($sale['qty'])?></td>
-				<td><?=esc($sale['amount'])?></td>
-				<td><?=esc($sale['total'])?></td>
+				<td><?=esc($sale['menu_price'])?></td>
+				<td><?=esc($sale['menu_price']*$sale['qty'])?></td>
 				<?php 
-					$cashier = get_user_by_id($sale['user_id']);
+					$cashier = get_user_by_id($sale['staff_id']);
 					if(empty($cashier)){
 						$name = "Unknown";
 						$namelink = "#";
@@ -79,7 +79,7 @@
 					</a>
 				</td>
 		
-				<td><?=date("jS M, Y",strtotime($sale['date']))?></td>
+				<td><?=date("jS M, Y",strtotime($sale['time']))?></td>
 				<td>
 					<a href="index.php?pg=sale-edit&id=<?=$sale['id']?>">
 						<button class="btn btn-success btn-sm">Edit</button>
@@ -107,7 +107,7 @@
 	<?php 
 
 		$graph = new Graph();
-
+		
 		$data = generate_daily_data($today_records);
 		$graph->title = "Today's sales";
 		$graph->xtitle = "Hours of the day";

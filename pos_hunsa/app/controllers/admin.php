@@ -17,7 +17,7 @@ if($tab == "sales")
 	$enddate = $_GET['end'] ?? null;
 
 
-	$saleClass = new Sale();
+	$history_class = new History();
 	
 	$limit = $_GET['limit'] ?? 20;
 	$limit = (int)$limit;
@@ -26,22 +26,22 @@ if($tab == "sales")
 	$pager = new Pager($limit);
 	$offset = $pager->offset;
 
-	$query = "select * from sales order by id desc limit $limit offset $offset";
+	$query = "select * from history order by orders_id desc limit $limit offset $offset";
 
 	//get today's sales total
 	$year = date("Y");
 	$month = date("m");
 	$day = date("d");
 
-	$query_total = "SELECT sum(total) as total FROM sales WHERE day(date) = $day && month(date) = $month && year(date) = $year";
+	$query_total = "SELECT sum(qty*menu_price) as total FROM history WHERE day(time) = $day && month(time) = $month && year(time) = $year";
 
 
 	//if both start and end are set
  	if($startdate && $enddate)
  	{
  		
- 		$query = "select * from sales where date BETWEEN '$startdate' AND '$enddate' order by id desc limit $limit offset $offset";
- 		$query_total = "select sum(total) as total from sales where date BETWEEN '$startdate' AND '$enddate'";
+ 		$query = "select * from history where time BETWEEN '$startdate' AND '$enddate' order by orders_id desc limit $limit offset $offset";
+ 		$query_total = "select sum(qty*menu_price) as total from history where time BETWEEN '$startdate' AND '$enddate'";
  	
  	}else
 
@@ -52,14 +52,14 @@ if($tab == "sales")
  		$stmonth = date("m",strtotime($startdate));
  		$stday = date("d",strtotime($startdate));
  		
- 		$query = "select * from sales where date = '$startdate' order by id desc limit $limit offset $offset";
- 		$query_total = "select sum(total) as total from sales where date = '$startdate' ";
+ 		$query = "select * from history where time = '$startdate' order by orders_id desc limit $limit offset $offset";
+ 		$query_total = "select sum(qty*menu_price) as total from history where time = '$startdate' ";
  	}
 	
 
-	$sales = $saleClass->query($query);
+	$sales = $history_class->query($query);
 
-	$st = $saleClass->query($query_total);
+	$st = $history_class->query($query_total);
 	
 	$sales_total = 0;
 	if($st){
@@ -73,18 +73,18 @@ if($tab == "sales")
 
 		//query todays records
 		$today = date('Y-m-d');
-		$query = "SELECT total,date FROM sales WHERE DATE(date) = '$today' ";
+		$query = "SELECT qty*menu_price total,time FROM history WHERE DATE(time) = '$today';";
 		$today_records = $db->query($query);
 
 		//query this months records
 		$thismonth = date('m');
 		$thisyear = date('Y');
 
-		$query = "SELECT total,date FROM sales WHERE month(date) = '$thismonth' && year(date) = '$thisyear'";
+		$query = "SELECT qty*menu_price total,time FROM history WHERE month(time) = '$thismonth' && year(time) = '$thisyear'";
 		$thismonth_records = $db->query($query);
 
 		//query this years records
-		$query = "SELECT total,date FROM sales WHERE year(date) = '$thisyear'";
+		$query = "SELECT qty*menu_price total,time FROM history WHERE year(time) = '$thisyear'";
 		$thisyear_records = $db->query($query);
 
 	}

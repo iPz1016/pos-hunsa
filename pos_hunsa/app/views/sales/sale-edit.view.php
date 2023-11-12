@@ -9,10 +9,10 @@
 			<h5 class="text-primary"><i class="fa fa-hamburger"></i> Edit Sale</h5>
 			
 			<div class="mb-3">
-			  <label for="saleControlInput1" class="form-label">Sale description</label>
-			  <input value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="saleControlInput1" placeholder="Sale description">
-			  <?php if(!empty($errors['description'])):?>
-					<small class="text-danger"><?=$errors['description']?></small>
+			  <label for="saleControlInput1" class="form-label">Menu name</label>
+			  <input value="<?=set_value('description',$row['menu_name'])?>" name="menu_name" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="saleControlInput1" placeholder="Sale description">
+			  <?php if(!empty($errors['menu_name'])):?>
+					<small class="text-danger"><?=$errors['menu_name']?></small>
 				<?php endif;?>
 			</div>
 	 
@@ -20,13 +20,13 @@
 			  <span class="input-group-text">Qty:</span>
 			  <input name="qty" value="<?=set_value('qty',$row['qty'])?>" type="number" class="form-control <?=!empty($errors['qty']) ? 'border-danger':''?>" placeholder="Quantity" aria-label="Quantity">
 			  <span class="input-group-text">Amount:</span>
-			  <input name="amount" value="<?=set_value('amount',$row['amount'])?>" step="0.05" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="Amount" aria-label="Amount">
+			  <input name="menu_price" value="<?=set_value('menu_price',$row['menu_price'])?>" step="0.05" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="Amount" aria-label="Amount">
 			</div>
 				<?php if(!empty($errors['qty'])):?>
 					<small class="text-danger"><?=$errors['qty']?></small>
 				<?php endif;?>
-				<?php if(!empty($errors['amount'])):?>
-					<small class="text-danger"><?=$errors['amount']?></small>
+				<?php if(!empty($errors['menu_price'])):?>
+					<small class="text-danger"><?=$errors['menu_price']?></small>
 				<?php endif;?>
 				<br>
 			
