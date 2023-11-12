@@ -265,36 +265,14 @@ function validate_amount_paid(e) {
     hide_modal(true, 'amount-paid');
     show_modal('change');
 
-    //remove unwanted information
-    var ITEMS_NEW = [];
-    for (var i = 0; i < ITEMS.length; i++) {
-
-        var tmp = {};
-        tmp.id = ITEMS[i]['id'];
-        tmp.qty = ITEMS[i]['qty'];
-
-        ITEMS_NEW.push(tmp);
-    }
-
-    //send cart data through ajax
-    send_data({
-
-        data_type: "checkout",
-        text: ITEMS_NEW
-    });
-
     //open receipt page
     print_receipt({
-        company: 'My POS',
         amount: amount,
         change: CHANGE,
         gtotal: GTOTAL,
-        data: ITEMS
+        orders_id: ORDER_INFO['orders_id']
     });
 
-    //clear items
-    ITEMS = [];
-    refresh_items_display();
 
 }
 

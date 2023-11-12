@@ -61,11 +61,11 @@ class Model extends Database
 
 	}
 
-	public function delete($id)
+	public function delete($id,$id_name="id")
 	{
 
-		$query = "delete from $this->table where id = :id limit 1";
-		$clean_array['id'] = $id;
+		$query = "delete from $this->table where $id_name = :$id_name limit 1";
+		$clean_array[$id_name] = $id;
 
 		$db = new Database;
 		$db->query($query,$clean_array);	

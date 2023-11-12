@@ -69,4 +69,14 @@ class Orders extends Model
         $db = new Database;
         $db->query($query, $clean_array);
     }
+
+    public function delete_all_order($data)
+    {
+        $clean_array = $this->get_allowed_columns($data, $this->table);
+        $query = "DELETE FROM $this->table
+					WHERE orders_id=:orders_id";
+
+        $db = new Database;
+        $db->query($query, $clean_array);
+    }
 }

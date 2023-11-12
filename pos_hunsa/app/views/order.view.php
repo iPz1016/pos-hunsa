@@ -23,7 +23,6 @@
 	}
 </style>
 <div class="d-flex">
-
 	<div class="col-3 bg-light p-2 pt-2">
 
 		<div>
@@ -95,7 +94,7 @@
 	<div style="width:500px;min-height:200px;background-color:white;padding:10px;margin:auto;margin-top:100px">
 		<h4>Checkout <button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-danger float-end p-0 px-2">X</button></h4>
 		<br>
-		<input onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="text" class="js-amount-paid-input form-control" placeholder="Enter amount paid">
+		<input onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="number" class="js-amount-paid-input form-control" placeholder="Enter amount paid">
 		<br>
 		<button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-secondary">Cancel</button>
 		<button onclick="validate_amount_paid(event)" class="btn btn-primary float-end">Next</button>
