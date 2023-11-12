@@ -23,14 +23,15 @@
                 foreach ($order as $key => $value) :
             ?>
                     <!--card-->
-                    <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
-                        
-                            <div class="box_table text-center border border-3 border-secondary rounded-3 m-15">
-                                <h6 class="p_table cl mb-0 text-black" ><?php echo $key + 1; ?></h6>
-                                <div class="color-bar border rounded-pill bg-available mx-3"></div> 
-                                    
-                            </div>
-                    </a>
+
+
+                    <div class="box_table text-center border border-3 border-secondary rounded-3 m-15">
+                        <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
+                            <h6 class="p_table cl mb-0 text-black"><?php echo $key + 1; ?></h6>
+                            <div class="color-bar border rounded-pill bg-available mx-3"></div>
+                        </a>
+                    </div>
+
                     <!--end card-->
             <?php endforeach;
             endif; ?>
@@ -54,57 +55,51 @@
                 if ($value['disable'] == 1) {
             ?>
                     <!--disable table-->
-                    <a href="#">
-                        <div class=" p-1 float-left">
+
+                    <div class=" p-1 float-left">
+                        <a href="#">
                             <div class="box_table text-center border border-3 border-secondary rounded-3 bg-secondary bg-opacity-50">
-                                <h6 class="p_table cl mb-0 text-white" ><?php echo $value['table_id']; ?></h6>
+                                <h6 class="p_table cl mb-0 text-white"><?php echo $value['table_id']; ?></h6>
                                 <div class="color-bar border rounded-pill bg-warning mx-3"></div>
-                                </div>
                             </div>
-                    </a>
+                        </a>
+                    </div>
+
                 <?php
                 } elseif ($value['orders_id'] == NULL) {
                 ?>
-           
+
                     <!--available table-->
-                    <a href="index.php?pg=order&new_table_id=<?php echo $value['table_id']; ?>">
-                        <div class="p-1">
+
+                    <div class="p-1">
+                        <a href="index.php?pg=order&new_table_id=<?php echo $value['table_id']; ?>">
                             <div class="box_table text-center border border-3 border-secondary rounded-3">
-                                <h6 class="p_table cl mb-0 text-black" ><?php echo $value['table_id']; ?> </h6>
-                                <div class="color-bar border rounded-pill bg-available mx-3"></div> 
-                                    
+                                <h6 class="p_table cl mb-0 text-black"><?php echo $value['table_id']; ?> </h6>
+                                <div class="color-bar border rounded-pill bg-available mx-3"></div>
+
                             </div>
-                        </div>
-                        
-                    </a>
-                
+                        </a>
+                    </div>
 
                 <?php
                 } else {
                 ?>
                     <!--busy table-->
-                    <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
+                    
                         <div class=" p-1 float-left">
+                        <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
                             <div class="box_table text-center border border-3 border-secondary rounded-3 ">
-                                <h6 class="p_table cl mb-0 text-black" ><?php echo $value['table_id']; ?></h6>
-                                <div class="color-bar border rounded-pill bg-danger mx-3"></div> 
+                                <h6 class="p_table cl mb-0 text-black"><?php echo $value['table_id']; ?></h6>
+                                <div class="color-bar border rounded-pill bg-danger mx-3"></div>
                             </div>
+                            </a>
                         </div>
-                    </a>
                 <?php
 
                 }
                 ?>
 
-
-
             <?php endforeach ?>
-
-
-
-
-
-
 
         </div>
     </div>
