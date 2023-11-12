@@ -1,7 +1,7 @@
 <?php 
 
 
-define("APP_NAME", "My POS");
+define("APP_NAME", "HUN-SA POS");
 
 define("TIME_ZONE","Asia/Bangkok");
 

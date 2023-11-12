@@ -167,7 +167,7 @@
 		</a>
 		<div class="p-2">
 			<div class="text-muted">${data.menu_name}</div>
-			<div class="" style="font-size:20px"><b>$${data.menu_price}</b></div>
+			<div class="" style="font-size:16px"><b>฿${data.menu_price.toFixed(2)}</b></div>
 		</div>
 	</div>
 	<!--end card-->
@@ -217,7 +217,7 @@
 		</td>
 		<td menu_id=${order.menu_id}>	
 			<button onclick="remove_serve_one(${order.menu_id},${order.served_qty})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
-			<div class = "h4 float-end py-3">${menu.menu_price}$</div>
+			<div class = "float-end py-3" style="font-size:14px;font-weight: bold">฿ ${menu.menu_price.toFixed(2)}</div>
 		</td>
 	</tr>
 	<!--end item-->
@@ -245,7 +245,7 @@
 
 		GTOTAL = grand_total;
 		var gtotal_div = document.querySelector(".js-gtotal");
-		gtotal_div.innerHTML = "Total: $" + grand_total.toFixed(2);
+		gtotal_div.innerHTML = "Total: ฿ " + grand_total.toFixed(2);
 	}
 
 	function refresh_order_display() {

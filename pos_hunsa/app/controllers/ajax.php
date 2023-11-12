@@ -177,8 +177,10 @@ if (!empty($raw_data)) {
 				$qty = $OBJ['qty'];
 
 				$order_exist[0]['served_qty'] = $order_exist[0]['served_qty'] - $qty;
+				$order_exist[0]['onhold_qty'] = $order_exist[0]['onhold_qty'] + $qty;
 
 				if ($order_exist[0]['served_qty'] < 0) {
+					$order_exist[0]['onhold_qty'] = $order_exist[0]['onhold_qty']+ $order_exist[0]['served_qty'];
 					$order_exist[0]['served_qty'] = 0;
 				}
 
