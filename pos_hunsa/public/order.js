@@ -41,10 +41,10 @@ function handle_result(result) {
             obj.data_type == "serve" || obj.data_type == "remove_serve") {
             //console.log(ORDER);
             ORDER = obj.data;
-            //console.log(ORDER);
             refresh_order_display();
             refresh_served_display();
             refresh_checkout_button();
+            refresh_qty_count();
         }
     }
 }
@@ -147,9 +147,7 @@ function serve(menu_id = 0, qty = 'all') {
 }
 
 function serve_event(e) {
-    
-    if (e.target.tagName == "TD") {
-        
+    if (e.target.tagName == "TD" || e.target.tagName == "DIV" ) {
         serve(e.target.getAttribute("menu_id"), 1)
     }
 }

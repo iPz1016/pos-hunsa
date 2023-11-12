@@ -26,7 +26,7 @@
 	<!-- ON-HOLD Section -->
 	<div class="col-3 bg-light p-2 pt-2">
 		<div class="side">
-			<h1>On-hold</h1> <button type="button" class="btn btn-primary btn-circle btn-xl">99</button>
+			<h1>On-hold</h1> <button type="button" class="js-onhold_qty btn btn-primary btn-circle btn-xl">99</button>
 		</div>
 		<hr class="side">
 		<div class="table-responsive" style="height:450px;overflow-y: scroll;">
@@ -61,7 +61,7 @@
 	<div class="col-3 bg-gray p-4 pt-2">
 
 		<div class="side">
-			<h1 style="color:white">Served</h1> <button type="button" class="btn btn-primary btn-circle btn-xl">99</button>
+			<h1 style="color:white">Served</h1> <button type="button" class="js-served_qty btn btn-primary btn-circle btn-xl">99</button>
 		</div>
 		<hr class="side">
 		<div class="table-responsive" style="height:400px;overflow-y: scroll;">
@@ -70,7 +70,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="js-gtotal total total-purchase my-2" style="font-size:30px; font-weight:bold; color:#CC3300">Total: $0.00</div>
+		<div class="js-gtotal total total-purchase my-2" style="font-size:30px; font-weight:bold; color:#CC3300">Total: ฿ 0.00</div>
 		<div class="js-checkout">
 			<button onclick="show_modal('amount-paid')" class="btn btn-primary my-2 w-100 py-4">Checkout</button>
 			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100">Clear All</button>
@@ -124,6 +124,7 @@
 	show_menu("all");
 	refresh_order_display();
 	refresh_served_display();
+	refresh_qty_count()
 	refresh_checkout_button();
 	show_table_id();
 
@@ -178,7 +179,7 @@
 	<!--item-->
 	<tr>
 		<td class="text-primary" menu_id=${menu.menu_id}>
-			<div style="text-align: left">
+			<div style="text-align: left" menu_id=${menu.menu_id}>
 				${menu.menu_name}
 			</div>
 			<div class="qty mt-2" style="max-width:150px; margin-right: 10px">
@@ -286,6 +287,27 @@
 
 		return;
 
+	}
+
+	function refresh_qty_count()
+	{
+		var onhold_div = document.querySelector(".js-onhold_qty");
+		var served_div = document.querySelector(".js-served_qty");
+		var onhold_count = 0;
+		var served_count = 0;
+		for(var i = 0 ; i < ORDER.length ; i++)
+		{
+			if(ORDER[i]['onhold_qty']>0)
+			{
+				onhold_count++;
+			}
+			if(ORDER[i]['served_qty']>0)
+			{
+				served_count++;
+			}
+		}
+		onhold_div.innerHTML = onhold_count.toString();
+		served_div.innerHTML = served_count.toString();
 	}
 
 	/////////////////////////////////

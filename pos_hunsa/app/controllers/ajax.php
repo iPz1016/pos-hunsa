@@ -94,7 +94,7 @@ if (!empty($raw_data)) {
 
 			$order_id = $OBJ['orders_id'];
 			$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "menu_id");
-			$info['data_type'] = "add_one";
+			$info['data_type'] = "update_onhold";
 			$info['data'] = $order;
 			echo json_encode($info);
 		}
@@ -128,7 +128,7 @@ if (!empty($raw_data)) {
 
 			$order_id = $OBJ['orders_id'];
 			$order = $orders_class->where(["orders_id" => $order_id], $limit = 100, $offset = 0, "asc", "menu_id");
-			$info['data_type'] = "down_one";
+			$info['data_type'] = "remove_onhold";
 			$info['data'] = $order;
 			echo json_encode($info);
 		}
