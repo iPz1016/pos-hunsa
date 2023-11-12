@@ -250,6 +250,13 @@ hr:not([size]) {
       height: 1px
 }
 
+.align-center{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+}
+
 .h1,
 .h2,
 .h3,
@@ -262,15 +269,17 @@ h3,
 h4,
 h5,
 h6 {
-      margin-top: 0;
-      margin-bottom: .5rem;
-      font-weight: 500;
-      line-height: 1.2
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
 }
 
 .h1,
 h1 {
-      font-size: calc(1.375rem + 1.5vw);
+      /* font-size: calc(1.375rem + 1.5vw); */
+      font-size: 3.5rem;
+      font-weight: 800;
+      text-align: center;
    
 }
 
@@ -299,7 +308,8 @@ h2 {
 
 .h3,
 h3 {
-      font-size: calc(1.3rem + .6vw)
+      font-size: calc(1.3rem + .6vw);
+      font-weight: 700;
 }
 
 @media (min-width:1200px) {
@@ -418,12 +428,23 @@ sup {
 }
 
 a {
-      color: #0d6efd;
-      text-decoration: underline
+      color: #000000;
+      text-decoration: none;
+      margin-bottom: 0%;
+}
+
+.p_table{
+      font-size: 3.5rem;
+      font-weight: 500;
+}
+
+.box_table{
+	width: 130px;
+	height: 100px;
 }
 
 a:hover {
-      color: #0a58ca
+      color: #000000
 }
 
 a:not([href]):not([class]),
@@ -681,6 +702,12 @@ progress {
       font-size: calc(1.625rem + 4.5vw);
       font-weight: 300;
       line-height: 1.2
+}
+
+.color-bar{
+      height: 20px;
+      width: 90px;
+      display: block;
 }
 
 @media (min-width:1200px) {
@@ -8293,6 +8320,10 @@ fieldset:disabled .btn {
       margin: 0 !important
 }
 
+.m-15{
+      margin:0.15rem !important
+}
+
 .m-1 {
       margin: .25rem !important
 }
@@ -8901,10 +8932,16 @@ fieldset:disabled .btn {
       background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important
 }
 
+.bg-available{
+      --bs-bg-opacity: 1;
+      background-color: #47E747;
+}
+
 .bg-secondary {
       --bs-bg-opacity: 1;
       background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important
 }
+
 
 .bg-success {
       --bs-bg-opacity: 1;
@@ -9028,7 +9065,7 @@ fieldset:disabled .btn {
 }
 
 .rounded-3 {
-      border-radius: .3rem !important
+      border-radius: 10px !important
 }
 
 .rounded-circle {
