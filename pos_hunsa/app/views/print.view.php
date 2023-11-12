@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		<table class="table table-striped">
 			<tr>
 				<th>Qty</th>
-				<th>Description</th>
+				<th>Menu name</th>
 				<th>@</th>
 				<th>Total amount</th>
 			</tr>
