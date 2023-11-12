@@ -8,6 +8,9 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+	<link rel="stylesheet" href="assets/css/kioskboard-2.3.0.min.css" />
+	<script src="assets/js/kioskboard-2.3.0.min.js"></script>
 </head>
 <body>
 

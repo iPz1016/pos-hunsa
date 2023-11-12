@@ -23,14 +23,12 @@
 	}
 </style>
 <div class="d-flex">
+	<!-- ON-HOLD Section -->
 	<div class="col-3 bg-light p-2 pt-2">
-
-		<div>
-			<center>
-				<h3>On-hold</h3>
-			</center>
+		<div class="side">
+			<h1>On-hold</h1> <button type="button" class="btn btn-primary btn-circle btn-xl">99</button>
 		</div>
-
+		<hr class="side">
 		<div class="table-responsive" style="height:450px;overflow-y: scroll;">
 			<table class="table table-striped table-hover">
 
@@ -40,12 +38,12 @@
 			</table>
 		</div>
 
-		<div class="">
-			<button onclick="clear_onhold()" class="btn btn-danger my-2 w-100 py-4">Clear All</button>
-			<button onclick="serve_all()" class="btn btn-success my-2 w-100 py-4">Serve All</button>
+		<div class="my-4">
+			<button onclick="clear_onhold()" class="btn btn-danger my-2 w-100 py-3" style="font-size: 36px; font-weight: 700">Clear All</button>
+			<button onclick="serve_all()" class="btn btn-success w-100 py-3" style="font-size: 36px; font-weight: 700">Serve All</button>
 		</div>
 	</div>
-
+	<!--./ On-hold Section ./-->
 
 	<div style="min-height:600px;" class="shadow-sm col-6 p-4">
 
@@ -59,31 +57,26 @@
 		</div>
 	</div>
 
-	<div class="col-3 bg-light p-4 pt-2">
+	<!-- Served Section -->
+	<div class="col-3 bg-gray p-4 pt-2">
 
-		<div>
-			<center>
-				<h3>Served</h3>
-			</center>
+		<div class="side">
+			<h1 style="color:white">Served</h1> <button type="button" class="btn btn-primary btn-circle btn-xl">99</button>
 		</div>
-
+		<hr class="side">
 		<div class="table-responsive" style="height:400px;overflow-y: scroll;">
-			<table class="table table-striped table-hover">
-
-
+			<table class="tableServed tableServed-striped table-hover">
 				<tbody class="js-served">
-
-
 				</tbody>
 			</table>
 		</div>
-
-		<div class="js-gtotal alert alert-danger" style="font-size:30px">Total: $0.00</div>
+		<div class="js-gtotal total total-purchase my-2" style="font-size:30px; font-weight:bold; color:#CC3300">Total: $0.00</div>
 		<div class="js-checkout">
 			<button onclick="show_modal('amount-paid')" class="btn btn-primary my-2 w-100 py-4">Checkout</button>
 			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100">Clear All</button>
 		</div>
 	</div>
+	<!--./ Served Section ./-->
 </div>
 
 <!--modals-->
@@ -125,13 +118,18 @@
 	var RECEIPT_WINDOW = null;
 	
 
-	//fetch menu for first run
+	/////////////////////////////////
+	// Fetch menu for first run
+	/////////////////////////////////
 	show_menu("all");
 	refresh_order_display();
 	refresh_served_display();
 	refresh_checkout_button();
 	show_table_id();
 
+	/////////////////////////////////
+	// Filter menu with food type
+	/////////////////////////////////
 	function button_html(menu_type) {
 
 		if (menu_type == "all") {
@@ -179,20 +177,21 @@
 		return `
 	<!--item-->
 	<tr>
-		
 		<td class="text-primary" menu_id=${menu.menu_id}>
-			${menu.menu_name}
-
-			<div class="input-group input-group-sm my-3" style="max-width:150px">
-			  <span menu_id="${menu.menu_id}" onclick="change_qty('down',event)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-minus text-primary"></i></span>
-			  <input menu_id="${menu.menu_id}" onblur="change_qty('input',event)" type="number" class="form-control text-primary" placeholder="1" value="${order.onhold_qty}" >
-			  <span menu_id="${menu.menu_id}" onclick="change_qty('up',event)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-plus text-primary"></i></span>
+			<div style="text-align: left">
+				${menu.menu_name}
 			</div>
-
+			<div class="qty mt-2" style="max-width:150px; margin-right: 10px">
+				<span menu_id="${menu.menu_id}" onclick="change_qty('down',event)" class="minus bg-danger" style="cursor: pointer;">-</span>
+				<input menu_id="${menu.menu_id}" onblur="change_qty('input',event)" type="number" class="form-minus-plus count" placeholder="1" value="${order.onhold_qty}" >
+				<span menu_id="${menu.menu_id}" onclick="change_qty('up',event)" class="plus bg-success" style="cursor: pointer;">+</i></span>
+			</div>
 		</td>
-		<td menu_id=${menu.menu_id}>	
-			<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
-			<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-success my-2 w-20 py-2">Serve All</button>
+		<td menu_id=${menu.menu_id} style="text-align: right">
+			<div class="card-side m-auto border-0 mx-auto" style="min-width: 100px">
+				<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-lg"><i class="fa fa-times"></i></button>
+				<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-success my-2 w-20 py-2">Serve All</button>
+			</div>
 		</td>
 	</tr>
 	<!--end item-->
@@ -205,19 +204,20 @@
 		return `
 	<!--item-->
 	<tr>
-		
-		<td class="text-primary" menu_id=${order.menu_id}>
-			${menu.menu_name}
-
-			<div class="input-group input-group-sm my-3" style="max-width:150px">
-			<span menu_id="${order.menu_id}" onclick="remove_serve(${order.menu_id},1)" class="input-group-text" style="cursor: pointer;"><i class="fa fa-minus text-primary"></i></span>
-			<input menu_id="${order.menu_id}" disabled type="number" class="form-control text-primary" placeholder="1" value="${order.served_qty}" >
+		<td class="text-served" menu_id=${order.menu_id}>
+			<div style="text-align: left">
+					${menu.menu_name}
 			</div>
-
+			<div class="qty mt-2" style="max-width:150px; margin-right: 10px">
+				<span menu_id="${order.menu_id}" onclick="remove_serve(${order.menu_id},1)" class="minus bg-danger" style="cursor: pointer;">-</span>
+				<input menu_id="${order.menu_id}" disabled type="number" class="form-minus-plus count" placeholder="1" value="${order.served_qty}" >
+			</div>
 		</td>
-		<td menu_id=${order.menu_id}>	
-			<button onclick="remove_serve_one(${order.menu_id},${order.served_qty})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
-			<div class = "float-end py-3" style="font-size:14px;font-weight: bold">฿ ${menu.menu_price.toFixed(2)}</div>
+		<td menu_id=${order.menu_id} style="text-align: right">
+			<div class="card-side m-auto border-0 mx-auto" style="min-width: 70px">
+				<button onclick="remove_serve_one(${order.menu_id},${order.served_qty})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
+				<div class = "float-end py-2" style="font-size:16px;font-weight: bold">฿ ${menu.menu_price.toFixed(2)}</div>
+			</div>
 		</td>
 	</tr>
 	<!--end item-->
@@ -266,8 +266,8 @@
 	function refresh_checkout_button() {
 		var items_div = document.querySelector(".js-checkout");
 		items_div.innerHTML = `
-			<button onclick="show_modal('amount-paid')" class="btn btn-primary my-2 w-100 py-4" disabled>Checkout</button>
-			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100">Clear All</button>
+			<button onclick="show_modal('amount-paid')" class="btn btn-primary w-100 py-4" style="font-size: 36px; font-weight: 700" disabled>Checkout</button>
+			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100" style="font-size: 36px; font-weight: 700">Clear All</button>
 			`;
 		if (ORDER == false) {
 			return;
@@ -280,17 +280,21 @@
 		}
 
 		items_div.innerHTML = `
-			<button onclick="show_modal('amount-paid')" class="btn btn-primary my-2 w-100 py-4">Checkout</button>
-			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100">Clear All</button>
+			<button onclick="show_modal('amount-paid')" class="btn btn-primary w-100 py-4" style="font-size: 36px; font-weight: 700">Checkout</button>
+			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100" style="font-size: 36px; font-weight: 700">Clear All</button>
 			`;
 
 		return;
 
 	}
+
+	/////////////////////////////////
+	// TABLE & MENU Section
+	/////////////////////////////////
 	function show_table_id() {
 		var button_div = document.querySelector(".js-table");
 		if (ORDER_INFO['table_id'] != null)
-			button_div.innerHTML = "<h1>Table " + ORDER_INFO['table_id'] + "</h1>";
+			button_div.innerHTML = "<h1 class='text-center'>TABLE <p1 style='color:#CC3300'>"+ ORDER_INFO['table_id'] + "</p1></h1>";
 	}
 
 	function show_menu(menu_type) {
