@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2023 at 10:29 AM
+-- Generation Time: Nov 12, 2023 at 04:41 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -30,12 +30,31 @@ SET time_zone = "+00:00";
 CREATE TABLE `history` (
   `orders_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
-  `table_id` int(11) NOT NULL,
+  `table_id` int(11) DEFAULT NULL,
   `staff_id` int(11) NOT NULL,
-  `menu_name` int(11) NOT NULL,
+  `menu_name` text NOT NULL,
   `qty` int(11) NOT NULL,
-  `menu_price` int(11) NOT NULL
+  `menu_price` int(11) NOT NULL,
+  `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`orders_id`, `menu_id`, `table_id`, `staff_id`, `menu_name`, `qty`, `menu_price`, `time`) VALUES
+(1699759362, 1, 4, 1, 'americano iced', 1, 65, '1970-01-01 00:00:00'),
+(1699759362, 2, 4, 1, 'cappuccino iced', 1, 70, '1970-01-01 00:00:00'),
+(1699759438, 1, 4, 1, 'americano iced', 1, 65, '1970-01-01 01:00:00'),
+(1699759438, 2, 4, 1, 'cappuccino iced', 1, 70, '1970-01-01 01:00:00'),
+(1699759438, 3, 4, 1, 'chocobanana toast', 1, 105, '1970-01-01 01:00:00'),
+(1699759518, 4, 4, 1, 'chocostrawberry toast', 1, 110, '2023-11-12 10:31:24'),
+(1699759518, 5, 4, 1, 'hojicha bingsu', 1, 150, '2023-11-12 10:31:24'),
+(1699674302, 5, 2, 1, 'hojicha bingsu', 1, 150, '2023-11-12 10:32:43'),
+(1699674302, 6, 2, 1, 'mango-bingsu', 1, 140, '2023-11-12 10:32:43'),
+(1699674302, 4, 2, 1, 'chocostrawberry toast', 4, 110, '2023-11-12 10:32:43'),
+(1699674302, 1, 2, 1, 'americano iced', 1, 65, '2023-11-12 10:32:43'),
+(1699674302, 2, 2, 1, 'cappuccino iced', 1, 70, '2023-11-12 10:32:43');
 
 -- --------------------------------------------------------
 
@@ -86,17 +105,12 @@ INSERT INTO `orders` (`orders_id`, `table_id`, `menu_id`, `onhold_qty`, `served_
 (1699519675, NULL, 1, 6, 10),
 (1699519675, NULL, 4, 3, 0),
 (1699519675, NULL, 3, 0, 4),
-(1, 1, 3, 0, 1),
-(1, 1, 5, 0, 1),
-(1, 1, 6, 0, 1),
-(1, 1, 2, 4, 0),
-(1699674302, 2, 5, 0, 1),
-(1699674302, 2, 6, 0, 1),
-(1699674302, 2, 4, 4, 0),
 (1699694929, NULL, 1, 1, 0),
 (1699694929, NULL, 2, 1, 0),
 (1699694929, NULL, 3, 1, 0),
-(1699694929, NULL, 4, 1, 0);
+(1699694929, NULL, 4, 1, 0),
+(1699698001, 1, 1, 1, 0),
+(1699698001, 1, 2, 1, 0);
 
 -- --------------------------------------------------------
 
