@@ -1,6 +1,5 @@
 <?php require views_path('partials/header'); ?>
 
-
 <div class="d-flex">
     <div style="height:680px;" class="shadow-sm col-4 p-4">
         <a href="index.php?pg=order&new_takehome=1">
@@ -34,8 +33,9 @@
             endif; ?>
         </div>
     </div>
+
     <div style="height:680px;" class="shadow-sm col-8 p-4">
-        <div class="h1">Table</div>
+        <h1 class="h1">TABLE</h1>
 
 
         <div class="js-products d-flex" style="flex-wrap: wrap;height: 90%;overflow-y: scroll;">
