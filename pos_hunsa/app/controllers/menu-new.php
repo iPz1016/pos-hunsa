@@ -1,43 +1,32 @@
-<?php 
+<?php
 
 $errors = [];
 
-if($_SERVER['REQUEST_METHOD'] == "POST")
-{
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-	$product = new Product();
+	$menuClass = new Menu_info();
 
-	$_POST['date'] = date("Y-m-d H:i:s");
-	$_POST['user_id'] = auth("id");
-	$_POST['barcode'] = empty($_POST['barcode']) ? $product->generate_barcode():$_POST['barcode'];
-	
-	if(!empty($_FILES['image']['name']))
-	{
-		$_POST['image'] = $_FILES['image'];
+	if (!empty($_FILES['menu_img']['name'])) {
+		$_POST['menu_img'] = $_FILES['menu_img'];
 	}
 
-	$errors = $product->validate($_POST);
-	if(empty($errors)){
-		
-		$folder = "uploads/";
-		if(!file_exists($folder))
-		{
-			mkdir($folder,0777,true);
+	$errors = $menuClass->validate($_POST);
+	if (empty($errors)) {
+
+		$folder = "assets/images/menu/";
+		if (!file_exists($folder)) {
+			mkdir($folder, 0777, true);
 		}
 
-		$ext = strtolower(pathinfo($_POST['image']['name'],PATHINFO_EXTENSION));
+		$destination = $folder . strtolower(pathinfo($_POST['menu_img']['name'])['basename']);
 
-		$destination = $folder . $product->generate_filename($ext);
-		move_uploaded_file($_POST['image']['tmp_name'], $destination);
-		$_POST['image'] = $destination;
+		move_uploaded_file($_POST['menu_img']['tmp_name'], $destination);
+		$_POST['menu_img'] = $destination;
 
-		$product->insert($_POST);
+		$menuClass->insert($_POST);
 
 		redirect('admin&tab=menu');
 	}
-
-
 }
 
 require views_path('menu/menu-new');
-

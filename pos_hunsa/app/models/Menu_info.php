@@ -55,7 +55,7 @@ class Menu_info extends Model
         if (!$id || ($id && !empty($data['menu_img']))) {
 
             if (empty($data['menu_img'])) {
-                $errors['menu_img'] = "Product image is required";
+                $errors['menu_img'] = "Menu image is required";
             } else
 				if (!($data['menu_img']['type'] == "image/jpeg" || $data['menu_img']['type'] == "image/png")) {
                 $errors['menu_img'] = "Image must be a valid JPEG or PNG";

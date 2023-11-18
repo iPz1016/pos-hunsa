@@ -26,12 +26,12 @@
 
 			<div class="input-group mb-3">
 				<span class="input-group-text">Price:</span>
-				<input name="menu_price" value="<?= set_value('menu_price', $row['menu_price']) ?>" type="number" class="form-control <?= !empty($errors['menu_price']) ? 'border-danger' : '' ?>" placeholder="Price" aria-label="menu_price">
+				<input name="menu_price" value="<?= set_value('menu_price', $row['menu_price']) ?>" type="number" min="1" class="form-control <?= !empty($errors['menu_price']) ? 'border-danger' : '' ?>" placeholder="Price" aria-label="menu_price">
 			</div>
 			<?php if (!empty($errors['menu_price'])) : ?>
 				<small class="text-danger"><?= $errors['menu_price'] ?></small>
 			<?php endif; ?>
-
+			<br>
 			<div class="form-check form-check-inline">
 				<input class="form-check-input" type="radio" name="disable" id="inlineRadio1" value="1" <?php if($row['disable']==1) echo "checked"; ?>>
 				<label class="form-check-label" for="inlineRadio1">Disable</label>
@@ -59,7 +59,7 @@
 			</a>
 		</form>
 	<?php else : ?>
-		That product was not found
+		That menu was not found
 		<br><br>
 		<a href="index.php?pg=admin&tab=menu">
 			<button type="button" class="btn btn-primary">Back to menu</button>

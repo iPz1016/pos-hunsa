@@ -6,7 +6,7 @@
 	</div>
 	<div class="col-md-3 border rounded p-4 my-2">
 		<i class="fa fa-hamburger" style="font-size: 30px"></i>
-		<h4>Total Products:</h4>
+		<h4>Total Menu:</h4>
 		<h1><?=$total_products?></h1>
 	</div>
 	<div class="col-md-3 border rounded p-4 my-2">
