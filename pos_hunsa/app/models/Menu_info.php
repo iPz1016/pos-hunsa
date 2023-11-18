@@ -29,12 +29,12 @@ class Menu_info extends Model
             $errors['menu_name'] = "Menu name is required";
         } else
 			if (!preg_match('/[a-zA-Z0-9 _\-\&\(\)]+/', $data['menu_name'])) {
-            $errors['description'] = "Only letters allowed in menu name";
+            $errors['menu_name'] = "Only letters allowed in menu name";
         }
 
         //check menu_price
         if (empty($data['menu_price'])) {
-            $errors['menu_price'] = "Product amount is required";
+            $errors['menu_price'] = "Menu price is required";
         } else
 			if (!preg_match('/^[0-9.]+$/', $data['menu_price'])) {
             $errors['menu_price'] = "Menu price must be a number";

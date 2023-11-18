@@ -84,18 +84,5 @@ class Product extends Model
 		return $errors;
 	}
 
-	public function generate_barcode()
-	{
-
-		return "2222" . rand(1000,999999999);
-	}
-
-	public function generate_filename($ext = "jpg")
-	{
-
-		return hash("sha1",rand(1000,999999999))."_".rand(1000,9999).".".$ext;
-	}
-
-	
 
 }

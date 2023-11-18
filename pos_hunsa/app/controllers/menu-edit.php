@@ -3,47 +3,41 @@
 $errors = [];
 
 $id = $_GET['id'] ?? null;
-$product = new Product();
+$menuClass = new Menu_info();
 
-$row = $product->first(['id'=>$id]);
+$row = $menuClass->first(['menu_id'=>$id]);
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 {
-
-	$_POST['barcode'] = empty($_POST['barcode']) ? $product->generate_barcode():$_POST['barcode'];
 	
-	if(!empty($_FILES['image']['name']))
+	if(!empty($_FILES['menu_img']['name']))
 	{
-		$_POST['image'] = $_FILES['image'];
+		$_POST['menu_img'] = $_FILES['menu_img'];
 	}
 
-	$errors = $product->validate($_POST,$row['id']);
+	$errors = $menuClass->validate($_POST,$row['menu_id']);
 	if(empty($errors)){
 		
-		$folder = "uploads/";
+		$folder = "assets/images/".$_POST['menu_type']."/";
 		if(!file_exists($folder))
 		{
 			mkdir($folder,0777,true);
 		}
 
-		if(!empty($_POST['image']))
+		if(!empty($_POST['menu_img']))
 		{
-
-			$ext = strtolower(pathinfo($_POST['image']['name'],PATHINFO_EXTENSION));
-
-			$destination = $folder . $product->generate_filename($ext);
-			move_uploaded_file($_POST['image']['tmp_name'], $destination);
-			$_POST['image'] = $destination;
+			$destination = $folder . strtolower(pathinfo($_POST['menu_img']['name'])['basename']);
+			move_uploaded_file($_POST['menu_img']['tmp_name'], $destination);
+			$_POST['menu_img'] = $destination;
 
 			//delete old image
-			if(file_exists($row['image']))
+			if(file_exists($row['menu_img']))
 			{
-				unlink($row['image']);
+				unlink($row['menu_img']);
 			}
-		
 		}
 
-		$product->update($row['id'],$_POST);
+		$menuClass->update($row['menu_id'],$_POST,"menu_id");
 
 		redirect('admin&tab=menu');
 	}

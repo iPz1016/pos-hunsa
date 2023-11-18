@@ -39,7 +39,7 @@ class Model extends Database
 
 	}
 
-	public function update($id,$data)
+	public function update($id,$data,$key="id")
 	{
 
 		$clean_array = $this->get_allowed_columns($data,$this->table);
@@ -53,8 +53,8 @@ class Model extends Database
 		}
 
 		$query = trim($query,",");
-		$query .= " where id = :id";
-		$clean_array['id'] = $id;
+		$query .= " where $key = :$key";
+		$clean_array[$key] = $id;
 
 		$db = new Database;
 		$db->query($query,$clean_array);	

@@ -4,7 +4,7 @@ defined("ABSPATH") ? "" : die();
 
 if (Auth::access('cashier')) {
     $menu_class = new Menu_info;
-    $menu = $menu_class->getAll(100, 0, "asc", "menu_id");
+    $menu = $menu_class->where(['disable'=> 0],300,0,'asc','menu_id');
 
     foreach ($menu as $key => $row) {
 
