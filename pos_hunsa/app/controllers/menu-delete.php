@@ -3,14 +3,14 @@
 $errors = [];
 
 $id = $_GET['id'] ?? null;
-$product = new Product();
+$menuClass = new Menu_info();
 
-$row = $product->first(['id'=>$id]);
+$row = $menuClass->first(['menu_id'=>$id]);
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 {
 	
-	$product->delete($row['id']);
+	$menuClass->delete($row['menu_id'],'menu_id');
   	
 	//delete old image
 	if(file_exists($row['image']))

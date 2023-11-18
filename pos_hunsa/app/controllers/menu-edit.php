@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 	$errors = $menuClass->validate($_POST,$row['menu_id']);
 	if(empty($errors)){
 		
-		$folder = "assets/images/".$_POST['menu_type']."/";
+		$folder = "assets/images/menu/";
 		if(!file_exists($folder))
 		{
 			mkdir($folder,0777,true);
