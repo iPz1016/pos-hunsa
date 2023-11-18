@@ -20,7 +20,7 @@ class Graph
 
 			if(!is_array($data) || empty($data))
 			{
-				echo "data variable must be an array and contain data!";
+				echo "There is no record for $this->title !!";
 				return;
 			}
 

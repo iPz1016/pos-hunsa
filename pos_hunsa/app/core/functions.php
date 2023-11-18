@@ -188,6 +188,8 @@ function generate_daily_data($records)
 {
 	$arr = [];
 	
+	if(!$records) return $arr;
+
 	for ($i=0; $i < 24; $i++) { 
 		
 		if(!isset($arr[$i])){
@@ -212,6 +214,9 @@ function generate_daily_data($records)
 function generate_monthly_data($records)
 {
 	$arr = [];
+	
+	if(!$records) return $arr;
+
 	$total_days = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
 
 	for ($i=1; $i <= $total_days; $i++) { 
@@ -238,6 +243,8 @@ function generate_yearly_data($records)
 {
 	$arr = [];
 	$months = ['0','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+	
+	if(!$records) return $arr;
 
 	for ($i=1; $i <= 12; $i++) { 
 		
