@@ -45,12 +45,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 
 		$product->update($row['id'],$_POST);
 
-		redirect('admin&tab=products');
+		redirect('admin&tab=menu');
 	}
 
 
 }
 
 
-require views_path('products/product-edit');
+require views_path('menu/menu-edit');
 

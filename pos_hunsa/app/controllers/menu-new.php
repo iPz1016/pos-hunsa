@@ -33,11 +33,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 		$product->insert($_POST);
 
-		redirect('admin&tab=products');
+		redirect('admin&tab=menu');
 	}
 
 
 }
 
-require views_path('products/product-new');
+require views_path('menu/menu-new');
 

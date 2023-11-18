@@ -18,11 +18,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 		unlink($row['image']);
 	}
 
-	redirect('admin&tab=products');
+	redirect('admin&tab=menu');
  
 
 }
 
 
-require views_path('products/product-delete');
+require views_path('menu/menu-delete');
 

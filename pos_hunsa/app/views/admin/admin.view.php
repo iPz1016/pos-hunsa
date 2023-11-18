@@ -12,8 +12,8 @@
 			  	<a href="index.php?pg=admin&tab=users">
 			  		<li class="list-group-item <?=$tab=='users'?'active':''?>"><i class="fa fa-users"></i> Users</li>
 				</a>
-			  	<a href="index.php?pg=admin&tab=products">
-			  		<li class="list-group-item <?=$tab=='products'?'active':''?>"><i class="fa fa-hamburger"></i> Products</li>
+			  	<a href="index.php?pg=admin&tab=menu">
+			  		<li class="list-group-item <?=$tab=='menu'?'active':''?>"><i class="fa fa-hamburger"></i> Menu</li>
 				</a>
 
 				<a href="index.php?pg=admin&tab=sales">
@@ -32,9 +32,9 @@
 			<?php  
 
 				switch ($tab) {
-					case 'products':
+					case 'menu':
 						// code...
-						require views_path('admin/products');
+						require views_path('admin/menu');
 						break;
 
 					case 'users':

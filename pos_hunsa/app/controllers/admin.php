@@ -3,11 +3,11 @@
 $tab = $_GET['tab'] ?? 'dashboard';
 
 
-if($tab == "products")
+if($tab == "menu")
 {
 
-	$productClass = new Product();
-	$products = $productClass->query("select * from products order by id desc");
+	$menuClass = new Menu_info();
+	$products = $menuClass->getAll(300,0,'asc','menu_id');
 }else
 if($tab == "sales")
 {
@@ -109,12 +109,12 @@ if($tab == "dashboard")
 	$myusers = $db->query($query);
 	$total_users = $myusers[0]['total'];
 
-	$query = "select count(id) as total from products";
+	$query = "select count(menu_id) as total from menu_info";
 
 	$myproducts = $db->query($query);
 	$total_products = $myproducts[0]['total'];
 
-	$query = "select sum(total) as total from sales";
+	$query = "select sum(qty*menu_price) as total from history";
 
 	$mysales = $db->query($query);
 	$total_sales = $mysales[0]['total'];
