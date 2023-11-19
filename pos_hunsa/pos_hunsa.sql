@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2023 at 05:30 AM
+-- Generation Time: Nov 19, 2023 at 05:27 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -50,7 +50,16 @@ INSERT INTO `history` (`id`, `orders_id`, `table_id`, `menu_id`, `staff_id`, `me
 (12, 1699674302, 2, 2, 1, 'cappuccino iced', 1, 70, '2023-11-12 10:32:43'),
 (13, 1699781440, 2, 1, 1, 'americano iced', 2, 65, '2023-11-12 16:33:51'),
 (14, 1699781440, 2, 2, 1, 'cappuccino iced', 1, 70, '2023-11-12 16:33:51'),
-(15, 1699804408, 2, 1, 1, 'americano iced', 4, 65, '2023-11-12 22:54:26');
+(15, 1699804408, 2, 1, 1, 'americano iced', 4, 65, '2023-11-12 22:54:26'),
+(18, 1700279859, 1, 2, 1, 'cappuccino iced', 1, 70, '2023-11-18 11:45:44'),
+(19, 1700279859, 1, 3, 1, 'chocobanana toast', 1, 105, '2023-11-18 11:45:44'),
+(20, 1700279859, 1, 4, 1, 'chocostrawberry toast', 1, 110, '2023-11-18 11:45:44'),
+(21, 1700279859, 1, 5, 1, 'hojicha bingsu', 1, 150, '2023-11-18 11:45:44'),
+(22, 1700279859, 1, 7, 1, 'americano iced', 3, 60, '2023-11-18 11:45:44'),
+(23, 1699804474, 2, 2, 1, 'cappuccino iced', 3, 70, '2023-11-19 09:40:40'),
+(24, 1699804474, 2, 3, 1, 'chocobanana toast', 1, 105, '2023-11-19 09:40:40'),
+(25, 1699804474, 2, 4, 1, 'chocostrawberry toast', 1, 110, '2023-11-19 09:40:40'),
+(26, 1700367584, 1, 2, 1, 'cappuccino iced', 7, 70, '2023-11-19 11:19:54');
 
 -- --------------------------------------------------------
 
@@ -106,11 +115,7 @@ INSERT INTO `orders` (`orders_id`, `table_id`, `menu_id`, `onhold_qty`, `served_
 (1699694929, NULL, 3, 1, 0),
 (1699694929, NULL, 4, 1, 0),
 (1699804415, 4, 1, 6, 0),
-(1699804415, 4, 2, 7, 0),
-(1699804474, 2, 1, 1, 4),
-(1699804474, 2, 2, 3, 0),
-(1699804474, 2, 3, 1, 0),
-(1699804474, 2, 4, 1, 0);
+(1699804415, 4, 2, 7, 0);
 
 -- --------------------------------------------------------
 
@@ -142,23 +147,19 @@ INSERT INTO `table_info` (`table_id`, `disable`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `date` datetime NOT NULL,
-  `image` varchar(500) DEFAULT NULL,
-  `role` varchar(20) NOT NULL,
-  `gender` varchar(6) NOT NULL DEFAULT 'male',
-  `deletable` tinyint(1) NOT NULL DEFAULT 1
+  `firstname` text NOT NULL,
+  `lastname` text NOT NULL,
+  `role` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `date`, `image`, `role`, `gender`, `deletable`) VALUES
-(1, 'Eathorne', 'email@email.com', '$2y$10$mIRwGavpKoOCWu62PLDMlOOCA1a.CwnqLqtIICKO2.X9ew.lKXXH2', '2021-12-28 09:33:15', 'uploads/9696c9f84f34af001df13ab4cfc6337cdae55ca3_6105.jpg', 'admin', 'male', 0),
-(2, 'Mary', 'mary@email.com', '$2y$10$kxoJW56qGmYO56EILS8CpeINaR0XP09DroQGpwveniunL6dsdhl6G', '2021-12-28 10:39:58', 'uploads/1f523731c17b23485e5bcc0bd15efae5bc774ed9_3779.jpg', 'cashier', 'female', 1),
-(5, 'some user', 'mail@mail.com', '$2y$10$ooQK6400JBosHjglFRfP4uiuj6ZoMgs2aQlU4.vcbDlnXVsmKd/4i', '2022-02-17 19:13:49', NULL, 'user', 'male', 1);
+INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `role`) VALUES
+(1, 'om2546', '$2y$10$Gr.7h0mgwIBP8N4nWWuOX.JUA2EhEgYMZKE5BvousbEqmQfsxNlIe', 'Chaya', 'Chan', 'manager'),
+(2, 'Mary', '$2y$10$kxoJW56qGmYO56EILS8CpeINaR0XP09DroQGpwveniunL6dsdhl6G', 'Fnameeee', 'Lname', 'cashier');
 
 --
 -- Indexes for dumped tables
@@ -181,8 +182,6 @@ ALTER TABLE `menu_info`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `email` (`email`),
-  ADD KEY `date` (`date`),
   ADD KEY `role` (`role`);
 
 --
@@ -193,7 +192,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `menu_info`
@@ -205,7 +204,7 @@ ALTER TABLE `menu_info`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
