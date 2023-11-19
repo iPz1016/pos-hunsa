@@ -24,5 +24,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 }
 
 
-require views_path('menu/menu-delete');
 
+if(Auth::access('admin')){
+	require views_path('menu/menu-delete');
+}else{
+
+	Auth::setMessage("You dont have access to the admin page");
+	require views_path('auth/denied');
+}

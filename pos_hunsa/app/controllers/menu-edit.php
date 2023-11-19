@@ -46,5 +46,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 }
 
 
-require views_path('menu/menu-edit');
+if(Auth::access('admin')){
+	require views_path('menu/menu-edit');
+}else{
 
+	Auth::setMessage("You dont have access to the admin page");
+	require views_path('auth/denied');
+}
