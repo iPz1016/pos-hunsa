@@ -22,7 +22,7 @@ class Auth
 		if(!empty($_SESSION['USER'])){
 
 			$db = new Database();
-			if($db->query("select * from users where email = :email limit 1",['email'=>$_SESSION['USER']['email']]))
+			if($db->query("select * from users where username = :username limit 1",['username'=>$_SESSION['USER']['username']]))
 			{
 				return true;
 			}
@@ -34,11 +34,8 @@ class Auth
 	public static function access($role)
 	{
 
-		$access['admin'] 		= ['admin'];
-		$access['supervisor'] 	= ['admin','supervisor'];
-		$access['cashier'] 		= ['admin','supervisor','cashier'];
-		$access['accountant'] 	= ['admin','accountant'];
-		$access['user'] 		= ['admin','supervisor','cashier','user'];
+		$access['admin'] = ['manager'];
+		$access['cashier'] = ['manager','cashier'];
 
 		$myrole = self::get('role');
 		if(in_array($myrole, $access[$role]))

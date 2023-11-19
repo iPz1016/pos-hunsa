@@ -17,6 +17,8 @@ class User extends Model
 				'gender',
 				'image',
 				'date',
+				'firstname',
+				'lastname'
 			];
 
 
@@ -33,15 +35,23 @@ class User extends Model
 			{
 				$errors['username'] = "Only letters allowed in username";
 			}
-
-			//check email
-			if(empty($data['email']))
+			//check firstname
+			if(empty($data['firstname']))
 			{
-				$errors['email'] = "Email is required";
+				$errors['firstname'] = "First name is required";
 			}else
-			if(!filter_var($data['email'],FILTER_VALIDATE_EMAIL))
+			if(!preg_match('/^[a-zA-Z ]+$/', $data['username']))
 			{
-				$errors['email'] = "Email is not valid";
+				$errors['firstname'] = "Only letters allowed in first name";
+			}
+			//check username
+			if(empty($data['lastname']))
+			{
+				$errors['lastname'] = "Last name is required";
+			}else
+			if(!preg_match('/^[a-zA-Z ]+$/', $data['username']))
+			{
+				$errors['lastname'] = "Only letters allowed in last name";
 			}
 
 			//check password

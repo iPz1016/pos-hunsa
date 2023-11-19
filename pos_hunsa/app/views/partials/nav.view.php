@@ -10,7 +10,7 @@
 	          <a class="nav-link active" aria-current="page" href="index.php?pg=home">Point of sale</a>
 	        </li>
 	        
-	        <?php if(Auth::access('supervisor')):?>
+	        <?php if(Auth::access('admin')):?>
 		        <li class="nav-item">
 		          <a class="nav-link" href="index.php?pg=admin">Admin</a>
 		        </li>
@@ -30,7 +30,7 @@
 
 		        <li class="nav-item dropdown">
 		          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		            Hi, <?=auth('username')?> (<?=Auth::get('role')?>)
+		            Hi, <?=strtoupper(auth('firstname'))?> (<?=Auth::get('role')?>)
 		          </a>
 		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 		            <li><a class="dropdown-item" href="index.php?pg=profile">Profile</a></li>
@@ -42,10 +42,6 @@
 	    	 <?php endif;?>
 
 	      </ul>
-	      <form class="d-flex">
-	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-	        <button class="btn btn-outline-success" type="submit">Search</button>
-	      </form>
 	    </div>
 	  </div>
 	</nav>

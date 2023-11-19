@@ -11,9 +11,9 @@
 			<br>
 		
 			<div class="mb-3">
-			  <input  value="<?=set_value('email')?>" autocomplete="off" name="email" type="email" class="form-control  <?=!empty($errors['email']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Email" autofocus>
-				<?php if(!empty($errors['email'])):?>
-					<small class="text-danger"><?=$errors['email']?></small>
+			  <input  value="<?=set_value('username')?>" autocomplete="off" name="username" type="text" class="form-control  <?=!empty($errors['username']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Username" autofocus>
+				<?php if(!empty($errors['username'])):?>
+					<small class="text-danger"><?=$errors['username']?></small>
 				<?php endif;?>
 			</div> 
 
