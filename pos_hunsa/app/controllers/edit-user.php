@@ -11,16 +11,13 @@ if(!empty($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], "edit-u
 	$_SESSION['referer'] = $_SERVER['HTTP_REFERER'];
 }
 
-if($_SERVER['REQUEST_METHOD'] == "POST" && Auth::access('admin'))
+if($_SERVER['REQUEST_METHOD'] == "POST" && (Auth::access('admin') || Auth::get('id')==$id))
 {
 
-	//make sure admin cannot change thier role
+	//make sure cannot change thier own role
 	if(isset($_POST['role']) && $id == Auth::get('id'))
 	{
-		if(Auth::get('role') == "admin")
-		{
 			$_POST['role'] = $row['role'];
-		}
 	}
 
 	$errors = $user->validate($_POST,$id);
@@ -34,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && Auth::access('admin'))
 		
 		$user->update($id,$_POST);
 
-		redirect("admin&tab=users");
+		redirect("edit-user&id=$id");
 	}
 
 
@@ -44,7 +41,7 @@ if(Auth::access('admin') || ($row && $row['id'] == Auth::get('id'))){
 	require views_path('auth/edit-user');
 }else{
 
-	Auth::setMessage("Only admins can create users");
+	Auth::setMessage("Only admins can edit other users");
 	require views_path('auth/denied');
 }
 

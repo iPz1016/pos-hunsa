@@ -11,26 +11,19 @@
 			<br>
 
 			<table class="table table-hover table-striped">
-				<tr>
-					<td colspan="2">
-						<img src="<?=crop($row['image'],400,$row['gender'])?>" style="width: 100%;max-width:100px;" >
-					</td>
-				</tr>
+				
 
 				<tr>
 					<th>Username</th><td><?=$row['username']?></td>
 				</tr>
 				<tr>
-					<th>Email</th><td><?=$row['email']?></td>
+					<th>First name</th><td><?=$row['firstname']?></td>
 				</tr>
 				<tr>
-					<th>Gender</th><td><?=$row['gender']?></td>
+					<th>Last name</th><td><?=$row['lastname']?></td>
 				</tr>
 				<tr>
 					<th>Role</th><td><?=$row['role']?></td>
-				</tr>
-				<tr>
-					<th>Date Created</th><td><?=get_date($row['date'])?></td>
 				</tr>
 				
 			</table>

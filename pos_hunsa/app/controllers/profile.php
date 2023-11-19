@@ -39,7 +39,7 @@ if(Auth::access('admin') || ($row && $row['id'] == Auth::get('id'))){
 	require views_path('auth/profile');
 }else{
 
-	Auth::setMessage("Only admins can create users");
+	Auth::setMessage("Only admins can edit other users");
 	require views_path('auth/denied');
 }
 
