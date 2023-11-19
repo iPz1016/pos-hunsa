@@ -39,7 +39,7 @@
 		<?php else:?>
 
 			<?php if(is_array($row) && Auth::get('id')== $id):?>
-				<div class="alert alert-danger text-center">That user can not be deleted!</div>
+				<div class="alert alert-danger text-center">Manager cannot delete yourself!<br>Use another manager account to delete!</div>
 			<?php else:?>
 				<div class="alert alert-danger text-center">That user was not found!</div>
 			<?php endif;?>

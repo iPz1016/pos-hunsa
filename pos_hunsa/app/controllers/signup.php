@@ -2,7 +2,7 @@
 
 $errors = [];
 
-if($_SERVER['REQUEST_METHOD'] == "POST")
+if($_SERVER['REQUEST_METHOD'] == "POST" && Auth::access('admin'))
 {
 
 	$user = new User();

@@ -11,7 +11,7 @@ if(!empty($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], "edit-u
 	$_SESSION['referer'] = $_SERVER['HTTP_REFERER'];
 }
 
-if($_SERVER['REQUEST_METHOD'] == "POST")
+if($_SERVER['REQUEST_METHOD'] == "POST" && Auth::access('admin'))
 {
 
 	//make sure only admins can make other admins
