@@ -11,6 +11,27 @@
 /*             Created by myself               */
 /***********************************************/
 
+/* Works on Firefox */
+* {
+      scrollbar-width: 1px;
+      scrollbar-color: #8696ad rgba(255, 255, 255, .80)
+    }
+    
+    /* Works on Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+      width: 12px;
+    }
+    
+    *::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.8);
+    }
+    
+    *::-webkit-scrollbar-thumb {
+      background-color: #8696ad;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 255, 255, 0);
+    }
+
 .card-side {
     position: relative;
     display: inline-flex;
@@ -537,6 +558,7 @@ tr {
       border-color: inherit;
       border-style: solid;
       border-width: 0
+      /* height: 140px */
 }
 
 label {
@@ -8602,6 +8624,16 @@ fieldset:disabled .btn {
 .py-3 {
       padding-top: 1rem !important;
       padding-bottom: 1rem !important
+}
+
+.py-3-1 {
+      padding-top: 0.6rem !important;
+      padding-bottom: 0.6rem !important
+}
+
+.py-3-9 {
+      padding-top: 1.3rem !important;
+      padding-bottom: 1.3rem !important
 }
 
 .py-4 {

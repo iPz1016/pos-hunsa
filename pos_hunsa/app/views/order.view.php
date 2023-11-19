@@ -24,12 +24,12 @@
 </style>
 <div class="d-flex">
 	<!-- ON-HOLD Section -->
-	<div class="col-3 bg-light p-2 pt-2">
+	<div class="col-4 bg-light p-2 pt-2" style="height: 100%;">
 		<div class="side">
-			<h1>On-hold</h1> <button type="button" class="js-onhold_qty btn btn-primary btn-circle btn-xl">99</button>
+			<h1 style="font-size: 36px">On-hold</h1> <button type="button" class="js-onhold_qty btn btn-primary btn-circle btn-xl">99</button>
 		</div>
 		<hr class="side">
-		<div class="table-responsive" style="height:450px;overflow-y: scroll;">
+		<div class="table-responsive" style="height:450px; overflow-y: scroll">
 			<table class="table table-striped table-hover">
 
 				<tbody class="js-onhold" onclick="serve_event(event)">
@@ -38,41 +38,44 @@
 			</table>
 		</div>
 
-		<div class="my-4">
-			<button onclick="clear_onhold()" class="btn btn-danger my-2 w-100 py-3" style="font-size: 36px; font-weight: 700">Clear All</button>
+		<div class="my-2">
 			<button onclick="serve_all()" class="btn btn-success w-100 py-3" style="font-size: 36px; font-weight: 700">Serve All</button>
+			<button onclick="clear_onhold()" class="btn btn-danger my-2 w-100 py-3" style="font-size: 36px; font-weight: 700">Clear All</button>
 		</div>
 	</div>
 	<!--./ On-hold Section ./-->
 
-	<div style="min-height:600px;" class="shadow-sm col-6 p-4">
+
+	<!-- MENU Section -->
+	<div style="height: 760px" class="shadow-sm col-5 p-2">
 
 		<div class="js-table"> </div>
 
-		<div class="js-select"> </div>
+		<div class="js-select" style="padding: 10px"> </div>
 
-		<div onclick="add_menu(event)" class="js-menu d-flex" style="flex-wrap: wrap;height: 90%;overflow-y: scroll;">
+		<div onclick="add_menu(event)" class="js-menu d-flex" style="flex-wrap: wrap;height: 600px;overflow-y: scroll;">
 
 
 		</div>
 	</div>
+	<!--./ MENU Section ./-->
 
 	<!-- Served Section -->
-	<div class="col-3 bg-gray p-4 pt-2">
+	<div class="col-3 bg-gray p-2 pt-1" style="height: 100%;">
 
 		<div class="side">
-			<h1 style="color:white">Served</h1> <button type="button" class="js-served_qty btn btn-primary btn-circle btn-xl">99</button>
+			<h1 style="color:white; font-size: 36px">Served</h1> <button type="button" class="js-served_qty btn btn-primary btn-circle btn-xl">99</button>
 		</div>
 		<hr class="side">
-		<div class="table-responsive" style="height:400px;overflow-y: scroll;">
+		<div class="table-responsive" style="height:386px;overflow-y: scroll;">
 			<table class="tableServed tableServed-striped table-hover">
 				<tbody class="js-served">
 				</tbody>
 			</table>
 		</div>
-		<div class="js-gtotal total total-purchase my-2" style="font-size:30px; font-weight:bold; color:#CC3300">Total: ฿ 0.00</div>
+		<div class="js-gtotal total total-purchase my-2" style="font-size:24px; font-weight:bold; color:#CC3300">Total: ฿ 0.00</div>
 		<div class="js-checkout">
-			<button onclick="show_modal('amount-paid')" class="btn btn-primary my-2 w-100 py-4">Checkout</button>
+			<button onclick="show_modal('amount-paid')" class="btn btn-primary my-2 w-100">Checkout</button>
 			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100">Clear All</button>
 		</div>
 	</div>
@@ -160,7 +163,7 @@
 
 		return `
 	<!--card-->
-	<div class="card m-2 border-0 mx-auto" style="min-width: 128;max-width: 128;">
+	<div class="card m-1 border-0 mx-auto my-1" style="width: 128; height:128">
 		<a href="#">
 			<img menu_id="${data.menu_id}" src="${data.menu_img}" class="w-100 rounded border">
 		</a>
@@ -177,24 +180,34 @@
 
 		return `
 	<!--item-->
-	<tr>
-		<td class="text-primary" menu_id=${menu.menu_id}>
-			<div style="text-align: left" menu_id=${menu.menu_id}>
-				${menu.menu_name}
-			</div>
-			<div class="qty mt-2" style="max-width:150px; margin-right: 10px">
-				<span menu_id="${menu.menu_id}" onclick="change_qty('down',event)" class="minus bg-danger" style="cursor: pointer;">-</span>
-				<input menu_id="${menu.menu_id}" onblur="change_qty('input',event)" type="number" class="form-minus-plus count" placeholder="1" value="${order.onhold_qty}" >
-				<span menu_id="${menu.menu_id}" onclick="change_qty('up',event)" class="plus bg-success" style="cursor: pointer;">+</i></span>
-			</div>
-		</td>
-		<td menu_id=${menu.menu_id} style="text-align: right">
-			<div class="card-side m-auto border-0 mx-auto" style="min-width: 100px">
-				<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-lg"><i class="fa fa-times"></i></button>
-				<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-success my-2 w-20 py-2">Serve All</button>
-			</div>
-		</td>
-	</tr>
+	<table style="width: 100%;">
+		<tr>
+			<th class="text-primary" menu_id=${menu.menu_id} style="width: 100%">
+				<div style="text-align: left" menu_id=${menu.menu_id}>
+					${menu.menu_name}
+				</div>
+				<div class="qty mt-2" style="max-width:100%">
+					<span menu_id="${menu.menu_id}" onclick="change_qty('down',event)" class="minus bg-danger" style="cursor: pointer;">-</span>
+					<input menu_id="${menu.menu_id}" onblur="change_qty('input',event)" type="number" class="form-minus-plus count" placeholder="1" value="${order.onhold_qty}" >
+					<span menu_id="${menu.menu_id}" onclick="change_qty('up',event)" class="plus bg-success" style="cursor: pointer;">+</i></span>
+
+				</div>
+			</th>
+			<th menu_id=${menu.menu_id} style="padding-bottom: 5px; width: 100%">
+				<div class="card-side m-auto border-0 mx-auto" style="width: 100px; height: 100%">
+					<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-lg py-3-1"><i class="fa fa-times"></i></button>
+				</div>
+				<div class="card-side m-auto border-0 mx-auto" style="width: 100px; height: 100%">
+					<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-secondary my-1 py-3-1">Serve</button>
+				</div>
+			</th>
+			<th menu_id=${menu.menu_id} style="padding-right: 0; padding-left: 0; padding-bottom: 0; padding-top: 5px; width: 100%" colspan="2">
+				<div class="card-side m-auto border-0 mx-auto" style="width: 100%; padding-right:3px";">
+					<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-success my-1 py-3-9">Serve All</button>
+				</div>
+			</th>
+		</tr>
+	</table>
 	<!--end item-->
 	`;
 	}
