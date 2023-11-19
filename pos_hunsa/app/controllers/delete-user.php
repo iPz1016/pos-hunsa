@@ -9,7 +9,7 @@ $row = $user->first(['id'=>$id]);
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
 
-	if(is_array($row) && Auth::access('admin') && $row['deletable'])
+	if(is_array($row) && Auth::access('admin') && Auth::get('id')!=$id)
 	{
 		$user->delete($id);
 		redirect('admin&tab=users');

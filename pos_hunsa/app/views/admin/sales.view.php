@@ -69,7 +69,7 @@
 						$name = "Unknown";
 						$namelink = "#";
 					}else{
-						$name = $cashier['username'];
+						$name = strtoupper($cashier['firstname']);
 						$namelink = "index.php?pg=profile&id=".$cashier['id'];
 					}
 				?>

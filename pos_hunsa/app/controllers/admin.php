@@ -98,7 +98,7 @@ if($tab == "users")
 	$offset = $pager->offset;
 
 	$userClass = new User();
-	$users = $userClass->query("select * from users order by id desc limit $limit offset $offset");
+	$users = $userClass->query("select * from users order by id asc limit $limit offset $offset");
 }else
 if($tab == "dashboard")
 {

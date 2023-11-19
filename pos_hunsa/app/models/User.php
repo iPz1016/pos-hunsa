@@ -9,14 +9,9 @@ class User extends Model
 	
 	protected $table = "users";
 	protected $allowed_columns = [
-
 				'username',
-				'email',
 				'password',
 				'role',
-				'gender',
-				'image',
-				'date',
 				'firstname',
 				'lastname'
 			];
@@ -31,7 +26,7 @@ class User extends Model
 			{
 				$errors['username'] = "Username is required";
 			}else
-			if(!preg_match('/^[a-zA-Z ]+$/', $data['username']))
+			if(!preg_match('/^[a-zA-Z0-9]+$/', $data['username']))
 			{
 				$errors['username'] = "Only letters allowed in username";
 			}
@@ -40,16 +35,16 @@ class User extends Model
 			{
 				$errors['firstname'] = "First name is required";
 			}else
-			if(!preg_match('/^[a-zA-Z ]+$/', $data['username']))
+			if(!preg_match('/^[a-zA-Z]+$/', $data['firstname']))
 			{
 				$errors['firstname'] = "Only letters allowed in first name";
 			}
-			//check username
+			//check lastname
 			if(empty($data['lastname']))
 			{
 				$errors['lastname'] = "Last name is required";
 			}else
-			if(!preg_match('/^[a-zA-Z ]+$/', $data['username']))
+			if(!preg_match('/^[a-zA-Z]+$/', $data['lastname']))
 			{
 				$errors['lastname'] = "Only letters allowed in last name";
 			}

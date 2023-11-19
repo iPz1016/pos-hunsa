@@ -2,7 +2,7 @@
 
 	<div class="container-fluid border col-lg-5 col-md-6 mt-5 p-4" >
 		
-		<?php if(is_array($row) && $row['deletable']):?>
+		<?php if(is_array($row) && Auth::get('id')!= $id):?>
 		<form method="post">
 			<center>
 				<h3><i class="fa fa-user"></i> Delete User</h3>
@@ -10,24 +10,22 @@
 			</center>
 			<br>
 		 
-			<div class="mb-3">
-			  <label for="exampleFormControlInput1" class="form-label">Username</label>
+			<div class="input-group mb-3">
+			<span class="input-group-text">Username:</span>
 			 <div class="form-control"><?=esc($row['username'])?></div>
 			</div>
 			
-			<div class="mb-3">
-			  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-			 <div class="form-control"><?=esc($row['email'])?></div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text">First name:</span>
+			  <div class="form-control"><?=esc($row['firstname'])?></div>
+			  <span class="input-group-text">Last name:</span>
+			  <div class="form-control"><?=esc($row['lastname'])?></div>
 			</div>
 
-		<div class="mb-3">
-			  <label for="exampleFormControlInput1" class="form-label">Gender</label>
- 				<div class="form-control"><?=esc($row['gender'])?></div>
-			</div>
 
-		<div class="mb-3">
-			  <label for="exampleFormControlInput1" class="form-label">Role</label>
- 				<div class="form-control"><?=esc($row['role'])?></div>
+		<div class="input-group mb-3">
+		<span class="input-group-text">Role:</span>
+ 				<div class="form-control"><?=esc(strtoupper($row['role']))?></div>
 			</div>
 
 
@@ -40,7 +38,7 @@
 		</form>
 		<?php else:?>
 
-			<?php if(is_array($row) && !$row['deletable']):?>
+			<?php if(is_array($row) && Auth::get('id')== $id):?>
 				<div class="alert alert-danger text-center">That user can not be deleted!</div>
 			<?php else:?>
 				<div class="alert alert-danger text-center">That user was not found!</div>

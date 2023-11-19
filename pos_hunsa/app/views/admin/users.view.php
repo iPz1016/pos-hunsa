@@ -2,7 +2,7 @@
 	
 	<table class="table table-striped table-hover">
 		<tr>
-			<th>Image</th><th>Username</th><th>gender</th><th>email</th><th>role</th><th>Date</th>
+			<th>ID</th><th>Username</th><th>First name</th><th>Last name</th><th>role</th>
 			<th>
 				<a href="index.php?pg=signup">
 					<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
@@ -15,7 +15,7 @@
 	 		<tr>
 				<td>
 					<a href="index.php?pg=profile&id=<?=$user['id']?>">
-					<img src="<?=crop($user['image'],400,$user['gender'])?>" style="width: 100%;max-width:100px;" >
+					<?=esc($user['id'])?>
 					</a>
 				</td>
 
@@ -24,17 +24,16 @@
 						<?=esc($user['username'])?>
 					</a>	
 				</td>
-				<td><?=esc($user['gender'])?></td>
-				<td><?=esc($user['email'])?></td>
+				<td><?=esc($user['firstname'])?></td>
+				<td><?=esc($user['lastname'])?></td>
 				<td><?=esc($user['role'])?></td>
 				
-				<td><?=date("jS M, Y",strtotime($user['date']))?></td>
 				<td>
 					<a href="index.php?pg=edit-user&id=<?=$user['id']?>">
 						<button class="btn btn-success btn-sm">Edit</button>
 					</a>
 					<a href="index.php?pg=delete-user&id=<?=$user['id']?>">
-						<button class="btn btn-danger btn-sm">Delete</button>
+						<button class="btn btn-danger btn-sm" <?php if(Auth::get('id')==$user['id']) echo "disabled"; ?>>Delete</button>
 					</a>
 				</td>
 			</tr>
