@@ -14,46 +14,17 @@ if(!empty($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], "edit-u
 if($_SERVER['REQUEST_METHOD'] == "POST" && Auth::access('admin'))
 {
 
-	//make sure only admins can make other admins
-	if(isset($_POST['role']) && $_POST['role'] != $row['role'])
+	//make sure admin cannot change thier role
+	if(isset($_POST['role']) && $id == Auth::get('id'))
 	{
-		if(Auth::get('role') != "admin")
+		if(Auth::get('role') == "admin")
 		{
 			$_POST['role'] = $row['role'];
 		}
 	}
 
-	if(!empty($_FILES['image']['name']))
-	{
-		$_POST['image'] = $_FILES['image'];
-	}
-
-	$errors = $user->validate($_POST, $id);
+	$errors = $user->validate($_POST,$id);
 	if(empty($errors)){
-		
-		$folder = "uploads/";
-		if(!file_exists($folder))
-		{
-			mkdir($folder,0777,true);
-		}
-
-		if(!empty($_POST['image']))
-		{
-
-			$ext = strtolower(pathinfo($_POST['image']['name'],PATHINFO_EXTENSION));
-
-			$product = new Product();
-			$destination = $folder . $product->generate_filename($ext);
-			move_uploaded_file($_POST['image']['tmp_name'], $destination);
-			$_POST['image'] = $destination;
-
-			//delete old image
-			if(file_exists($row['image']))
-			{
-				unlink($row['image']);
-			}
-		
-		}
 
 		if(empty($_POST['password'])){
 			unset($_POST['password']);
@@ -63,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && Auth::access('admin'))
 		
 		$user->update($id,$_POST);
 
-		redirect("edit-user&id=$id");
+		redirect("admin&tab=users");
 	}
 
 

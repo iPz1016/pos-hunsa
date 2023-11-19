@@ -16,7 +16,7 @@
 				<small class="text-danger"><?= $errors['username'] ?></small>
 			<?php endif; ?>
 		</div>
-		
+
 		<div>
 			<?php if (!empty($errors['firstname'])) : ?>
 				<small class="text-danger float-start"><?= $errors['firstname'] ?></small>
@@ -41,7 +41,6 @@
 				<option>cashier</option>
 				<option>manager</option>
 			</select>
-
 			<?php if (!empty($errors['role'])) : ?>
 				<small class="text-danger"><?= $errors['role'] ?></small>
 			<?php endif; ?>
