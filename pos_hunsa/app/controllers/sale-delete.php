@@ -17,6 +17,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 
 }
 
+if(Auth::access('admin')){
+	require views_path('sales/sale-delete');
+}else{
 
-require views_path('sales/sale-delete');
-
+	Auth::setMessage("You dont have access to the admin page");
+	require views_path('auth/denied');
+}
