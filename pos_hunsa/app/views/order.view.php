@@ -32,7 +32,7 @@
 		<div class="table-responsive" style="height:450px; overflow-y: scroll">
 			<table class="table table-striped table-hover">
 
-				<tbody class="js-onhold" onclick="serve_event(event)">
+				<tbody class="js-onhold">
 
 				</tbody>
 			</table>
@@ -198,7 +198,7 @@
 					<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-lg py-3-1"><i class="fa fa-times"></i></button>
 				</div>
 				<div class="card-side m-auto border-0 mx-auto" style="width: 100px; height: 100%">
-					<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-secondary my-1 py-3-1">Serve</button>
+					<button onclick="serve(${order.menu_id},1)" class="btn btn-secondary my-1 py-3-1">Serve</button>
 				</div>
 			</th>
 			<th menu_id=${menu.menu_id} style="padding-right: 0; padding-left: 0; padding-bottom: 0; padding-top: 5px; width: 100%" colspan="2">

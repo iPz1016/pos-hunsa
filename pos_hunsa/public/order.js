@@ -146,12 +146,6 @@ function serve(menu_id = 0, qty = 'all') {
     send_data(data);
 }
 
-function serve_event(e) {
-    if (e.target.tagName == "TD" || e.target.tagName == "DIV" ) {
-        serve(e.target.getAttribute("menu_id"), 1)
-    }
-}
-
 function serve_all() {
     if (!confirm("Are you sure you want to serve all items in the ON HOLD list??!!"))
         return;
