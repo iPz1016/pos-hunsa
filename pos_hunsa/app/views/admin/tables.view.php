@@ -4,6 +4,7 @@
 		<tr>
 			<th>Table ID</th>
 			<th>Status</th>
+			<th>Order</th>
 			<th>
 				<a href="index.php?pg=table-new">
 					<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add table</button>
@@ -22,15 +23,24 @@
 					<td>
 						<?php
 						if ($table['disable'] == 0) {
-							echo "<i class='fa fa-check'></i>  Enable";
+							echo "<a class='text-success'><i class='fa fa-check'></i>  Enable</a>";
 						} else {
-							echo "<i class='fa fa-times'></i>  Disable";
+							echo "<a class='text-danger'><i class='fa fa-check'></i>  Disable</a>";
 						}
 
 						?>
 						</a>
 					</td>
+					<td>
+						<?php
+						if ($table['orders_id'] == 0) {
+							echo "<a class='text-success'><i class='fa fa-check'></i>  Available</a>";
+						} else {
+							echo "<a class='text-danger' href='index.php?pg=order&orders_id=".$table['orders_id']."' ><i class='fa fa-stop-circle'></i>  Busy</a>";
+						}
 
+						?>
+					</td>
 					<td>
 						<a href="index.php?pg=table-edit&id=<?= $table['table_id'] ?>">
 							<button class="btn btn-success btn-sm">Edit</button>
@@ -39,6 +49,7 @@
 				</tr>
 			<?php endforeach; ?>
 			<tr>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td><a href="index.php?pg=table-delete">

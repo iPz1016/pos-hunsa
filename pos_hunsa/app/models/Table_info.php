@@ -25,14 +25,21 @@ class Table_info extends Model
         }
     }
 
-    public function deletable_table($number)
+    public function get_table_status()
     {
-        $sql = "SELECT DISTINCT t.table_id,o.orders_id FROM table_info t 
+        $sql = "SELECT DISTINCT t.table_id,o.orders_id,t.disable FROM table_info t 
         LEFT JOIN orders o 
         ON t.table_id = o.table_id  
         ORDER BY t.table_id ASC";
         $db = new Database;
         $table_info = $db->query($sql);
+
+        return $table_info;
+    }
+
+    public function deletable_table($number)
+    {
+        $table_info = $this->get_table_status();
 
         for($i = count($table_info)-1 ; $i >= count($table_info)-$number ; $i--)
         {
