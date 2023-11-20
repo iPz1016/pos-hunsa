@@ -2,7 +2,7 @@
 
 
 /**
- * orders class
+ * Table_info class
  */
 class Table_info extends Model
 {
@@ -12,6 +12,19 @@ class Table_info extends Model
         'table_id',
         'disable',
     ];
+
+    public function new_table($number)
+    {
+        for($i=0;$i<$number;$i++)
+        {
+            $all_table = $this->getAll(300,0,'asc','table_id');
+            $table_count = count($all_table);
+            $data['table_id'] = $table_count+1;
+            $data['disable'] = 0;
+            $this->insert($data);
+        }
+    }
+
     public function deletable_table($number)
     {
         $sql = "SELECT DISTINCT t.table_id,o.orders_id FROM table_info t 
