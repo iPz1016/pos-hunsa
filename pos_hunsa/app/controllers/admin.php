@@ -119,7 +119,11 @@ if($tab == "dashboard")
 	$mysales = $db->query($query);
 	$total_sales = $mysales[0]['total'];
 
-	
+}else
+if($tab == "tables")
+{
+	$tableClass = new Table_info();
+	$table_info = $tableClass->getAll(300,0,'asc','table_id');
 }
 
 

@@ -31,13 +31,14 @@
 					</td>
 					<td>
 						<?php
+						
 						if($product['disable']==0)
 						{
-							echo "Enable";
+							echo "<i class='fa fa-check'></i>  Enable";
 						}
 						else
 						{
-							echo "Disable";
+							echo "<i class='fa fa-times'></i>  Disable";
 						}
 						?>
 					</td>

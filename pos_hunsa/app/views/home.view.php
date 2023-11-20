@@ -10,7 +10,7 @@
 
 
 
-        <div class="js-products d-flex" style="flex-wrap: wrap;height: 90%;">
+        <div class="js-products d-flex" style="flex-wrap: wrap;height: 90%;overflow-y: scroll;">
             <?php
             $order_class = new Orders;
             try {
