@@ -35,7 +35,7 @@
 						if ($product['disable'] == 0) {
 							echo "<a class='text-success'><i class='fa fa-check'></i>  Enable</a>";
 						} else {
-							echo "<a class='text-danger'><i class='fa fa-check'></i>  Disable</a>";
+							echo "<a class='text-danger'><i class='fa fa-times'></i>  Disable</a>";
 						}
 						?>
 					</td>

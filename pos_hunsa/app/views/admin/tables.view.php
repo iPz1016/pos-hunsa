@@ -25,7 +25,7 @@
 						if ($table['disable'] == 0) {
 							echo "<a class='text-success'><i class='fa fa-check'></i>  Enable</a>";
 						} else {
-							echo "<a class='text-danger'><i class='fa fa-check'></i>  Disable</a>";
+							echo "<a class='text-danger'><i class='fa fa-times'></i>  Disable</a>";
 						}
 
 						?>
@@ -33,10 +33,15 @@
 					</td>
 					<td>
 						<?php
+						if($table['disable'] == 1)
+						{
+							echo "<a class='text-danger'><i class='fa fa-times'></i>  Disable</a>";
+						}else
 						if ($table['orders_id'] == 0) {
 							echo "<a class='text-success'><i class='fa fa-check'></i>  Available</a>";
-						} else {
-							echo "<a class='text-danger' href='index.php?pg=order&orders_id=".$table['orders_id']."' ><i class='fa fa-stop-circle'></i>  Busy</a>";
+						}
+						else {
+							echo "<a class='text-primary' href='index.php?pg=order&orders_id=".$table['orders_id']."' ><i class='fa fa-stop-circle'></i>  Busy</a>";
 						}
 
 						?>
