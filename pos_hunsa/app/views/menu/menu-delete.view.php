@@ -6,7 +6,7 @@
 
 		<form method="post" enctype="multipart/form-data">
 
-			<h5 class="text-primary"><i class="fa fa-hamburger"></i> Delete Menu</h5>
+			<h5 class="text-danger"><i class="fa fa-hamburger"></i> Delete Menu</h5>
 
 			<div class="alert alert-danger text-center">Are you sure you want to delete this menu??!!</div>
 
