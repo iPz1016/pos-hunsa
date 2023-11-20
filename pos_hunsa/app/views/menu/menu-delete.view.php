@@ -7,8 +7,14 @@
 		<form method="post" enctype="multipart/form-data">
 
 			<h5 class="text-danger"><i class="fa fa-hamburger"></i> Delete Menu</h5>
-
-			<div class="alert alert-danger text-center">Are you sure you want to delete this menu??!!</div>
+			<?php
+			if (empty($errors['error'])) { ?>
+				<div class="alert alert-danger text-center">Are you sure you want to delete this menu??!!</div>
+			<?php
+			} else {
+				echo "<div class='alert alert-danger text-center'>".$errors['error']."</div>";
+			}
+			?>
 
 			<div class="mb-3">
 				<label for="productControlInput1" class="form-label">Menu Name</label>
