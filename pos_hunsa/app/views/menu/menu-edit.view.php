@@ -16,9 +16,24 @@
 				<?php endif; ?>
 			</div>
 
-			<div class="mb-3">
-				<label for="productControlInput2" class="form-label">Menu Type</label>
-				<input value="<?= set_value('menu_type', $row['menu_type']) ?>" name="menu_type" type="text" class="form-control <?= !empty($errors['menu_type']) ? 'border-danger' : '' ?>" id="productControlInput1" placeholder="Menu Type">
+			<label for="productControlInput2" class="form-label">Menu Type</label>
+
+			<?php
+			foreach ($menu_type as $type) :
+			?>
+				<div class="input-group mb-1">
+					<div class="input-group-text">
+						<input class="form-check-input mt-0" type="radio" name="menu_type" value="<?php echo $type['menu_type']; ?>" aria-label="menu_type" <?php if($type['menu_type']== $row['menu_type']) echo 'checked';?>>
+					</div>
+					<input type="text" class="form-control" name="type" value="<?php echo $type['menu_type']; ?>" aria-label="menu_type" disabled>
+				</div>
+			<?php endforeach; ?>
+
+			<div class="input-group mb-3">
+				<div class="input-group-text">
+					<input class="form-check-input mt-0" type="radio" name="menu_type" value="-1" aria-label="menu_type">
+				</div>
+				<input type="text" class="form-control <?= !empty($errors['menu_type']) ? 'border-danger' : '' ?>" name="type" value="" aria-label="menu_type" placeholder="etc">
 				<?php if (!empty($errors['menu_type'])) : ?>
 					<small class="text-danger"><?= $errors['menu_type'] ?></small>
 				<?php endif; ?>
@@ -33,12 +48,12 @@
 			<?php endif; ?>
 			<br>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="disable" id="inlineRadio1" value="1" <?php if($row['disable']==1) echo "checked"; ?>>
+				<input class="form-check-input" type="radio" name="disable" id="inlineRadio1" value="1" <?php if ($row['disable'] == 1) echo "checked"; ?>>
 				<label class="form-check-label" for="inlineRadio1">Disable</label>
 			</div>
 
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="disable" id="inlineRadio2" value="0" <?php if($row['disable']==0) echo "checked"; ?>>
+				<input class="form-check-input" type="radio" name="disable" id="inlineRadio2" value="0" <?php if ($row['disable'] == 0) echo "checked"; ?>>
 				<label class="form-check-label" for="inlineRadio2">Enable</label>
 			</div>
 

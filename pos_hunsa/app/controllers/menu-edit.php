@@ -15,6 +15,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 	{
 		$_POST['menu_img'] = $_FILES['menu_img'];
 	}
+	if($_POST['menu_type'] == -1 )
+	{
+		$_POST['menu_type'] = $_POST['type'];
+	}
 
 	$errors = $menuClass->validate($_POST,$row['menu_id']);
 	if(empty($errors)){

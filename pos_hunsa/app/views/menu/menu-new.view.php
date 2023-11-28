@@ -17,25 +17,28 @@
 
 
 		<label for="productControlInput2" class="form-label">Menu Type</label>
-		<div class="input-group mb-3">
-			<?php
-			foreach ($menu_type as $type) :
-			?>
+
+		<?php
+		foreach ($menu_type as $type) :
+		?>
+			<div class="input-group mb-1">
 				<div class="input-group-text">
 					<input class="form-check-input mt-0" type="radio" name="menu_type" value="<?php echo $type['menu_type']; ?>" aria-label="menu_type">
 				</div>
-				<input type="text" class="form-control" name="type" value="<?php echo $type['menu_type']; ?>"  aria-label="menu_type" disabled>
-				&nbsp;&nbsp;&nbsp;
-				<?php endforeach; ?>
+				<input type="text" class="form-control" name="type" value="<?php echo $type['menu_type']; ?>" aria-label="menu_type" disabled>
+			</div>
+		<?php endforeach; ?>
 
+		<div class="input-group mb-3">
 			<div class="input-group-text">
-				<input class="form-check-input mt-0" type="radio" name="menu_type" value="-1" aria-label="menu_type">
+				<input class="form-check-input mt-0" type="radio" name="menu_type" value="-1" aria-label="menu_type" checked>
 			</div>
 			<input type="text" class="form-control <?= !empty($errors['menu_type']) ? 'border-danger' : '' ?>" name="type" value="" aria-label="menu_type" placeholder="etc">
 			<?php if (!empty($errors['menu_type'])) : ?>
 				<small class="text-danger"><?= $errors['menu_type'] ?></small>
 			<?php endif; ?>
 		</div>
+
 
 		<div class="input-group mb-3">
 			<span class="input-group-text">Price:</span>
