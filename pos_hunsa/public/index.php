@@ -9,6 +9,10 @@ require "../app/core/init.php";
 $controller = $_GET['pg'] ?? "home";
 $controller = strtolower($controller);
 
+if(Auth::access('admin') && $controller=='home')
+{
+	$controller='admin';
+}
 
 
 if(file_exists("../app/controllers/".$controller . ".php"))
