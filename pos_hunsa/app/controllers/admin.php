@@ -11,8 +11,6 @@ if($tab == "menu")
 }else
 if($tab == "sales")
 {
-	
-	$section = $_GET['s'] ?? 'table';
 	$startdate = $_GET['start'] ?? null;
 	$enddate = $_GET['end'] ?? null;
 
@@ -66,28 +64,7 @@ if($tab == "sales")
 		$sales_total = $st[0]['total'] ?? 0;
 	}
 
-	if($section == 'graph')
-	{
-		//read graph data
-		$db = new Database();
 
-		//query todays records
-		$today = date('Y-m-d');
-		$query = "SELECT qty*menu_price total,time FROM history WHERE DATE(time) = '$today';";
-		$today_records = $db->query($query);
-
-		//query this months records
-		$thismonth = date('m');
-		$thisyear = date('Y');
-
-		$query = "SELECT qty*menu_price total,time FROM history WHERE month(time) = '$thismonth' && year(time) = '$thisyear'";
-		$thismonth_records = $db->query($query);
-
-		//query this years records
-		$query = "SELECT qty*menu_price total,time FROM history WHERE year(time) = '$thisyear'";
-		$thisyear_records = $db->query($query);
-
-	}
 
 }else
 if($tab == "users")
@@ -118,6 +95,27 @@ if($tab == "dashboard")
 
 	$mysales = $db->query($query);
 	$total_sales = $mysales[0]['total'];
+
+	//prepare data for graph
+
+	//read graph data
+	$db = new Database();
+
+	//query todays records
+	$today = date('Y-m-d');
+	$query = "SELECT qty*menu_price total,time FROM history WHERE DATE(time) = '$today';";
+	$today_records = $db->query($query);
+
+	//query this months records
+	$thismonth = date('m');
+	$thisyear = date('Y');
+
+	$query = "SELECT qty*menu_price total,time FROM history WHERE month(time) = '$thismonth' && year(time) = '$thisyear'";
+	$thismonth_records = $db->query($query);
+
+	//query this years records
+	$query = "SELECT qty*menu_price total,time FROM history WHERE year(time) = '$thisyear'";
+	$thisyear_records = $db->query($query);
 
 }else
 if($tab == "tables")

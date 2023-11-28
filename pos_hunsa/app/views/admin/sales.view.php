@@ -1,22 +1,7 @@
 
-<ul class="nav nav-tabs">
-  
-  <li class="nav-item">
-    <a class="nav-link <?=($section =='table') ? 'active':''?>" aria-current="page" href="index.php?pg=admin&tab=sales">
-	    Table View
-	</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link <?=($section =='graph') ? 'active':''?>" href="index.php?pg=admin&tab=sales&s=graph">
-	    Graph View
-	</a>
-  </li>
-  
-</ul>
 
 <br>
 
-<?php if($section == 'table'):?>
 
 <div>
 	<form class="row float-end" >
@@ -101,43 +86,5 @@
 
 </div>
 
-<?php else:?>
 
 
-	<?php 
-
-		$graph = new Graph();
-		
-		$data = generate_daily_data($today_records);
-		$graph->title = "Today's sales";
-		$graph->xtitle = "Hours of the day";
-		$graph->styles = "width:80%;margin:auto;display:block";
-		$graph->display($data);
-
-	?>
-	<br>
-
-	<?php 
-
-		$data = generate_monthly_data($thismonth_records);
-		$graph->title = "This month's sales";
-		$graph->xtitle = "Days of the month";
-		$graph->styles = "width:80%;margin:auto;display:block";
-		$graph->display($data);
-
-	?>
-	<br>
-
-	<?php 
-
-		$data = generate_yearly_data($thisyear_records);
-		$graph->title = "This year's sales";
-		$graph->xtitle = "Months of the year";
-		$graph->styles = "width:80%;margin:auto;display:block";
-		$graph->display($data);
-
-	?>
-	<br>
-
-
-<?php endif;?>
