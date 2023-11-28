@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && (Auth::access('admin') || Auth::get('
 		
 		$user->update($id,$_POST);
 
-		redirect("edit-user&id=$id");
+		redirect("admin&tab=users");
 	}
 
 
