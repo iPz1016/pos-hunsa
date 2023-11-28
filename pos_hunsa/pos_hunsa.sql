@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2023 at 07:57 AM
+-- Generation Time: Nov 28, 2023 at 08:18 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -195,6 +195,20 @@ ALTER TABLE `menu_info`
   ADD PRIMARY KEY (`menu_id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`orders_id`,`menu_id`),
+  ADD KEY `fk_table_id` (`table_id`),
+  ADD KEY `fk_menu_id` (`menu_id`);
+
+--
+-- Indexes for table `table_info`
+--
+ALTER TABLE `table_info`
+  ADD PRIMARY KEY (`table_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -222,6 +236,17 @@ ALTER TABLE `menu_info`
 --
 ALTER TABLE `users`
   MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `fk_menu_id` FOREIGN KEY (`menu_id`) REFERENCES `menu_info` (`menu_id`),
+  ADD CONSTRAINT `fk_table_id` FOREIGN KEY (`table_id`) REFERENCES `table_info` (`table_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
