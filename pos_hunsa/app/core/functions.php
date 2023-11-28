@@ -1,13 +1,5 @@
 <?php 
 
-
-function show($data)
-{
-	echo "<pre>";
-	print_r($data);
-	echo "</pre>";
-}
-
 function views_path($view)
 {
 	if(file_exists("../app/views/$view.view.php")){
@@ -57,7 +49,7 @@ function auth($column)
 	return "Unknown";
 }
 
-function crop($filename,$size = 400,$type = 'product')
+function crop($filename,$size = 400)
 {
 
 	$ext = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
@@ -67,19 +59,6 @@ function crop($filename,$size = 400,$type = 'product')
 	if(file_exists($cropped_file))
 	{
 		return $cropped_file;
-	}
-
-	//if file to be cropped does not exist
-	if(!file_exists($filename))
-	{
-		if($type == "male"){
-			return 'assets/images/user_male.jpg';
-		}else
-		if($type == "female"){
-			return 'assets/images/user_female.jpg';
-		}else{
-			return 'assets/images/no_image.jpg';
-		}
 	}
 
 	
