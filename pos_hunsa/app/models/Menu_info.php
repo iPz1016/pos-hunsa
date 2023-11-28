@@ -42,7 +42,7 @@ class Menu_info extends Model
 
         //check menu_type
         if (empty($data['menu_type'])) {
-            $errors['menu_type'] = "Menu name is required";
+            $errors['menu_type'] = "Menu type is required";
         } else
 			if (!preg_match('/[a-zA-Z0-9 _\-\&\(\)]+/', $data['menu_type'])) {
             $errors['menu_type'] = "Only letters allowed in menu type";

@@ -6,6 +6,7 @@ $id = $_GET['id'] ?? null;
 $menuClass = new Menu_info();
 
 $row = $menuClass->first(['menu_id'=>$id]);
+$menu_type = $menuClass->get_menu_type();
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 {

@@ -2,9 +2,16 @@
 
 $errors = [];
 
+$menuClass = new Menu_info();
+$menu_type = $menuClass->get_menu_type();
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 	$menuClass = new Menu_info();
+	if($_POST['menu_type'] == -1 )
+	{
+		$_POST['menu_type'] = $_POST['type'];
+	}
 
 	if (!empty($_FILES['menu_img']['name'])) {
 		$_POST['menu_img'] = $_FILES['menu_img'];
