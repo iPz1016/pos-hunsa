@@ -12,7 +12,7 @@
 				<div class="alert alert-danger text-center">Are you sure you want to delete this menu??!!</div>
 			<?php
 			} else {
-				echo "<div class='alert alert-danger text-center'>".$errors['error']."</div>";
+				echo "<div class='alert alert-danger text-center'>" . $errors['error'] . "</div>";
 			}
 			?>
 
@@ -23,13 +23,13 @@
 					<small class="text-danger"><?= $errors['menu_name'] ?></small>
 				<?php endif; ?>
 			</div>
-
-			<div class="mb-3">
-				<label for="productControlInput2" class="form-label">Menu Type</label>
-				<input disabled value="<?= set_value('menu_type', $row['menu_type']) ?>" name="menu_type" type="text" class="form-control <?= !empty($errors['menu_type']) ? 'border-danger' : '' ?>" id="productControlInput1" placeholder="Menu Type">
-				<?php if (!empty($errors['menu_type'])) : ?>
-					<small class="text-danger"><?= $errors['menu_type'] ?></small>
-				<?php endif; ?>
+			
+			<label for="productControlInput2" class="form-label">Menu Type</label>
+			<div class="input-group mb-3">
+				<div class="input-group-text">
+					<input class="form-check-input mt-0" type="radio" name="menu_type" value="<?php echo set_value('menu_type', $row['menu_type']); ?>" aria-label="menu_type" checked>
+				</div>
+				<input type="text" class="form-control" name="type" value="<?php echo set_value('menu_type', $row['menu_type']); ?>" aria-label="menu_type" disabled>
 			</div>
 
 			<div class="input-group mb-3">
