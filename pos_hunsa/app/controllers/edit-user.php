@@ -11,7 +11,7 @@ if(!empty($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], "edit-u
 	$_SESSION['referer'] = $_SERVER['HTTP_REFERER'];
 }
 
-if($_SERVER['REQUEST_METHOD'] == "POST" && (Auth::access('admin') || Auth::get('id')==$id))
+if($_SERVER['REQUEST_METHOD'] == "POST" && (Auth::access('manager') || Auth::get('id')==$id))
 {
 
 	//make sure cannot change thier own role
@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && (Auth::access('admin') || Auth::get('
 
 }
 	
-if(Auth::access('admin') || ($row && $row['id'] == Auth::get('id'))){
+if(Auth::access('manager') || ($row && $row['id'] == Auth::get('id'))){
 	require views_path('auth/edit-user');
 }else{
 

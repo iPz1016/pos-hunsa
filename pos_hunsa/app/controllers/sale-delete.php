@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 
 }
 
-if(Auth::access('admin')){
+if(Auth::access('manager')){
 	require views_path('sales/sale-delete');
 }else{
 

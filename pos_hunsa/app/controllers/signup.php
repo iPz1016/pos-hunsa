@@ -2,7 +2,7 @@
 
 $errors = [];
 
-if($_SERVER['REQUEST_METHOD'] == "POST" && Auth::access('admin'))
+if($_SERVER['REQUEST_METHOD'] == "POST" && Auth::access('manager'))
 {
 
 	$user = new User();
@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && Auth::access('admin'))
 
 }
 	
-if(Auth::access('admin')){
+if(Auth::access('manager')){
 	require views_path('auth/signup');
 }else{
 

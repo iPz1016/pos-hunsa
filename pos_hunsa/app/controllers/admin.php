@@ -126,7 +126,7 @@ if($tab == "tables")
 
 
 
-if(Auth::access('admin')){
+if(Auth::access('manager')){
 	require views_path('admin/admin');
 }else{
 

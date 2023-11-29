@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 
-if (Auth::access('admin')) {
+if (Auth::access('manager')) {
     require views_path('tables/tables-new');
 } else {
 

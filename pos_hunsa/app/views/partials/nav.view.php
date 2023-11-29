@@ -10,13 +10,13 @@
 	          <a class="nav-link active" aria-current="page" href="index.php?pg=home">Point of sale</a>
 	        </li>
 	        
-	        <?php if(Auth::access('admin')):?>
+	        <?php if(Auth::access('manager')):?>
 		        <li class="nav-item">
 		          <a class="nav-link" href="index.php?pg=admin">Admin</a>
 		        </li>
 		    <?php endif;?>
 
-	        <?php if(Auth::access('admin')):?>
+	        <?php if(Auth::access('manager')):?>
 		        <li class="nav-item">
 		          <a class="nav-link" href="index.php?pg=signup">Create user</a>
 		        </li>

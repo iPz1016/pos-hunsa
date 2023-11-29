@@ -34,7 +34,7 @@ class Auth
 	public static function access($role)
 	{
 
-		$access['admin'] = ['manager'];
+		$access['manager'] = ['manager'];
 		$access['cashier'] = ['cashier'];
 
 		$myrole = self::get('role');

@@ -9,7 +9,7 @@ require "../app/core/init.php";
 $controller = $_GET['pg'] ?? "home";
 $controller = strtolower($controller);
 
-if(Auth::access('admin') && $controller=='home')
+if(Auth::access('manager') && $controller=='home')
 {
 	$controller='admin';
 }

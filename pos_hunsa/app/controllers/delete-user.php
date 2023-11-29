@@ -9,7 +9,7 @@ $row = $user->first(['id'=>$id]);
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
 
-	if(is_array($row) && Auth::access('admin') && Auth::get('id')!=$id)
+	if(is_array($row) && Auth::access('manager') && Auth::get('id')!=$id)
 	{
 		$user->delete($id);
 		redirect('admin&tab=users');
@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 }
 	
-if(Auth::access('admin')){
+if(Auth::access('manager')){
 	require views_path('auth/delete-user');
 }else{
 
