@@ -21,4 +21,4 @@
 		<?php require views_path('partials/nav');?>
 	<?php endif;?>
 
-	<div class="container-fluid" style="min-width: 350px; padding: 0;">
+	<div class="container-fluid p-0" style="min-width: 350px;">
