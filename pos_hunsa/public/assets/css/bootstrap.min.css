@@ -464,6 +464,11 @@ a {
 	height: 130px;
 }
 
+.menu_size{
+	width: 128px;
+	height: 128px;
+}
+
 .box{
       border: 2px black solid;
 }
