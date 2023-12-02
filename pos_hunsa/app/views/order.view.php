@@ -24,12 +24,12 @@
 </style>
 <div class="d-flex">
 	<!-- ON-HOLD Section -->
-	<div class="col-4 bg-light p-2 pt-2" style="height: 100%;">
+	<div class="col-4 bg-light p-2 pt-2 h-100">
 		<div class="side">
 			<h1 style="font-size: 36px">On-hold</h1> <button type="button" class="js-onhold_qty btn btn-primary btn-circle btn-xl">99</button>
 		</div>
 		<hr class="side">
-		<div class="table-responsive" style="height:450px; overflow-y: scroll">
+		<div class="table-responsive overflow-auto" style="height:450px;">
 			<table class="table table-striped table-hover">
 
 				<tbody class="js-onhold">
@@ -67,11 +67,11 @@
 	<!-- MENU Section -->
 	<div style="height: 760px" class="shadow-sm col-5 p-2">
 
-		<div class="js-table"> </div>
+		<div class="js-table"> </div> 
 
 		<div class="js-select" style="padding: 10px"> </div>
 
-		<div onclick="add_menu(event)" class="js-menu d-flex" style="flex-wrap: wrap;height: 600px;overflow-y: scroll;">
+		<div onclick="add_menu(event)" class="js-menu d-flex overflow-auto flex-wrap" style="height: 600px;">
 
 
 		</div>
@@ -119,7 +119,7 @@
 <!--change modal-->
 <div role="close-button" onclick="hide_modal(event,'change')" class="js-change-modal hide" style="animation: appear .5s ease;background-color: #000000bb; width: 100%;height: 100%;position: fixed;left:0px;top:0px;z-index: 4;">
 
-	<div style="width:500px;min-height:200px;background-color:white;padding:10px;margin:auto;margin-top:100px">
+	<div class="container m-auto bg-white" style="width:500px;min-height:200px;padding:10px;margin-top:100px">
 		<h4>Change: <button role="close-button" onclick="hide_modal(event,'change')" class="btn btn-danger float-end p-0 px-2">X</button></h4>
 		<br>
 		<div class="js-change-input form-control text-center" style="font-size:60px">0.00</div>
@@ -181,7 +181,7 @@
 
 		return `
 	<!--card-->
-	<div class="card m-1 border-0 mx-auto my-1" style="width: 128; height:128">
+	<div class="card m-1 border-0 mx-auto my-1 menu_size">
 		<a href="#">
 			<img menu_id="${data.menu_id}" src="${data.menu_img}" class="w-100 rounded border">
 		</a>
@@ -200,11 +200,11 @@
 	<!--item-->
 	<table style="width: 100%;">
 		<tr>
-			<th class="text-primary" menu_id=${menu.menu_id} style="width: 100%">
+			<th class="text-primary w-100" menu_id=${menu.menu_id}>
 				<div style="text-align: left" menu_id=${menu.menu_id}>
 					${menu.menu_name}
 				</div>
-				<div class="qty mt-2" style="max-width:100%">
+				<div class="qty mt-2 mw-100">
 					<span menu_id="${menu.menu_id}" onclick="change_qty('down',event)" class="minus bg-danger" style="cursor: pointer;">-</span>
 					<input menu_id="${menu.menu_id}" onblur="change_qty('input',event)" type="number" class="form-minus-plus count" placeholder="1" value="${order.onhold_qty}" >
 					<span menu_id="${menu.menu_id}" onclick="change_qty('up',event)" class="plus bg-success" style="cursor: pointer;">+</i></span>
@@ -212,15 +212,15 @@
 				</div>
 			</th>
 			<th menu_id=${menu.menu_id} style="padding-bottom: 5px; width: 100%">
-				<div class="card-side m-auto border-0 mx-auto" style="width: 100px; height: 100%">
+				<div class="card-side m-auto border-0 mx-auto h-100" style="width: 100px;">
 					<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-lg py-3-1"><i class="fa fa-times"></i></button>
 				</div>
-				<div class="card-side m-auto border-0 mx-auto" style="width: 100px; height: 100%">
+				<div class="card-side m-auto border-0 mx-auto h-100" style="width: 100px;">
 					<button onclick="serve(${order.menu_id},1)" class="btn btn-secondary my-1 py-3-1">Serve</button>
 				</div>
 			</th>
 			<th menu_id=${menu.menu_id} style="padding-right: 0; padding-left: 0; padding-bottom: 0; padding-top: 5px; width: 100%" colspan="2">
-				<div class="card-side m-auto border-0 mx-auto" style="width: 100%; padding-right:3px";">
+				<div class="card-side m-auto border-0 mx-auto w-100" style="padding-right:3px">
 					<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-success my-1 py-3-9">Serve All</button>
 				</div>
 			</th>
@@ -237,7 +237,7 @@
 	<!--item-->
 	<tr>
 		<td class="text-served" menu_id=${order.menu_id}>
-			<div style="text-align: left">
+			<div class="text-start">
 					${menu.menu_name}
 			</div>
 			<div class="qty mt-2" style="max-width:150px; margin-right: 10px">
@@ -245,7 +245,7 @@
 				<input menu_id="${order.menu_id}" disabled type="number" class="form-minus-plus count" placeholder="1" value="${order.served_qty}" >
 			</div>
 		</td>
-		<td menu_id=${order.menu_id} style="text-align: right">
+		<td menu_id=${order.menu_id} class="text-end">
 			<div class="card-side m-auto border-0 mx-auto" style="min-width: 70px">
 				<button onclick="remove_serve_one(${order.menu_id},${order.served_qty})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
 				<div class = "float-end py-2" style="font-size:16px;font-weight: bold">฿ ${menu.menu_price.toFixed(2)}</div>

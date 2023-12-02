@@ -1,13 +1,13 @@
 <div class="table-responsive">
 
 	<table class="table table-striped table-hover">
-		<tr>
-			<th>Menu id</th>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Price</th>
-			<th>Image</th>
-			<th>Disable</th>
+		<tr class="fs-5">
+			<th class="fw-black">Menu id</th>
+			<th class="fw-black">Name</th>
+			<th class="fw-black">Type</th>
+			<th class="fw-black">Price</th>
+			<th class="fw-black">Image</th>
+			<th class="fw-black">Disable</th>
 			<th>
 				<a href="index.php?pg=menu-new">
 					<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>

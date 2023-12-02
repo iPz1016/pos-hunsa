@@ -465,6 +465,11 @@ a {
 	height: 130px;
 }
 
+.menu_size{
+	width: 128px;
+	height: 128px;
+}
+
 .box{
       border: 2px black solid;
 }
@@ -8814,6 +8819,10 @@ fieldset:disabled .btn {
 
 .fw-normal {
       font-weight: 400 !important
+}
+
+.fw-black {
+      font-weight: 600 !important
 }
 
 .fw-bold {

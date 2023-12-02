@@ -1,8 +1,12 @@
 <div class="table-responsive">
 	
 	<table class="table table-striped table-hover">
-		<tr>
-			<th>ID</th><th>Username</th><th>First name</th><th>Last name</th><th>role</th>
+		<tr class="fs-5">
+			<th class="fw-black">ID</th>
+			<th class="fw-black">Username</th>
+			<th class="fw-black">First name</th>
+			<th class="fw-black">Last name</th>
+			<th class="fw-black">role</th>
 			<th>
 				<a href="index.php?pg=signup">
 					<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>

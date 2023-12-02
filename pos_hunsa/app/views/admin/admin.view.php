@@ -1,9 +1,9 @@
 <?php require views_path('partials/header'); ?>
 
 <div style="color:#444">
-	<center class="p-2">
-		<h4><i class="fa fa-user-shield"></i> Admin</h4>
-	</center>
+	<div class="p-2">
+		<h2><i class="fa fa-user-shield"></i> Admin</h2>
+	</div>
 
 	<div class="container-fluid row">
 		<div class="col-12 col-sm-4 col-md-3 col-lg-2">
@@ -32,9 +32,9 @@
 				</a>
 			</ul>
 		</div>
-		<div class="border col p-3">
+		<div class="border col m-2 p-0">
 
-			<h4><?= strtoupper($tab) ?></h4>
+			<h2 class="my-4"><?= strtoupper($tab) ?></h2>
 
 			<?php
 
