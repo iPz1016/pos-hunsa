@@ -1,13 +1,13 @@
 <div class="table-responsive">
 
 	<table class="table table-striped table-hover">
-		<tr>
-			<th>Table ID</th>
-			<th>Status</th>
-			<th>Order</th>
+		<tr class="fs-5">
+			<th class="fw-black">Table ID</th>
+			<th class="fw-black">Status</th>
+			<th class="fw-black">Order</th>
 			<th>
 				<a href="index.php?pg=table-new">
-					<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add table</button>
+					<button class="btn btn-primary btn-sm p-2"><i class="fa fa-plus"></i> Add table</button>
 				</a>
 			</th>
 		</tr>
