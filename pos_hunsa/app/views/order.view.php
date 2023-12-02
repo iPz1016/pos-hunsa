@@ -22,14 +22,14 @@
 		}
 	}
 </style>
-<div class="d-flex">
+<div class="d-flex h-100">
 	<!-- ON-HOLD Section -->
-	<div class="col-4 bg-light p-2 pt-2 h-100">
+	<div class="col-4 bg-light p-2 pt-2">
 		<div class="side">
 			<h1 style="font-size: 36px">On-hold</h1> <button type="button" class="js-onhold_qty btn btn-primary btn-circle btn-xl">99</button>
 		</div>
 		<hr class="side">
-		<div class="table-responsive overflow-auto" style="height:450px;">
+		<div class="table-responsive overflow-auto" style="height:545px;">
 			<table class="table table-striped table-hover">
 
 				<tbody class="js-onhold">
@@ -43,11 +43,11 @@
 				<tr>
 
 					<th style="width: 30%" colspan="2">
-					<a href="index.php?pg=home">
-						<div class="card-side m-auto border-0 mx-auto" style="width: 100%; height: 100%; padding-right:5px">
-							<button onclick="" class="btn btn-info my-2 w-100 py-5" style="font-size: 36px; font-weight: 700">Back</button>
-						</div>
-					</a>
+						<a href="index.php?pg=home">
+							<div class="card-side m-auto border-0 mx-auto" style="width: 100%; height: 100%; padding-right:5px">
+								<button onclick="" class="btn btn-info my-2 w-100 py-4-5" style="font-size: 28px; font-weight: 700"><i class="fa fa-arrow-alt-circle-left"></i> Back</button>
+							</div>
+						</a>
 					</th>
 
 					<th menu_id=${menu.menu_id}>
@@ -67,7 +67,7 @@
 
 
 	<!-- MENU Section -->
-	<div style="height: 760px" class="shadow-sm col-5 p-2">
+	<div class="shadow-sm col-5 p-2">
 
 		<div class="js-table"> </div> 
 
@@ -87,7 +87,7 @@
 			<h1 style="color:white; font-size: 36px">Served</h1> <button type="button" class="js-served_qty btn btn-primary btn-circle btn-xl">99</button>
 		</div>
 		<hr class="side">
-		<div class="table-responsive" style="height:386px;overflow-y: scroll;">
+		<div class="table-responsive" style="height:455px;overflow-y: scroll;">
 			<table class="tableServed tableServed-striped table-hover">
 				<tbody class="js-served">
 				</tbody>
@@ -95,7 +95,7 @@
 		</div>
 		<div class="js-gtotal total total-purchase my-2" style="font-size:24px; font-weight:bold; color:#CC3300">Total: ฿ 0.00</div>
 		<div class="js-checkout">
-			<button onclick="show_modal('amount-paid')" class="btn btn-primary my-2 w-100">Checkout</button>
+			<button onclick="show_modal('amount-paid')" class="btn btn-primary my-2 w-100"><i class="fa fa-user"></i>Checkout</button>
 			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100">Clear All</button>
 		</div>
 	</div>
@@ -215,15 +215,15 @@
 			</th>
 			<th menu_id=${menu.menu_id} style="padding-bottom: 5px; width: 100%">
 				<div class="card-side m-auto border-0 mx-auto h-100" style="width: 100px;">
-					<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-lg py-3-1"><i class="fa fa-times"></i></button>
+					<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-lg py-3-1"><i class="fa fa-trash"></i></button>
 				</div>
 				<div class="card-side m-auto border-0 mx-auto h-100" style="width: 100px;">
-					<button onclick="serve(${order.menu_id},1)" class="btn btn-secondary my-1 py-3-1">Serve</button>
+					<button onclick="serve(${order.menu_id},1)" class="btn btn-secondary my-1 py-3-1" style="font-weight: 700">Serve</button>
 				</div>
 			</th>
 			<th menu_id=${menu.menu_id} style="padding-right: 0; padding-left: 0; padding-bottom: 0; padding-top: 5px; width: 100%" colspan="2">
 				<div class="card-side m-auto border-0 mx-auto w-100" style="padding-right:3px">
-					<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-success my-1 py-3-9">Serve All</button>
+					<button onclick="serve(${order.menu_id},${order.onhold_qty})" class="btn btn-success my-1 py-3-9" style="font-weight: 700">Serve All</button>
 				</div>
 			</th>
 		</tr>
@@ -249,7 +249,7 @@
 		</td>
 		<td menu_id=${order.menu_id} class="text-end">
 			<div class="card-side m-auto border-0 mx-auto" style="min-width: 70px">
-				<button onclick="remove_serve_one(${order.menu_id},${order.served_qty})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
+				<button onclick="remove_serve_one(${order.menu_id},${order.served_qty})" class="float-end btn btn-danger btn-sm py-3-1"><i class="fa fa-trash"></i></button>
 				<div class = "float-end py-2" style="font-size:16px;font-weight: bold">฿ ${menu.menu_price.toFixed(2)}</div>
 			</div>
 		</td>
@@ -300,8 +300,8 @@
 	function refresh_checkout_button() {
 		var items_div = document.querySelector(".js-checkout");
 		items_div.innerHTML = `
-			<button onclick="show_modal('amount-paid')" class="btn btn-primary w-100 py-4" style="font-size: 36px; font-weight: 700" disabled>Checkout</button>
-			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100" style="font-size: 36px; font-weight: 700">Clear All</button>
+			<button onclick="show_modal('amount-paid')" class="btn btn-primary w-100 py-4" style="font-size: 36px; font-weight: 700" disabled><i class="fa fa-cart-arrow-down"></i> Checkout</button>
+			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100" style="font-size: 36px; font-weight: 700" >Clear All</button>
 			`;
 		if (ORDER == false) {
 			return;
@@ -314,7 +314,7 @@
 		}
 
 		items_div.innerHTML = `
-			<button onclick="show_modal('amount-paid')" class="btn btn-primary w-100 py-4" style="font-size: 36px; font-weight: 700">Checkout</button>
+			<button onclick="show_modal('amount-paid')" class="btn btn-primary w-100 py-4" style="font-size: 36px; font-weight: 700"><i class="fa fa-cart-arrow-down"></i> Checkout</button>
 			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100" style="font-size: 36px; font-weight: 700">Clear All</button>
 			`;
 

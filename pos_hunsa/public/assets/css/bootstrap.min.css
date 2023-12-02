@@ -279,6 +279,11 @@ hr:not([size]) {
       text-align: center;
 }
 
+.align-takehome{
+      display: flex;
+      align-items: center;
+}
+
 .h1,
 .h2,
 .h3,
@@ -8141,12 +8146,20 @@ fieldset:disabled .btn {
       height: 50% !important
 }
 
+.h-65 {
+      height: 65% !important
+}
+
 .h-68{
       height:680px;
 }
 
 .h-75 {
       height: 75% !important
+}
+
+.h-85 {
+      height: 85% !important
 }
 
 .h-90{
@@ -8670,6 +8683,11 @@ fieldset:disabled .btn {
 .py-4 {
       padding-top: 1.5rem !important;
       padding-bottom: 1.5rem !important
+}
+
+.py-4-5 {
+      padding-top: 2.5rem !important;
+      padding-bottom: 2.5rem !important
 }
 
 .py-5 {

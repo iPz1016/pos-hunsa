@@ -81,10 +81,7 @@ function update_menu_id(menu_id, qty) {
     send_data(data);
 }
 
-function clear_menu_onhold(menu_id, type = 'one') {
-    if (type == 'one' && !confirm("Remove item??!!"))
-        return;
-
+function clear_menu_onhold(menu_id) {
     data = {
         data_type: 'remove_onhold',
         orders_id: ORDER_INFO['orders_id'],
@@ -121,8 +118,6 @@ function remove_serve_all() {
 }
 
 function remove_serve_one(menu_id, qty) {
-    if (!confirm("Remove Item??!!"))
-        return;
     remove_serve(menu_id, qty);
 }
 

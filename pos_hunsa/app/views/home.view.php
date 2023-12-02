@@ -2,7 +2,7 @@
 
 <!-- Take Home section -->
 <div class="d-flex">
-    <div class="container w-25 p-3 h-68">
+    <div class="col-3 bg-light p-2 pt-2" style="height:820px;">
         <a href="index.php?pg=order&new_takehome=1">
             <div class="align-center border border-3 border-secondary rounded-3 bg-secondary bg-opacity-50 mb-3" style="height:75px;">
                 <h3>TAKE HOME</h3>
@@ -10,7 +10,7 @@
         </a>
 
         
-        <div class="box js-products d-flex align-center flex-sm-wrap overflow-auto h-90 p-3">
+        <div class="box js-products overflow-auto align-takehome flex-sm-column h-75 p-3">
             <?php
             $order_class = new Orders;
             try {
@@ -33,7 +33,19 @@
             <?php endforeach;
             endif; ?>
         </div>
-    </div>
+        <div class="my-0">
+            <table style="width: 100%;">
+					<th style="width: 30%" colspan="1">
+					<a href="index.php?pg=home">
+						<div class="card-side m-auto border-0 mx-auto" style="width: 100%; height: 50%">
+							<a href="index.php?pg=logout"><button class="btn btn-danger w-100 my-2 py-3" style="font-size: 24px; font-weight: 700"><i class="fa fa-sign-out-alt"></i> Sign Out</button></a>
+						</div>
+					</a>
+                    </th>
+			</table>
+        </div>
+	</div>
+
 
 <!-- All Table section: Including Available table, Disable table, Busy table -->
     <div class="container w-80 p-3 h-68">

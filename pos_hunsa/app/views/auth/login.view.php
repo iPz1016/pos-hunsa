@@ -35,19 +35,20 @@
 			</center>
 			<br>
 		
-			<div class="mb-3">
-			  <input  value="<?=set_value('username')?>" autocomplete="off" name="username" type="text" class="form-control  <?=!empty($errors['username']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Username" autofocus>
-				<?php if(!empty($errors['username'])):?>
-					<small class="text-danger"><?=$errors['username']?></small>
-				<?php endif;?>
+			<div class="input-group mb-3">
+				<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+				<input  value="<?=set_value('username')?>" autocomplete="off" name="username" type="text" class="form-control  <?=!empty($errors['username']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Username" autofocus>
+					<?php if(!empty($errors['username'])):?>
+						<small class="text-danger"><?=$errors['username']?></small>
+					<?php endif;?>
 			</div> 
 
 			<div class="input-group mb-3">
-			  <span class="input-group-text" id="basic-addon1">Password</span>
-			  <input value="<?=set_value('password')?>" name="password" type="password" class="form-control <?=!empty($errors['password']) ? 'border-danger':''?>" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-				<?php if(!empty($errors['password'])):?>
-					<small class="text-danger col-12"><?=$errors['password']?></small>
-				<?php endif;?>
+				<span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+				<input value="<?=set_value('password')?>" name="password" type="password" class="form-control <?=!empty($errors['password']) ? 'border-danger':''?>" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+					<?php if(!empty($errors['password'])):?>
+						<small class="text-danger col-12"><?=$errors['password']?></small>
+					<?php endif;?>
 			</div>
 
 			<br>

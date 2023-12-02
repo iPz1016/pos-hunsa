@@ -10,3 +10,6 @@ define("APP_LOGO","assets/images/logo/h-logo.png");
 define("APP_LOGO_WITH_TEXT","assets/images/logo/hun-sa-pos-logo.png");
 
 define("BACKGROUND_LOGIN","assets/images/background.png");
+
+define("WARNING_ICON","assets/images/warning.png");
+
