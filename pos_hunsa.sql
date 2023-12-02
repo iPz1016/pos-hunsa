@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2023 at 08:18 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Dec 02, 2023 at 08:51 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,20 +60,30 @@ INSERT INTO `history` (`id`, `orders_id`, `table_id`, `menu_id`, `staff_id`, `me
 (24, 1699804474, 2, 3, 1, 'chocobanana toast', 1, 105, '2023-11-19 09:40:40'),
 (25, 1699804474, 2, 4, 1, 'chocostrawberry toast', 1, 110, '2023-11-19 09:40:40'),
 (26, 1700367584, 1, 2, 1, 'cappuccino iced', 7, 70, '2023-11-19 11:19:54'),
-(27, 1700368410, 1, 2, 1, 'cappuccino iced', 19, 70, '2023-11-20 11:39:31'),
-(28, 1700368410, 1, 3, 1, 'chocobanana toast', 6, 105, '2023-11-20 11:39:31'),
-(29, 1700368410, 1, 6, 1, 'mango-bingsu', 4, 140, '2023-11-20 11:39:31'),
-(30, 1699519675, NULL, 4, 1, 'chocostrawberry toast', 3, 110, '2023-11-20 11:44:36'),
-(31, 1699519675, NULL, 3, 1, 'chocobanana toast', 4, 105, '2023-11-20 11:44:36'),
-(32, 1699519675, NULL, 2, 1, 'cappuccino iced', 3, 70, '2023-11-20 11:44:36'),
-(33, 1700474299, 5, 3, 1, 'chocobanana toast', 1, 105, '2023-11-20 16:58:31'),
-(34, 1700474299, 5, 6, 1, 'mango-bingsu', 1, 140, '2023-11-20 16:58:31'),
-(35, 1699804415, 4, 2, 1, 'cappuccino iced', 7, 70, '2023-11-20 20:49:05'),
-(36, 1699804415, 4, 3, 1, 'chocobanana toast', 1, 105, '2023-11-20 20:49:05'),
-(37, 1699804415, 4, 4, 1, 'chocostrawberry toast', 1, 110, '2023-11-20 20:49:05'),
-(38, 1699804415, 4, 7, 1, 'americano iced', 2, 60, '2023-11-20 20:49:05'),
-(39, 1699804415, 4, 6, 1, 'mango-bingsu', 2, 140, '2023-11-20 20:49:05'),
-(40, 1699804415, 4, 5, 1, 'hojicha bingsu', 1, 150, '2023-11-20 20:49:05');
+(27, 1701155063, 5, 2, 1, 'cappuccino iced', 1, 70, '2023-11-28 14:04:31'),
+(28, 1701155063, 5, 3, 1, 'chocobanana toast', 1, 105, '2023-11-28 14:04:31'),
+(29, 1701155063, 5, 4, 1, 'chocostrawberry toast', 1, 110, '2023-11-28 14:04:31'),
+(30, 1701155063, 5, 5, 1, 'hojicha bingsu', 1, 150, '2023-11-28 14:04:31'),
+(31, 1700386708, 2, 2, 1, 'cappuccino iced', 3, 70, '2023-11-28 14:25:25'),
+(32, 1700386708, 2, 3, 1, 'chocobanana toast', 3, 105, '2023-11-28 14:25:25'),
+(33, 1700386708, 2, 4, 1, 'chocostrawberry toast', 3, 110, '2023-11-28 14:25:25'),
+(34, 1700386708, 2, 5, 1, 'hojicha bingsu', 3, 150, '2023-11-28 14:25:25'),
+(35, 1700386708, 2, 7, 1, 'americano iced', 1, 60, '2023-11-28 14:25:25'),
+(36, 1700386708, 2, 6, 1, 'mango-bingsu', 1, 140, '2023-11-28 14:25:25'),
+(37, 1699694929, NULL, 2, 1, 'cappuccino iced', 1, 70, '2023-11-28 15:39:46'),
+(38, 1699694929, NULL, 3, 1, 'chocobanana toast', 1, 105, '2023-11-28 15:39:46'),
+(39, 1699694929, NULL, 4, 1, 'chocostrawberry toast', 1, 110, '2023-11-28 15:39:46'),
+(40, 1701160971, 2, 2, 7, 'cappuccino iced', 1, 70, '2023-12-01 20:17:33'),
+(41, 1701160971, 2, 3, 7, 'chocobanana toast', 2, 105, '2023-12-01 20:17:33'),
+(42, 1701160971, 2, 4, 7, 'chocostrawberry toast', 1, 110, '2023-12-01 20:17:33'),
+(43, 1701437010, 2, 2, 7, 'cappuccino iced', 1, 70, '2023-12-01 20:24:34'),
+(44, 1701437010, 2, 6, 7, 'mango-bingsu', 1, 140, '2023-12-01 20:24:34'),
+(45, 1701442712, 5, 3, 7, 'chocobanana toast', 2, 105, '2023-12-01 23:54:15'),
+(46, 1701442712, 5, 2, 7, 'cappuccino iced', 1, 70, '2023-12-01 23:54:15'),
+(47, 1701442712, 5, 4, 7, 'chocostrawberry toast', 1, 110, '2023-12-01 23:54:15'),
+(48, 1701442712, 5, 5, 7, 'hojicha bingsu', 1, 150, '2023-12-01 23:54:15'),
+(49, 1701442712, 5, 6, 7, 'mango-bingsu', 1, 140, '2023-12-01 23:54:15'),
+(50, 1701442712, 5, 7, 7, 'americano iced', 1, 60, '2023-12-01 23:54:15');
 
 -- --------------------------------------------------------
 
@@ -82,10 +92,10 @@ INSERT INTO `history` (`id`, `orders_id`, `table_id`, `menu_id`, `staff_id`, `me
 --
 
 CREATE TABLE `menu_info` (
-  `menu_id` int(2) NOT NULL,
+  `menu_id` int(11) NOT NULL,
   `menu_name` text NOT NULL,
-  `menu_price` int(8) NOT NULL,
-  `disable` tinyint(1) NOT NULL,
+  `menu_price` int(11) NOT NULL,
+  `disable` tinyint(4) NOT NULL,
   `menu_type` text NOT NULL,
   `menu_img` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -109,11 +119,11 @@ INSERT INTO `menu_info` (`menu_id`, `menu_name`, `menu_price`, `disable`, `menu_
 --
 
 CREATE TABLE `orders` (
-  `orders_id` int(8) NOT NULL,
-  `table_id` int(2) DEFAULT NULL,
-  `menu_id` int(2) NOT NULL,
-  `onhold_qty` int(3) NOT NULL,
-  `served_qty` int(3) NOT NULL
+  `orders_id` int(11) NOT NULL,
+  `table_id` int(11) DEFAULT NULL,
+  `menu_id` int(11) NOT NULL,
+  `onhold_qty` int(11) NOT NULL,
+  `served_qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -121,16 +131,19 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orders_id`, `table_id`, `menu_id`, `onhold_qty`, `served_qty`) VALUES
-(1700441492, 2, 2, 1, 0),
-(1700455330, NULL, 2, 3, 0),
-(1700455334, NULL, 3, 5, 0),
-(1700455343, NULL, 5, 4, 0),
-(1700455349, NULL, 6, 4, 0),
-(1700455353, NULL, 2, 4, 0),
-(1700455359, NULL, 2, 2, 0),
-(1700455535, NULL, 2, 4, 0),
-(1700455535, NULL, 4, 1, 0),
-(1700455535, NULL, 5, 1, 0);
+(1699519675, NULL, 1, 8, 10),
+(1699519675, NULL, 4, 3, 0),
+(1699519675, NULL, 3, 0, 4),
+(1699804415, 4, 1, 6, 0),
+(1699804415, 4, 2, 8, 0),
+(1700379685, 1, 2, 3, 0),
+(1700379685, 1, 3, 3, 0),
+(1700379685, 1, 4, 3, 0),
+(1700379685, 1, 5, 4, 0),
+(1700379685, 1, 6, 3, 0),
+(1700379685, 1, 7, 2, 0),
+(1699804415, 4, 3, 1, 0),
+(1701442700, 2, 3, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -139,8 +152,8 @@ INSERT INTO `orders` (`orders_id`, `table_id`, `menu_id`, `onhold_qty`, `served_
 --
 
 CREATE TABLE `table_info` (
-  `table_id` int(2) NOT NULL,
-  `disable` tinyint(1) NOT NULL
+  `table_id` int(11) NOT NULL,
+  `disable` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -152,8 +165,7 @@ INSERT INTO `table_info` (`table_id`, `disable`) VALUES
 (2, 0),
 (3, 1),
 (4, 0),
-(5, 0),
-(6, 1);
+(5, 0);
 
 -- --------------------------------------------------------
 
@@ -162,12 +174,12 @@ INSERT INTO `table_info` (`table_id`, `disable`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(8) NOT NULL,
-  `username` text NOT NULL,
-  `password` text NOT NULL,
+  `id` int(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `firstname` text NOT NULL,
   `lastname` text NOT NULL,
-  `role` text NOT NULL
+  `role` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -175,8 +187,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `role`) VALUES
-(1, 'om2546', '$2y$10$Gr.7h0mgwIBP8N4nWWuOX.JUA2EhEgYMZKE5BvousbEqmQfsxNlIe', 'Chayarob', 'Chantrapiwat', 'manager'),
-(2, 'Mary', '$2y$10$kxoJW56qGmYO56EILS8CpeINaR0XP09DroQGpwveniunL6dsdhl6G', 'Fnameeee', 'Lname', 'cashier');
+(1, 'om2546', '$2y$10$Gr.7h0mgwIBP8N4nWWuOX.JUA2EhEgYMZKE5BvousbEqmQfsxNlIe', 'ChayaABC', 'Chan', 'manager'),
+(2, 'Mary', '$2y$10$kxoJW56qGmYO56EILS8CpeINaR0XP09DroQGpwveniunL6dsdhl6G', 'FnameeeeABCD', 'Lname', 'cashier'),
+(7, 'ipz', '$2y$10$hJT3OPAEWTDID4MiWk4K6.mBxhJ073Xa1.v0AKCpNQPdSK2KA2Wwy', 'neramit', 'matarat', 'cashier');
 
 --
 -- Indexes for dumped tables
@@ -195,25 +208,11 @@ ALTER TABLE `menu_info`
   ADD PRIMARY KEY (`menu_id`);
 
 --
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`orders_id`,`menu_id`),
-  ADD KEY `fk_table_id` (`table_id`),
-  ADD KEY `fk_menu_id` (`menu_id`);
-
---
--- Indexes for table `table_info`
---
-ALTER TABLE `table_info`
-  ADD PRIMARY KEY (`table_id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `role` (`role`(768));
+  ADD KEY `role` (`role`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -223,30 +222,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `menu_info`
 --
 ALTER TABLE `menu_info`
-  MODIFY `menu_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `fk_menu_id` FOREIGN KEY (`menu_id`) REFERENCES `menu_info` (`menu_id`),
-  ADD CONSTRAINT `fk_table_id` FOREIGN KEY (`table_id`) REFERENCES `table_info` (`table_id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

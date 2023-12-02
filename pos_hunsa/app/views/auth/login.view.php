@@ -1,12 +1,37 @@
-<?php require views_path('partials/header');?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title><?=esc(APP_NAME)?></title>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+	<link rel="stylesheet" href="assets/css/kioskboard-2.3.0.min.css" />
+	<script src="assets/js/kioskboard-2.3.0.min.js"></script>
+</head>
+<body class="login">
+
+	<?php 
+		$no_nav[] = "login";
+	?>
+	<?php if(!in_array($controller, $no_nav)):?>
+		<?php require views_path('partials/nav');?>
+	<?php endif;?>
+
+	
+	<div class="container-fluid p-0" style="min-width: 350px;">
+
 
 	<div class="container-fluid border col-lg-4 col-md-5 mt-5 p-4 shadow-sm" >
-		
 		<form method="post">
 			<center>
-				<h1><i class="fa fa-user"></i></h1>
+				<!-- <h1><i class="fa fa-user"></i></h1> -->
+				<h1><img src='<?= APP_LOGO_WITH_TEXT ?>'width='250' draggable="false"></h1>
 				<h3>Login</h3>
-				<div><?=esc(APP_NAME)?></div>
 			</center>
 			<br>
 		
