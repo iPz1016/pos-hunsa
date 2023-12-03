@@ -1,16 +1,26 @@
 <?php require views_path('partials/header'); ?>
 
-<!-- Take Home section -->
 <div class="d-flex">
     <div class="col-3 bg-light p-2 pt-2" style="height:820px;">
-        <a href="index.php?pg=order&new_takehome=1">
-            <div class="align-center border border-3 border-secondary rounded-3 bg-secondary bg-opacity-50 mb-3" style="height:75px;">
-                <h3>TAKE HOME</h3>
+        <!--Account-->
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle elevation-2" src="./assets/images/user_male.jpg" alt="User profile picture">
+                </div>
+                <h3 class="profile-username text-center"><a href="#" class="d-block">Neramit Matarat</a></h3>
+                <p class="text-muted text-center m-0">Cashier</p>
             </div>
-        </a>
+        </div>
+        <div class="mt-1 mb-2">
+            <div class="card-side border-0 mx-auto w-100">
+                <a href="index.php?pg=logout"><button class="btn btn-danger w-100" style="font-size: 24px; font-weight: 700"><i class="fa fa-sign-out-alt"></i> Sign Out</button></a>
+            </div>
+        </div>
+        <!--./end Account-->
 
-        
-        <div class="box js-products overflow-auto align-takehome flex-sm-column h-75 p-3">
+        <!--TakeHome-->
+        <div class="box js-products overflow-auto align-takehome flex-sm-column h-60 p-3">
             <?php
             $order_class = new Orders;
             try {
@@ -33,17 +43,13 @@
             <?php endforeach;
             endif; ?>
         </div>
-        <div class="my-0">
-            <table style="width: 100%;">
-					<th style="width: 30%" colspan="1">
-					<a href="index.php?pg=home">
-						<div class="card-side m-auto border-0 mx-auto" style="width: 100%; height: 50%">
-							<a href="index.php?pg=logout"><button class="btn btn-danger w-100 my-2 py-3" style="font-size: 24px; font-weight: 700"><i class="fa fa-sign-out-alt"></i> Sign Out</button></a>
-						</div>
-					</a>
-                    </th>
-			</table>
-        </div>
+
+        <a href="index.php?pg=order&new_takehome=1">
+            <div class="align-center border border-3 border-secondary rounded-3 bg-secondary bg-opacity-50 my-2" style="height:75px;">
+                <h3><i class="fa fa-plus-circle"></i> TAKE HOME</h3>
+            </div>
+        </a>
+        <!--./end TakeHome-->
 	</div>
 
 

@@ -32,3 +32,103 @@ body.login {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+.profile-user-img {
+  border: 1px solid #adb5bd;
+  margin: 0 auto;
+  padding: 3px;
+  width: 50px;
+}
+
+.profile-username {
+  font-size: 21px;
+  margin-top: 5px;
+}
+
+.card-primary:not(.card-outline) > .card-header {
+  background-color: #007bff;
+}
+
+.card-primary:not(.card-outline) > .card-header,
+.card-primary:not(.card-outline) > .card-header a {
+  color: #fff;
+}
+
+.card-primary:not(.card-outline) > .card-header a.active {
+  color: #1f2d3d;
+}
+
+.card-primary.card-outline {
+  border-top: 3px solid #007bff;
+}
+
+.card-primary.card-outline-tabs > .card-header a:hover {
+  border-top: 3px solid #dee2e6;
+}
+
+.card-primary.card-outline-tabs > .card-header a.active,
+.card-primary.card-outline-tabs > .card-header a.active:hover {
+  border-top: 3px solid #007bff;
+}
+
+.bg-primary > .card-header .btn-tool,
+.bg-gradient-primary > .card-header .btn-tool,
+.card-primary:not(.card-outline) > .card-header .btn-tool {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-primary > .card-header .btn-tool:hover,
+.bg-gradient-primary > .card-header .btn-tool:hover,
+.card-primary:not(.card-outline) > .card-header .btn-tool:hover {
+  color: #fff;
+}
+
+.img-circle {
+	border-radius: 50%;
+  }
+
+.user-text {
+	color: #ffffff;
+	font-weight: 700;
+}
+
+.user-panel {
+	display: flex;
+	position: relative;
+	align-items: center;
+	text-align: center;
+}
+
+[class*="sidebar-dark"] .user-panel {
+	border-bottom: 1px solid #4f5962;
+}
+
+[class*="sidebar-light"] .user-panel {
+	border-bottom: 1px solid #dee2e6;
+}
+
+.user-panel,
+.user-panel .info {
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.user-panel .image {
+	display: inline-block;
+	padding-left: 0.8rem;
+}
+
+.user-panel img {
+	height: auto;
+	width: 2.1rem;
+}
+
+.user-panel .info {
+	display: inline-block;
+	padding: 2px 2px 2px 2px;
+}
+
+.user-panel .status,
+.user-panel .dropdown-menu {
+	font-size: 0.875rem;
+}

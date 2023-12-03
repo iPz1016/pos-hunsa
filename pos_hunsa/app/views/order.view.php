@@ -41,7 +41,6 @@
 		<div class="my-2">
 			<table style="width: 100%;">
 				<tr>
-
 					<th style="width: 30%" colspan="2">
 						<a href="index.php?pg=home">
 							<div class="card-side m-auto border-0 mx-auto" style="width: 100%; height: 100%; padding-right:5px">
@@ -49,7 +48,6 @@
 							</div>
 						</a>
 					</th>
-
 					<th menu_id=${menu.menu_id}>
 						<div class="card-side m-auto border-0 mx-auto" style="padding-top: 5px; width: 100%; height: 100%">
 							<button onclick="serve_all()" class="btn btn-success w-100 py-2" style="font-size: 36px; font-weight: 700">Serve All</button>

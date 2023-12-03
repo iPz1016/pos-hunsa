@@ -218,6 +218,7 @@ input:disabled{
       --bs-served-rgb: 84, 153, 255;
       --bs-light-rgb: 248, 249, 250;
       --bs-dark-rgb: 33, 37, 41;
+      --bs-darkblue-rgb: 7, 19, 66;
       --bs-gray-rgb: 75, 73, 78;
       --bs-white-rgb: 255, 255, 255;
       --bs-black-rgb: 0, 0, 0;
@@ -282,6 +283,8 @@ hr:not([size]) {
 .align-takehome{
       display: flex;
       align-items: center;
+      text-align: center;
+
 }
 
 .h1,
@@ -8146,6 +8149,10 @@ fieldset:disabled .btn {
       height: 50% !important
 }
 
+.h-60 {
+      height: 60% !important
+}
+
 .h-65 {
       height: 65% !important
 }
@@ -9056,6 +9063,11 @@ fieldset:disabled .btn {
 .bg-dark {
       --bs-bg-opacity: 1;
       background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important
+}
+
+.bg-darkblue {
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-darkblue-rgb), var(--bs-bg-opacity)) !important
 }
 
 .bg-gray {
