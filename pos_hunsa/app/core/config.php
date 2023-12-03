@@ -11,5 +11,5 @@ define("APP_LOGO_WITH_TEXT","assets/images/logo/hun-sa-pos-logo.png");
 
 define("BACKGROUND_LOGIN","assets/images/background.png");
 
-define("WARNING_ICON","assets/images/warning.png");
+define("WARNING_ICON","assets/images/warn.png");
 
