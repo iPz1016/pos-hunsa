@@ -8,7 +8,7 @@
                 <div class="text-center">
                     <img class="profile-user-img img-fluid img-circle elevation-2" src="./assets/images/user_male.jpg" alt="User profile picture">
                 </div>
-                <h3 class="profile-username text-center"><a href="#" class="d-block">Neramit Matarat</a></h3>
+                <h3 class="profile-username text-center"><a href="#" class="d-block"><?php echo esc(strtoupper(Auth::get(('firstname'))." ".Auth::get(('lastname'))));?></a></h3>
                 <p class="text-muted text-center m-0">Cashier</p>
             </div>
         </div>
