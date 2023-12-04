@@ -29,7 +29,7 @@
 			<h1 style="font-size: 36px">On-hold</h1> <button type="button" class="js-onhold_qty btn btn-primary btn-circle btn-xl">99</button>
 		</div>
 		<hr class="side">
-		<div class="table-responsive overflow-auto" style="height:545px;">
+		<div class="table-responsive overflow-auto" style="height:467px;">
 			<table class="table table-striped table-hover">
 
 				<tbody class="js-onhold">
@@ -65,13 +65,13 @@
 
 
 	<!-- MENU Section -->
-	<div class="shadow-sm col-5 p-2">
+	<div class="shadow-sm overflow-auto col-5 p-2" style="max-height:820px">
 
 		<div class="js-table"> </div> 
 
-		<div class="js-select" style="padding: 10px"> </div>
+		<div class="js-select pb-3"> </div>
 
-		<div onclick="add_menu(event)" class="js-menu d-flex overflow-auto flex-wrap" style="height: 600px;">
+		<div onclick="add_menu(event)" class="js-menu h-menu d-flex overflow-auto flex-wrap px-2-1">
 
 
 		</div>
@@ -85,7 +85,7 @@
 			<h1 style="color:white; font-size: 36px">Served</h1> <button type="button" class="js-served_qty btn btn-primary btn-circle btn-xl">99</button>
 		</div>
 		<hr class="side">
-		<div class="table-responsive" style="height:455px;overflow-y: scroll;">
+		<div class="table-responsive" style="height:377px;overflow-y: scroll;">
 			<table class="tableServed tableServed-striped table-hover">
 				<tbody class="js-served">
 				</tbody>
@@ -181,13 +181,13 @@
 
 		return `
 	<!--card-->
-	<div class="card m-1 border-0 mx-auto my-1 menu_size">
+	<div class="card-menu border-0 mx-2 my-1 h-40 menu_size">
 		<a href="#">
 			<img menu_id="${data.menu_id}" src="${data.menu_img}" class="w-100 rounded border">
 		</a>
-		<div class="p-2">
-			<div class="text-muted">${data.menu_name}</div>
+		<div class="card-menu-text p-2">
 			<div class="" style="font-size:16px"><b>฿${data.menu_price.toFixed(2)}</b></div>
+			<div class="text-muted">${data.menu_name}</div>
 		</div>
 	</div>
 	<!--end card-->

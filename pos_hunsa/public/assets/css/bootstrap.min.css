@@ -463,19 +463,23 @@ a {
       margin-bottom: 0%;
 }
 
-.p_table{
+.p_table {
       font-size: 4rem;
       font-weight: 500;
 }
 
-.box_table{
+.box_table {
 	width: 180px;
 	height: 130px;
 }
 
-.menu_size{
+.menu_size {
 	width: 128px;
 	height: 128px;
+}
+
+.h-menu {
+      height: 566px;
 }
 
 .dashboard{
@@ -5413,6 +5417,14 @@ fieldset:disabled .btn {
       border: 1px solid rgba(0, 0, 0, .125);
       border-radius: .25rem
 }
+.card-menu-text {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+}
 
 .card>hr {
       margin-right: 0;
@@ -5444,6 +5456,10 @@ fieldset:disabled .btn {
 .card-body {
       flex: 1 1 auto;
       padding: 1rem 1rem
+}
+
+.card-menu {
+      flex: 0 0 auto;
 }
 
 .card-title {
@@ -8155,8 +8171,20 @@ fieldset:disabled .btn {
       height: 25% !important
 }
 
+.h-40 {
+      height: 40% !important
+}
+
+.h-47 {
+      height: 47% !important
+}
+
 .h-50 {
       height: 50% !important
+}
+
+.h-55 {
+      height: 55% !important
 }
 
 .h-60 {
@@ -8650,6 +8678,11 @@ fieldset:disabled .btn {
 .px-2 {
       padding-right: .5rem !important;
       padding-left: .5rem !important
+}
+
+.px-2-1 {
+      padding-right: .7rem !important;
+      padding-left: .7rem !important
 }
 
 .px-3 {

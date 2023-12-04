@@ -12,15 +12,18 @@
                 <p class="text-muted text-center m-0">Cashier</p>
             </div>
         </div>
-        <div class="mt-1 mb-2">
+        <div class="mt-1 mb-3">
             <div class="card-side border-0 mx-auto w-100">
                 <a href="index.php?pg=logout"><button class="btn btn-danger w-100" style="font-size: 24px; font-weight: 700"><i class="fa fa-sign-out-alt"></i> Sign Out</button></a>
             </div>
         </div>
+        <hr>
         <!--./end Account-->
 
         <!--TakeHome-->
-        <div class="box js-products overflow-auto align-takehome flex-sm-column h-60 p-3">
+        <h3 class="fs-5"> ALL TAKE HOME ORDERS</h3>
+        <div class="box js-products overflow-auto align-takehome flex-sm-column h-47 p-3">
+
             <?php
             $order_class = new Orders;
             try {
