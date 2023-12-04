@@ -482,14 +482,23 @@ a {
       height: 566px;
 }
 
-.dashboard{
-	width: 180px;
-	height: 180px;
-}
+.dashboard {
+      width: 180px;
+      height: 180px;
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      border-color: black;
+      border-style: solid;
+      border-width: 0.2rem; 
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+  }
+  
 
 .dashboard:hover{
-      background-color: white;
-      color: black;
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+      transform: scale(1.05); 
 }
 
 .box{
@@ -2475,12 +2484,21 @@ progress {
 
 .table-responsive {
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive thead {
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      
 }
 
 @media (max-width:575.98px) {
       .table-responsive-sm {
             overflow-x: auto;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch
       }
 }
@@ -2488,6 +2506,7 @@ progress {
 @media (max-width:767.98px) {
       .table-responsive-md {
             overflow-x: auto;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch
       }
 }
@@ -2495,6 +2514,7 @@ progress {
 @media (max-width:991.98px) {
       .table-responsive-lg {
             overflow-x: auto;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch
       }
 }
@@ -2502,6 +2522,7 @@ progress {
 @media (max-width:1199.98px) {
       .table-responsive-xl {
             overflow-x: auto;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch
       }
 }
@@ -2509,6 +2530,7 @@ progress {
 @media (max-width:1399.98px) {
       .table-responsive-xxl {
             overflow-x: auto;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch
       }
 }
@@ -8193,6 +8215,14 @@ fieldset:disabled .btn {
 
 .h-65 {
       height: 65% !important
+}
+
+.table-h-45{
+      max-height:450px;
+}
+
+.table-h-55{
+      max-height:550px;
 }
 
 .h-68{
