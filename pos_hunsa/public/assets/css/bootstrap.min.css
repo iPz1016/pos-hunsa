@@ -478,6 +478,16 @@ a {
 	height: 128px;
 }
 
+.dashboard{
+	width: 180px;
+	height: 180px;
+}
+
+.dashboard:hover{
+      background-color: white;
+      color: black;
+}
+
 .box{
       border: 2px black solid;
 }
