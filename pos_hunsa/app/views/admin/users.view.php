@@ -26,20 +26,22 @@
     </div>
 
     <div class="col">
-        <div class="table-responsive">
+        <div class="table-responsive table-h-55">
             <table class="table table-striped table-hover">
-                <tr class="fs-5">
-                    <th class="fw-black">ID</th>
-                    <th class="fw-black">Username</th>
-                    <th class="fw-black">First name</th>
-                    <th class="fw-black">Last name</th>
-                    <th class="fw-black">Role</th>
-                    <th>
-                        <a href="index.php?pg=signup">
-                            <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
-                        </a>
-                    </th>
-                </tr>
+                <thead>
+                    <tr class="fs-5">
+                        <th class="fw-black">ID</th>
+                        <th class="fw-black">Username</th>
+                        <th class="fw-black">First name</th>
+                        <th class="fw-black">Last name</th>
+                        <th class="fw-black">Role</th>
+                        <th>
+                            <a href="index.php?pg=signup">
+                                <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
 
                 <?php if (!empty($users)): ?>
                     <?php foreach ($users as $user): ?>

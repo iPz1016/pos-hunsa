@@ -28,18 +28,20 @@
 
     <!-- Right content -->
     <div class="col-12 col-sm-8 col-md-9 col-lg-10">
-        <div class="table-responsive">
+        <div class="table-responsive table-h-55">
             <table class="table table-striped table-hover">
-                <tr class="fs-5">
-                    <th class="fw-black">Table ID</th>
-                    <th class="fw-black">Status</th>
-                    <th class="fw-black">Order</th>
-                    <th>
-                        <a href="index.php?pg=table-new">
-                            <button class="btn btn-primary btn-sm p-2"><i class="fa fa-plus"></i> Add table</button>
-                        </a>
-                    </th>
-                </tr>
+                <thead>
+                    <tr class="fs-5">
+                        <th class="fw-black">Table ID</th>
+                        <th class="fw-black">Status</th>
+                        <th class="fw-black">Order</th>
+                        <th>
+                            <a href="index.php?pg=table-new">
+                                <button class="btn btn-primary btn-sm p-2"><i class="fa fa-plus"></i> Add table</button>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
 
                 <?php if (!empty($table_info)) : ?>
                     <?php foreach ($table_info as $table) : ?>
@@ -87,7 +89,6 @@
                     </tr>
                 <?php endif; ?>
             </table>
-            <br>
         </div>
     </div>
 </div>

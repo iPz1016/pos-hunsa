@@ -1,6 +1,6 @@
 <?php 
 
-$tab = $_GET['tab'] ?? 'dashboard';
+$tab = $_GET['tab'] ?? 'main';
 
 
 if($tab == "menu")

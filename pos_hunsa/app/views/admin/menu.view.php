@@ -28,21 +28,23 @@
 
     <!-- Right content -->
     <div class="col">
-        <div class="table-responsive">
+        <div class="table-responsive table-h-55">
             <table class="table table-striped table-hover">
-                <tr class="fs-5">
-                    <th class="fw-black">Menu id</th>
-                    <th class="fw-black">Name</th>
-                    <th class="fw-black">Type</th>
-                    <th class="fw-black">Price</th>
-                    <th class="fw-black">Image</th>
-                    <th class="fw-black">Disable</th>
-                    <th>
-                        <a href="index.php?pg=menu-new">
-                            <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
-                        </a>
-                    </th>
-                </tr>
+                <thead>
+                    <tr class="fs-5">
+                        <th class="fw-black">Menu id</th>
+                        <th class="fw-black">Name</th>
+                        <th class="fw-black">Type</th>
+                        <th class="fw-black">Price</th>
+                        <th class="fw-black">Image</th>
+                        <th class="fw-black">Disable</th>
+                        <th>
+                            <a href="index.php?pg=menu-new">
+                                <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
 
                 <?php if (!empty($products)) : ?>
                     <?php foreach ($products as $product) : ?>
@@ -81,15 +83,4 @@
             </table>
         </div>
     </div>
-
-    <!-- Statistical information and graphs -->
-    <div class="col">
-        <div class="row justify-content-center">
-            <!-- Statistical information -->
-            <div class="col-md-3 border rounded p-4 my-2">
-                <i class="fa fa-user" style="font-size: 30px"></i>
-                <h4>Total Users:</h4>
-                <h2><!-- Replace with actual data --><?=$total_users?></h2>
-            </div>
-            <div class="col-md-3 border rounded p-4 my-2">
-                <i class="fa fa-ham
+</div>
