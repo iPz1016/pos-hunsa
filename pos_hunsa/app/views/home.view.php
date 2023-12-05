@@ -36,9 +36,9 @@
                 foreach ($order as $key => $value) :
             ?>
                     <!--table number box-->
-                    <div class="box_table text-center border border-3 border-secondary bg-dark rounded-3 m-2 shadow-xl">
+                    <div class="box_table text-center border border-3 border-secondary bg-dark rounded-3 m-2 shadow-xl pb-4">
                         <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
-                            <h6 class="p_table cl mb-2 text-white"><?php echo $key + 1; ?></h6>
+                            <h6 class="p_table cl text-white"><?php echo $key + 1; ?></h6>
                             <div class="color-bar border rounded-pill bg-available mx-3"></div>
                         </a>
                     </div>
