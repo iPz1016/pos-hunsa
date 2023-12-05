@@ -514,9 +514,9 @@ a {
 .dashboard {
       width: 180px;
       height: 180px;
-      background-color: rgb(255, 255, 255);
-      color: rgb(0, 0, 0);
-      border-color: black;
+      background-color: rgb(36, 36, 36);
+      color: rgb(255, 255, 255);
+      border-color: rgb(77, 77, 77);
       border-style: solid;
       border-width: 0.2rem; 
       border-radius: 10px;
@@ -525,21 +525,22 @@ a {
   
 
 .dashboard:hover{
-      background-color: rgb(0, 0, 0);
-      color: rgb(255, 255, 255);
+      background-color: rgb(49, 49, 49);
+      color: rgb(214, 214, 214);
       transform: scale(1.05); 
 }
 .main-menu{
-      background-color: rgb(255, 255, 255);
-      color: rgb(0, 0, 0);
-      border-color: black;
+      width: 150px;
+      background-color: rgb(36, 36, 36);
+      color: rgb(255, 255, 255);
+      border-color: rgb(77, 77, 77);
       border-style: solid;
       border-width: 0.2rem; 
       transition: transform 0.3s ease-in-out;
 }
 .main-menu:hover{
-      background-color: rgba(0, 0, 0, 0.315);
-      color: rgb(255, 255, 255);
+      background-color: rgb(49, 49, 49);
+      color: rgb(214, 214, 214);
 }
 
 .box{
@@ -8258,8 +8259,20 @@ fieldset:disabled .btn {
       height: 65% !important
 }
 
-.table-h-45{
-      max-height:450px;
+.table-h-36{
+      max-height:360px;
+}
+
+.table-h-40{
+      max-height:400px;
+}
+
+.table-h-49{
+      max-height:490px;
+}
+
+.table-h-53{
+      max-height:530px;
 }
 
 .table-h-55{

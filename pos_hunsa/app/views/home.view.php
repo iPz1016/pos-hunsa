@@ -56,7 +56,7 @@
 	</div>
 
 
-<!-- All Table section: Including Available table, Disable table, Busy table -->
+    <!-- All Table section: Including Available table, Disable table, Busy table -->
     <div class="container w-80 p-3 h-68">
         <h1 class="mb-3">ALL TABLE</h1>
 

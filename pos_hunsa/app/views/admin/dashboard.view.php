@@ -2,7 +2,7 @@
 
     <!-- Right content -->
     <div class="col">
-        <div class="row justify-content-center table-h-55 overflow-auto">
+        <div class="row justify-content-center table-h-49 overflow-auto">
             <!-- Statistical information -->
             <div class="col-md-3 border rounded p-4 my-2">
                 <i class="fa fa-user" style="font-size: 30px"></i>

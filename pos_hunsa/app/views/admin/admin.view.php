@@ -1,24 +1,47 @@
 <?php require views_path('partials/header'); ?>
 
 <div style="color:#444">
-	<div class="p-2">
-		<h2><i class="fa fa-user-shield"></i> Admin</h2>
-		<h5 class="text-center fw-normal">
-			<?php echo 'Hi, '.esc(strtoupper(Auth::get(('firstname'))." ".Auth::get(('lastname'))));?>
-		</h5>
+	<div class="card card-primary card-outline mt-1">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle elevation-2" src="./assets/images/avatar_anonymous.png" alt="User profile picture">
+                </div>
+                <h3 class="profile-username text-center"><a href="#" class="d-block"><?php echo esc(strtoupper(Auth::get(('firstname'))." ".Auth::get(('lastname'))));?></a></h3>
+                <p class="text-muted text-center m-0">Manager</p>
+            </div>
+        </div>
 
-	</div>
+	<div class="col bg-light m-2 p-0">
+		<div class="row d-flex align-items-center">
+			<?php
 
-	<div class="col m-2 p-0">
-		<div class="row d-flex justify-content-end">
-			<div class="col-md-7 m-2">
-				<h2><?= strtoupper($tab) ?></h2>
-			</div>
-			<div class="col-2 h5 m-2 main-menu text-center d-flex justify-content-center">
-				<a href="index.php?pg=admin&tab=main" class="p-3">
-					<i class="fa fa-th-large"></i> MAIN
-				</a>
-			</div>
+			switch ($tab) {
+				case 'dashboard':
+					// code...
+					require views_path('admin/btn-main');
+					break;
+
+				case 'menu':
+					// code...
+					require views_path('admin/btn-main');
+					break;
+
+				case 'users':
+					// code...
+					require views_path('admin/btn-main');
+					break;
+
+				case 'sales':
+					// code...
+					require views_path('admin/btn-main');
+					break;
+
+				case 'tables':
+					// code...
+					require views_path('admin/btn-main');
+					break;
+			}
+			?>
 		</div>
 
 		<?php

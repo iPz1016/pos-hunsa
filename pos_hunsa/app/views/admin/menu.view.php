@@ -1,7 +1,7 @@
 <div class="container-fluid row">
 
     <div class="col">
-        <div class="table-responsive table-h-55">
+        <div class="table-responsive table-h-49">
             <table class="table table-striped table-hover">
                 <thead>
                     <tr class="fs-5">

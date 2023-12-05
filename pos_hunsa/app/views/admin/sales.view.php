@@ -22,7 +22,7 @@
 		</form>
 		<div class="clearfix" ></div>
 
-		<div class="table-responsive table-h-45">
+		<div class="table-responsive table-h-36">
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr class="fs-5">

@@ -1,6 +1,6 @@
 <div class="container-fluid d-flex justify-content-center">
     <div class="col-12 col-sm-8 col-md-9 col-lg-10">
-        <div class="table-responsive table-h-55">
+        <div class="table-responsive table-h-49">
             <table class="table table-striped table-hover">
                 <thead>
                     <tr class="fs-5">
