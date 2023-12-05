@@ -29,22 +29,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
 	<?php
 
+	// Get the 'vars' parameter from the GET request or set it to an empty string
 	$vars = $_GET['vars'] ?? "";
 	$obj = json_decode($vars, true);
-
-	//query orders info 
+	
+	// Query to fetch order information based on orders_id
 	$db_class = new Database;
 	$query = "SELECT o.orders_id,o.table_id,m.menu_id,m.menu_name,o.served_qty,m.menu_price 
 		FROM orders o,menu_info m 
 		WHERE o.menu_id=m.menu_id and orders_id = :orders_id";
 	$data['orders_id'] = $obj['orders_id'];
+	
+	// Execute the query and fetch the results into the $order variable
 	$order = $db_class->query($query, $data);
-
 	?>
 
 	<?php if (is_array($order)) : ?>
 
-		<center>
+		<div class="text-center justify-content-center">
 			<?php echo "<img  src='" . APP_LOGO_WITH_TEXT . "' width='100' height='100'>"; ?>
 			<h1><?php echo APP_NAME; ?></h1>
 			<h4>Receipt</h4>
@@ -61,47 +63,56 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					?>
 				</i>
 			</div>
-		</center>
+		</div>
 
+		
+		<!-- Table header -->
 		<table class="table table-striped">
-			<tr>
-				<th>Qty</th>
-				<th>Menu name</th>
-				<th>@</th>
-				<th>Total amount</th>
+			<tr class="fs-5">
+				<th class="fw-black">Qty</th>
+				<th class="fw-black">Menu name</th>
+				<th class="fw-black">Price per item</th>
+				<th class="fw-black">Total amount</th>
 			</tr>
 
+			<!-- Loop through each orders item -->
 			<?php foreach ($order as $row) : ?>
 				<tr>
+					<!-- Display quantity -->
 					<td><?= $row['served_qty'] ?></td>
+					<!-- Display menu name -->
 					<td><?= $row['menu_name'] ?></td>
-					<td>฿<?= $row['menu_price'] ?></td>
+					<!-- Display price per item  -->
+					<td>฿<?= number_format($row['menu_price'], 2) ?></td>
+					<!-- Display total amount for the item ->
 					<td>฿<?= number_format($row['served_qty'] * $row['menu_price'], 2) ?></td>
 				</tr>
 			<?php endforeach; ?>
 
+			<!-- Display total line -->
 			<tr>
 				<td colspan="2"></td>
 				<td><b>Total:</b></td>
-				<td><b><?= $obj['gtotal'] ?></b></td>
+				<!-- Display total amount with two decimal points -->
+				<td><b>฿<?= number_format($obj['gtotal'], 2) ?></b></td>
 			</tr>
+			<!-- Display amount paid line with two decimal points -->
 			<tr>
 				<td colspan="2"></td>
 				<td>Amount paid:</td>
-				<td><?= $obj['amount'] ?></td>
+				<td>฿<?= number_format($obj['amount'], 2) ?></td>
 			</tr>
+			<!-- Display change for customer with two decimal points -->
 			<tr>
 				<td colspan="2"></td>
 				<td>Change:</td>
-				<td><?= $obj['change'] ?></td>
+				<td>฿<?= number_format($obj['change'], 2) ?></td>
 			</tr>
-
-
 		</table>
 
-		<center>
-			<p><i>Thanks for shopping with us!</i></p>
-		</center>
+		<div class="text-center">
+			<p><i>Thank you for dining with us!</i></p>
+		</div>
 		<?php
 
 		//insert to history
