@@ -6,11 +6,20 @@
 		<h5 class="text-center fw-normal">
 			<?php echo 'Hi, '.esc(strtoupper(Auth::get(('firstname'))." ".Auth::get(('lastname'))));?>
 		</h5>
+
 	</div>
 
-	<div class="border col m-2 p-0">
-
-		<h2 class="my-3"><?= strtoupper($tab) ?></h2>
+	<div class="col m-2 p-0">
+		<div class="row d-flex justify-content-end">
+			<div class="col-md-7 m-2">
+				<h2><?= strtoupper($tab) ?></h2>
+			</div>
+			<div class="col-2 h5 m-2 main-menu text-center d-flex justify-content-center">
+				<a href="index.php?pg=admin&tab=main" class="p-3">
+					<i class="fa fa-th-large"></i> MAIN
+				</a>
+			</div>
+		</div>
 
 		<?php
 
