@@ -109,13 +109,13 @@
 <!--enter amount modal-->
 <div role="close-button" onclick="hide_modal(event,'amount-paid')" class="js-amount-paid-modal hide" style="animation: appear .5s ease;background-color: #000000bb; width: 100%;height: 100%;position: fixed;left:0px;top:0px;z-index: 4;">
 
-	<div style="width:500px;min-height:200px;background-color:white;padding:10px;margin:auto;margin-top:100px">
-		<h4>Checkout <button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-danger float-end p-0 px-2">X</button></h4>
+	<div class="amount-paid">
+		<h3>Amount paid</h3>
 		<br>
 		<input onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="number" class="js-amount-paid-input form-control" placeholder="Enter amount paid">
 		<br>
-		<button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-secondary">Cancel</button>
-		<button onclick="validate_amount_paid(event)" class="btn btn-primary float-end">Next</button>
+		<button onclick="validate_amount_paid(event)" class="btn btn-primary btn-lg float-end">Submit</button>
+		<button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-danger btn-lg float-start">Cancel</button>
 	</div>
 </div>
 <!--end enter amount modal-->
@@ -123,12 +123,12 @@
 <!--change modal-->
 <div role="close-button" onclick="hide_modal(event,'change')" class="js-change-modal hide" style="animation: appear .5s ease;background-color: #000000bb; width: 100%;height: 100%;position: fixed;left:0px;top:0px;z-index: 4;">
 
-	<div class="container m-auto bg-white" style="width:500px;min-height:200px;padding:10px;margin-top:100px">
-		<h4>Change: <button role="close-button" onclick="hide_modal(event,'change')" class="btn btn-danger float-end p-0 px-2">X</button></h4>
+	<div class="change">
+		<h3>Change</h3>
 		<br>
-		<div class="js-change-input form-control text-center" style="font-size:60px">0.00</div>
+		<div class="js-change-input form-control text-center" style="font-size: 60px; font-weight: 700;">0.00</div>
 		<br>
-		<center><button role="close-button" onclick="hide_modal(event,'change')" class="js-btn-close-change btn btn-lg btn-secondary">Continue</button></center>
+		<button role="close-button" onclick="hide_modal(event,'change')" class="js-btn-close-change btn btn-lg btn-success float-end">Continue</button>
 	</div>
 </div>
 <!--end change modal-->

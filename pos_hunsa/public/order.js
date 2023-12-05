@@ -142,8 +142,6 @@ function serve(menu_id = 0, qty = 'all') {
 }
 
 function serve_all() {
-    if (!confirm("Are you sure you want to serve all items in the ON HOLD list??!!"))
-        return;
     serve();
 }
 
@@ -160,9 +158,6 @@ function add_menu(e) {
 
 
 function clear_onhold() {
-    if (!confirm("Are you sure you want to clear all items in the ON HOLD list??!!"))
-        return;
-
     for (var i = ORDER.length - 1; i >= 0; i--) {
         clear_menu_onhold(ORDER[i].menu_id, 'remove-all');
     }
