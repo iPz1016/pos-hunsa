@@ -23,13 +23,15 @@
 	}
 </style>
 <div class="d-flex h-100">
+
 	<!-- ON-HOLD Section -->
 	<div class="col-4 bg-light p-2 pt-2">
 		<div class="side">
 			<h1 style="font-size: 36px">On-hold</h1> <button type="button" class="js-onhold_qty btn btn-primary btn-circle btn-xl">99</button>
 		</div>
 		<hr class="side">
-		<div class="table-responsive overflow-auto" style="height:467px;">
+		<!-- .h-onhold is in bootstrap.min.css : Used to manage all on-hold scrolling sizes -->
+		<div class="table-responsive h-onhold overflow-auto">
 			<table class="table table-striped table-hover">
 
 				<tbody class="js-onhold">
@@ -61,24 +63,26 @@
 
 		</div>
 	</div>
-	<!--./ On-hold Section ./-->
+	<!--./ ON-HOLD Section ./-->
 
 
 	<!-- MENU Section -->
-	<div class="shadow-sm overflow-auto col-5 p-2" style="max-height:820px">
+	<div class="shadow-sm overflow-auto col-5 p-2">
 
-		<div class="js-table"> </div> 
+		<!-- Table number -->
+		<div class="js-table"> </div>
 
-		<div class="js-select pb-3"> </div>
+		<!-- Filter button -->
+		<!-- if filter button more than 8 qty, added "d-flex" to the class for good usability -->
+		<div class="js-select filter-tab overflow-auto pb-2"> </div>
 
-		<div onclick="add_menu(event)" class="js-menu h-menu d-flex overflow-auto flex-wrap px-2-1">
-
-
-		</div>
+		<!-- All menu that we have -->
+		<!-- .h-menu is in bootstrap.min.css : used to manage all menu scrolling sizes -->
+		<div onclick="add_menu(event)" class="js-menu h-menu d-flex overflow-auto flex-wrap px-2-1"> </div>
 	</div>
 	<!--./ MENU Section ./-->
 
-	<!-- Served Section -->
+	<!-- SERVED Section -->
 	<div class="col-3 bg-gray p-2 pt-1" style="height: 100%;">
 
 		<div class="side">
@@ -97,7 +101,7 @@
 			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100">Clear All</button>
 		</div>
 	</div>
-	<!--./ Served Section ./-->
+	<!--./ SERVED Section ./-->
 </div>
 
 <!--modals-->
@@ -170,17 +174,21 @@
 			}
 			else
 			{
-				html += `<button type="button" class="btn btn-secondary btn-lg" onclick="show_menu('${MENU_TYPE[i]['menu_type']}')">${MENU_TYPE[i]['menu_type'].toUpperCase()}</button> `;	
+				html += `<button type="button" class="btn btn-secondary btn-menu-size btn-lg" onclick="show_menu('${MENU_TYPE[i]['menu_type']}')">${MENU_TYPE[i]['menu_type'].toUpperCase()}</button> `;	
 			}
 		}
 		
 		return html;
 	}
 
+	
+	///////////////////////////////////////////////////////////////////
+	// menu_html : used for printing menus into div of the same size.
+	///////////////////////////////////////////////////////////////////
+
 	function menu_html(data) {
 
 		return `
-	<!--card-->
 	<div class="card-menu border-0 mx-2 my-1 h-40 menu_size">
 		<a href="#">
 			<img menu_id="${data.menu_id}" src="${data.menu_img}" class="w-100 rounded border">
@@ -190,14 +198,15 @@
 			<div class="text-muted">${data.menu_name}</div>
 		</div>
 	</div>
-	<!--end card-->
 	`;
 	}
 
+	///////////////////////////////////////////////////////////////////
+	// onhold_html : 
+	///////////////////////////////////////////////////////////////////
 	function onhold_html(menu, order) {
 
 		return `
-	<!--item-->
 	<table style="width: 100%;">
 		<tr>
 			<th class="text-primary w-100" menu_id=${menu.menu_id}>
@@ -226,15 +235,15 @@
 			</th>
 		</tr>
 	</table>
-	<!--end item-->
 	`;
 	}
 
-
+	///////////////////////////////////////////////////////////////////
+	// served_html : 
+	///////////////////////////////////////////////////////////////////
 	function served_html(menu, order) {
 
 		return `
-	<!--item-->
 	<tr>
 		<td class="text-served" menu_id=${order.menu_id}>
 			<div class="text-start">
@@ -252,10 +261,12 @@
 			</div>
 		</td>
 	</tr>
-	<!--end item-->
 	`;
 	}
 
+	///////////////////////////////////////////////////////////////////
+	// refresh_served_display : 
+	///////////////////////////////////////////////////////////////////
 	function refresh_served_display() {
 		var items_div = document.querySelector(".js-served");
 		items_div.innerHTML = "";
@@ -280,6 +291,9 @@
 		gtotal_div.innerHTML = "Total: ฿ " + grand_total.toFixed(2);
 	}
 
+	///////////////////////////////////////////////////////////////////
+	// refresh_order_display : 
+	///////////////////////////////////////////////////////////////////
 	function refresh_order_display() {
 		var items_div = document.querySelector(".js-onhold");
 		items_div.innerHTML = "";
@@ -295,6 +309,9 @@
 		}
 	}
 
+	///////////////////////////////////////////////////////////////////
+	// refresh_checkout_display : 
+	///////////////////////////////////////////////////////////////////
 	function refresh_checkout_button() {
 		var items_div = document.querySelector(".js-checkout");
 		items_div.innerHTML = `
@@ -320,6 +337,9 @@
 
 	}
 
+	///////////////////////////////////////////////////////////////////
+	// refresh_qty_display : 
+	///////////////////////////////////////////////////////////////////
 	function refresh_qty_count()
 	{
 		var onhold_div = document.querySelector(".js-onhold_qty");
@@ -341,15 +361,19 @@
 		served_div.innerHTML = served_count.toString();
 	}
 
-	/////////////////////////////////
-	// TABLE & MENU Section
-	/////////////////////////////////
+
+	///////////////////////////////////////////////////////////////////
+	// show_table_id :
+	///////////////////////////////////////////////////////////////////
 	function show_table_id() {
 		var button_div = document.querySelector(".js-table");
 		if (ORDER_INFO['table_id'] != null)
 			button_div.innerHTML = "<h1 class='text-center'>TABLE <p1 style='color:#CC3300'>"+ ORDER_INFO['table_id'] + "</p1></h1>";
 	}
 
+	///////////////////////////////////////////////////////////////////
+	// show_menu :
+	///////////////////////////////////////////////////////////////////
 	function show_menu(menu_type) {
 		//console.log(menu_type);
 		var button_div = document.querySelector(".js-select");
