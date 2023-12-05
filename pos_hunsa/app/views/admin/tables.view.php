@@ -1,5 +1,7 @@
 <div class="container-fluid d-flex justify-content-center">
+    <!-- Table Section -->
     <div class="col-12 col-sm-8 col-md-9 col-lg-10">
+        <!-- Table Information -->
         <div class="table-responsive table-h-49">
             <table class="table table-striped table-hover">
                 <thead>
@@ -8,6 +10,7 @@
                         <th class="fw-black">Status</th>
                         <th class="fw-black">Order</th>
                         <th>
+                            <!-- Add New Table Button -->
                             <a href="index.php?pg=table-new">
                                 <button class="btn btn-primary btn-sm p-2"><i class="fa fa-plus"></i> Add table</button>
                             </a>
@@ -15,6 +18,7 @@
                     </tr>
                 </thead>
 
+                <!-- Table Data -->
                 <?php if (!empty($table_info)) : ?>
                     <?php foreach ($table_info as $table) : ?>
                         <tr>
@@ -24,6 +28,7 @@
 
                             <td>
                                 <?php
+                                // Table Status - Enable/Disable
                                 if ($table['disable'] == 0) {
                                     echo "<a class='text-success'><i class='fa fa-check'></i>  Enable</a>";
                                 } else {
@@ -34,6 +39,7 @@
                             </td>
                             <td>
                                 <?php
+                                // Table Order Status - Disable/Available/Busy
                                 if ($table['disable'] == 1) {
                                     echo "<a class='text-danger'><i class='fa fa-times'></i>  Disable</a>";
                                 } else if ($table['orders_id'] == 0) {
@@ -45,12 +51,14 @@
                                 ?>
                             </td>
                             <td>
+                                <!-- Edit Table Button -->
                                 <a href="index.php?pg=table-edit&id=<?= $table['table_id'] ?>">
                                     <button class="btn btn-success btn-sm">Edit</button>
                                 </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
+                    <!-- Delete Table Button -->
                     <tr>
                         <td></td>
                         <td></td>

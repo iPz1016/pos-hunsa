@@ -26,7 +26,7 @@ if($tab == "sales")
 
 	$query = "select * from history order by orders_id desc limit $limit offset $offset";
 
-	//get today's sales total
+	//Get Today's Sales Total
 	$year = date("Y");
 	$month = date("m");
 	$day = date("d");
@@ -34,7 +34,7 @@ if($tab == "sales")
 	$query_total = "SELECT sum(qty*menu_price) as total FROM history WHERE day(time) = $day && month(time) = $month && year(time) = $year";
 
 
-	//if both start and end are set
+	//If both start and end are set
  	if($startdate && $enddate)
  	{
  		
@@ -43,7 +43,7 @@ if($tab == "sales")
  	
  	}else
 
-	//if only start date is set
+	//If only start date is set
  	if($startdate && !$enddate)
  	{
  		$styear = date("Y",strtotime($startdate));
@@ -96,24 +96,23 @@ if($tab == "dashboard")
 	$mysales = $db->query($query);
 	$total_sales = $mysales[0]['total'];
 
-	//prepare data for graph
+	//Prepare Data For Graph
 
-	//read graph data
+	//Read Graph Data
 	$db = new Database();
 
-	//query todays records
+	//Query Todays Records
 	$today = date('Y-m-d');
 	$query = "SELECT qty*menu_price total,time FROM history WHERE DATE(time) = '$today';";
 	$today_records = $db->query($query);
 
-	//query this months records
+	//Query This month's Records
 	$thismonth = date('m');
 	$thisyear = date('Y');
-
 	$query = "SELECT qty*menu_price total,time FROM history WHERE month(time) = '$thismonth' && year(time) = '$thisyear'";
 	$thismonth_records = $db->query($query);
 
-	//query this years records
+	//Query This year's Records
 	$query = "SELECT qty*menu_price total,time FROM history WHERE year(time) = '$thisyear'";
 	$thisyear_records = $db->query($query);
 

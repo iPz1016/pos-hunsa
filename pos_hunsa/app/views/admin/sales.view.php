@@ -1,6 +1,9 @@
 <div class="container-fluid row">
+	<!-- Sales Section -->
     	<div class="col">
+		<!-- Total Sales for Today -->
 		<h3 class="text m-3">Today's Total: $<?=number_format($sales_total,2)?></h3>
+		<!-- Sales Search Form -->
 		<form class="row d-flex justify-content-center m-2">
 			<div class="col-sm-3 fw-bold">
 				<label for="start">Start Date:</label>
@@ -22,6 +25,7 @@
 		</form>
 		<div class="clearfix" ></div>
 
+		<!-- Sales Table -->
 		<div class="table-responsive table-h-36">
 			<table class="table table-striped table-hover">
 				<thead>
@@ -41,6 +45,7 @@
 					</tr>
 				</thead>
 
+				<!-- Sales Table Data -->
 				<?php if (!empty($sales)):?>
 					<?php foreach ($sales as $sale):?>
 					<tr>
@@ -63,6 +68,7 @@
 							}
 						?>
 						<td>
+							<!-- Cashier Name -->
 							<a href="<?=$namelink?>">
 								<?=esc($name)?>
 							</a>
@@ -70,6 +76,7 @@
 				
 						<td><?=date("jS M, Y",strtotime($sale['time']))?></td>
 						<td>
+							<!-- Edit and Delete Sale Buttons -->
 							<a href="index.php?pg=sale-edit&id=<?=$sale['id']?>">
 								<button class="btn btn-success btn-sm">Edit</button>
 							</a>

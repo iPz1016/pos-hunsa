@@ -7,17 +7,17 @@
             <div class="col-md-3 border rounded p-4 my-2">
                 <i class="fa fa-user" style="font-size: 30px"></i>
                 <h4>Total Users:</h4>
-                <h2><!-- Replace with actual data --><?=$total_users?></h2>
+                <h2><?=$total_users?></h2>
             </div>
             <div class="col-md-3 border rounded p-4 my-2">
                 <i class="fa fa-hamburger" style="font-size: 30px"></i>
                 <h4>Total Menu:</h4>
-                <h2><!-- Replace with actual data --><?=$total_products?></h2>
+                <h2><?=$total_products?></h2>
             </div>
             <div class="col-md-3 border rounded p-4 my-2">
                 <i class="fa fa-money-bill-wave" style="font-size: 30px"></i>
                 <h4>Total Sales:</h4>
-                <h2><!-- Replace with actual data --><?=$total_sales?></h2>
+                <h2><?=$total_sales?></h2>
             </div>
 
             <!-- Graphs -->

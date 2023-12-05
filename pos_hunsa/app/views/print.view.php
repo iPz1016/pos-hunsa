@@ -115,22 +115,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		</div>
 		<?php
 
-		//insert to history
+		// Insert data to history table
+    		// Create an array to store data for insertion into the history table
 		$insert_data['orders_id'] = $row['orders_id'];
 		$insert_data['table_id'] = $row['table_id'];
 		$insert_data['staff_id'] = Auth::get('id');
 		$insert_data['time'] = $sql_datetime;
 
+		// Loop through each item in the order
 		foreach ($order as $row) {
 			$insert_data['menu_id'] = $row['menu_id'];
 			$insert_data['menu_name'] = $row['menu_name'];
 			$insert_data['qty'] = $row['served_qty'];
 			$insert_data['menu_price'] = $row['menu_price'];
 			$history_class = new History;
+			// Insert data into the history table using the insert method of the History class
 			$history_class->insert($insert_data);
 		}
 
-		//delete orders 
+		 // Delete all orders using the delete_all_order method of the Orders class
 		$orders_class = new Orders;
 		$orders_class->delete_all_order($data);
 
