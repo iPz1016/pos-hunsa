@@ -15,6 +15,11 @@ class Table_info extends Model
 
     public function new_table($number)
     {
+        $all_table = $this->getAll(300,0,'asc','table_id');
+        $table_count = count($all_table);
+        if($table_count+$number > 50)
+        return false;
+
         for($i=0;$i<$number;$i++)
         {
             $all_table = $this->getAll(300,0,'asc','table_id');
@@ -23,6 +28,7 @@ class Table_info extends Model
             $data['disable'] = 0;
             $this->insert($data);
         }
+        return true;
     }
 
     public function get_table_status()
