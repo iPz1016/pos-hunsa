@@ -9,16 +9,16 @@
                         <th class="fw-black">Table ID</th>
                         <th class="fw-black">Status</th>
                         <th class="fw-black">Order</th>
-                        <th class="float-end" colspan="2">
+                        <th class="float-end p-1">
                             <!-- Add New Table Button -->
                             <a href="index.php?pg=table-new">
-                                <button class="btn btn-primary btn-lg"><i class="fa fa-plus"></i> Add table</button>
+                                <button class="btn btn-primary btn-lg btn-headadmin-size"><i class="fa fa-plus"></i> Add Table</button>
                             </a>
                         </th>
-                        <th class="float-end">
+                        <th class="float-end p-1" colspan="2">
                             <!-- Delete Table Button -->
                             <a href="index.php?pg=table-delete">
-                                <button class="btn btn-danger btn-lg"><i class="fa fa-minus"></i> Delete table</button>
+                                <button class="btn btn-danger btn-lg btn-headadmin-size"><i class="fa fa-minus"></i> Delete Table</button>
                             </a>
                         </th>
                         
@@ -60,7 +60,7 @@
                             <td>
                                 <!-- Edit Table Button -->
                                 <a href="index.php?pg=table-edit&id=<?= $table['table_id'] ?>">
-                                    <button class="btn btn-success btn-lg float-end">Edit</button>
+                                    <button class="btn btn-success btn-lg btn-bodyadmin-size float-end">Edit</button>
                                 </a>
                             </td>
                         </tr>

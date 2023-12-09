@@ -16,7 +16,7 @@
                         <th>
                             <!-- Add New Menu Button -->
                             <a href="index.php?pg=menu-new">
-                                <button class="btn btn-primary btn-lg w-100"><i class="fa fa-plus"></i> Add new</button>
+                                <button class="btn btn-primary btn-lg btn-headadmin-size float-end"><i class="fa fa-plus"></i> New Menu</button>
                             </a>
                         </th>
                     </tr>
@@ -51,11 +51,11 @@
                             </td>
                             <td>
                                 <!-- Edit and Delete Menu Buttons -->
-                                <a href="index.php?pg=menu-edit&id=<?= $product['menu_id'] ?>">
-                                    <button class="btn btn-success btn-lg">Edit</button>
-                                </a>
                                 <a href="index.php?pg=menu-delete&id=<?= $product['menu_id'] ?>">
-                                    <button class="btn btn-danger btn-lg">Delete</button>
+                                    <button class="btn btn-danger btn-lg btn-bodyadmin-size mx-1 float-end">Delete</button>
+                                </a>
+                                <a href="index.php?pg=menu-edit&id=<?= $product['menu_id'] ?>">
+                                    <button class="btn btn-success btn-lg btn-bodyadmin-size float-end">Edit</button>
                                 </a>
                             </td>
                         </tr>
