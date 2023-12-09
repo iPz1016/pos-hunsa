@@ -62,7 +62,7 @@
     <div class="container w-80 p-3 h-68">
         <h1 class="mb-3">ALL TABLE</h1>
 
-        <div class="js-products d-flex px-3 flex-sm-wrap align-content-start overflow-auto h-90">
+        <div class="js-products d-flex flex-sm-wrap align-content-start overflow-auto h-90">
             <?php
 
             $order_class = new Orders;
