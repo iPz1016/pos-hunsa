@@ -36,9 +36,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 			$_POST['menu_img'] = $destination;
 
 			//delete old image
-			if(file_exists($row['menu_img']))
-			{
+			if (file_exists($row['menu_img'])) {
 				unlink($row['menu_img']);
+	
+				//delete cropped image
+				$exp = explode('.', $row['menu_img']);
+				$crop = $exp[0] . '_cropped.' . $exp[1];
+				if (file_exists($crop)) {
+					unlink(($crop));
+				}
+	
 			}
 		}
 
