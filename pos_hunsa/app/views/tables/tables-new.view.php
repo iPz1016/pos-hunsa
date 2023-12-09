@@ -16,9 +16,10 @@
 			</div>
 			
 			<!-- Add and cancel button -->
-			<a href="index.php?pg=admin&tab=tables" class="btn btn-primary float-start px-4 py-2">Cancel</a>
+			<a href="index.php?pg=admin&tab=tables" class="btn btn-danger float-start px-4 py-2">Cancel</a>
 			<button class="btn btn-success float-end px-4 py-2">Add</button>
 		</form>
+		<br>
 	</div>
 
 <?php require views_path('partials/footer');?>

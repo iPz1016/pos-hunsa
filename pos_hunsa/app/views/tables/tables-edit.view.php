@@ -29,6 +29,7 @@
         <a href="index.php?pg=admin&tab=tables">
             <button type="button" class="btn btn-danger float-start px-4 py-2">Cancel</button>
         </a>
+        <br>
     </form>
 </div>
 
