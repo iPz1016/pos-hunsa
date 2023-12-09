@@ -57,7 +57,10 @@ class Table_info extends Model
     public function deletable_table($number)
     {
         $table_info = $this->get_table_status();
-
+        if(!$table_info)
+        {
+            return -3;
+        }
         for ($i = count($table_info) - 1; $i >= count($table_info) - $number; $i--) {
             if ($i < 0) {
                 return -2;
