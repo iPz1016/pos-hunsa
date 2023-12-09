@@ -1,11 +1,14 @@
 <?php require views_path('partials/header'); ?>
 
-<div class="container-fluid border rounded p-4 m-2 col-lg-4 mx-auto">
+<div class="container-fluid border rounded p-4 m-2 col-lg-4 mx-auto mt-4 pb-5">
+
+    <div class="justfy-content-center mb-4">
+		<h3><i class="fa fa-chair"></i> Edit Table #<?= esc($id) ?></h3>
+		<div><?= esc(APP_NAME) ?></div>
+	</div>
 
     <form method="post" enctype="multipart/form-data">
 
-        <h5 class="text-primary"><i class="fa fa-chair"></i> Edit Table #<?= esc($id) ?></h5>
-        <br>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="disable" id="inlineRadio2" value="0" <?php if ($row['disable'] == 0) echo "checked"; ?>>
             <label class="form-check-label" for="inlineRadio2">Enable</label>
@@ -22,9 +25,9 @@
         <?php endif; ?>
 
         <br>
-        <button class="btn btn-danger float-end">Save</button>
+        <button class="btn btn-success float-end px-4 py-2">Save</button>
         <a href="index.php?pg=admin&tab=tables">
-            <button type="button" class="btn btn-primary">Cancel</button>
+            <button type="button" class="btn btn-danger float-start px-4 py-2">Cancel</button>
         </a>
     </form>
 </div>

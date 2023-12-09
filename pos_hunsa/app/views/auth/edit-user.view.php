@@ -79,17 +79,10 @@ if (!empty($_SESSION['referer'])) {
 				<?php endif; ?>
 			</div>
 
-			<div class="row justify-content-center">
-				<div class="col-1">
-					<button class="btn btn-primary float-end px-4">Save</button>
-				</div>
-				<div class="col-1">
-					<a href="<?= $back_link ?>">
-						<button type="button" class="btn btn-danger px-4">Cancel</button>
-					</a>
-				</div>
-			</div>
-
+			<button class="btn btn-success float-end px-4 py-2">Save</button>
+			<a href="<?= $back_link ?>">
+				<button type="button" class="btn btn-danger float-start px-4 py-2">Cancel</button>
+			</a>
 			<div class="clearfix"></div>
 		</form>
 	

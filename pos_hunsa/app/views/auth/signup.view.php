@@ -2,11 +2,12 @@
 
 <div class="container-fluid border col-lg-5 col-md-6 mt-5 p-4">
 
+	<div class="justfy-content-center mb-4">
+		<h3><i class="fa fa-user"></i> Create User</h3>
+		<div><?= esc(APP_NAME) ?></div>
+	</div>
+
 	<form method="post">
-		<div class="justfy-content-center mb-4">
-			<h3><i class="fa fa-user"></i> Create User</h3>
-			<div><?= esc(APP_NAME) ?></div>
-		</div>
 		
 		<div>
 			<?php if (!empty($errors['username'])) : ?>
@@ -68,16 +69,12 @@
 			<?php endif; ?>
 		</div>
 		
-		<div class="row justify-content-center">
-			<div class="col-1">
-				<button class="btn btn-primary float-end px-4">Create</button>
-			</div>
-			<div class="col-1">
-				<a href="index.php?pg=admin&tab=users">
-					<button type="button" class="btn btn-danger px-4">Cancel</button>
-				</a>
-			</div>
-		</div>
+	
+		<button class="btn btn-success float-end px-4 py-2">Create</button>
+		<a href="index.php?pg=admin&tab=users">
+			<button type="button" class="btn btn-danger float-start px-4 py-2">Cancel</button>
+		</a>
+		
 	</form>
 </div>
 
