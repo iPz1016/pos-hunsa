@@ -7,14 +7,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$tableClass = new Table_info;
     if($_POST['number'])
     {
-        if($tableClass->deletable_table($_POST['number']))
+        $check = $tableClass->deletable_table($_POST['number']);
+        if($check==1)
         {
             $tableClass->delete_table($_POST['number']);
             redirect('admin&tab=tables');
         }
-        else
+        else if($check== -1)
         {
             $errors['number'] = 'There are some busy tables, cannot delete.';
+        }
+        else if($check== -2)
+        {
+            $errors['number'] = 'The deleted amount should less or equal to total tables.';
         }
         
     }

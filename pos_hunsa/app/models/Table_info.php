@@ -15,16 +15,27 @@ class Table_info extends Model
 
     public function new_table($number)
     {
-        $all_table = $this->getAll(300,0,'asc','table_id');
-        $table_count = count($all_table);
-        if($table_count+$number > 50)
-        return false;
+        $all_table = $this->getAll(300, 0, 'asc', 'table_id');
 
-        for($i=0;$i<$number;$i++)
-        {
-            $all_table = $this->getAll(300,0,'asc','table_id');
+        if ($all_table) {
             $table_count = count($all_table);
-            $data['table_id'] = $table_count+1;
+        } else {
+            $table_count = 0;
+        }
+
+        if ($table_count + $number > 50)
+            return false;
+
+        for ($i = 0; $i < $number; $i++) {
+            $all_table = $this->getAll(300, 0, 'asc', 'table_id');
+
+            if ($all_table) {
+                $table_count = count($all_table);
+            } else {
+                $table_count = 0;
+            }
+
+            $data['table_id'] = $table_count + 1;
             $data['disable'] = 0;
             $this->insert($data);
         }
@@ -47,32 +58,27 @@ class Table_info extends Model
     {
         $table_info = $this->get_table_status();
 
-        for($i = count($table_info)-1 ; $i >= count($table_info)-$number ; $i--)
-        {
-            if($i<0 || $table_info[$i]['orders_id'])
-            {
-                return false;
+        for ($i = count($table_info) - 1; $i >= count($table_info) - $number; $i--) {
+            if ($i < 0) {
+                return -2;
+            }
+            if ($table_info[$i]['orders_id']) {
+                return -1;
             }
         }
-        return true;
+        return 1;
     }
 
-    public function delete_table($number)  
+    public function delete_table($number)
     {
-        if($this->deletable_table($number))
-        {
-            $table_info = $this->getAll(300,0,'asc','table_id');
+        $check = $this->deletable_table($number);
+        if ($check == 1) {
+            $table_info = $this->getAll(300, 0, 'asc', 'table_id');
 
-            for($i = count($table_info) ; $i > count($table_info)-$number ; $i--)
-            {
-                $this->delete($i,'table_id');
+            for ($i = count($table_info); $i > count($table_info) - $number; $i--) {
+                $this->delete($i, 'table_id');
             }
-            return true;
         }
-        else
-        {
-            return false;
-        }
+        return $check;
     }
-
 }
