@@ -14,7 +14,7 @@
                         <th>
                             <!-- Add New User Button -->
                             <a href="index.php?pg=signup">
-                                <button class="btn btn-primary btn-lg btn-headadmin-size float-end"><i class="fa fa-plus"></i> Add new</button>
+                                <button class="btn btn-primary btn-lg btn-headadmin-size float-end"><i class="fa fa-plus"></i> New User</button>
                             </a>
                         </th>
                     </tr>

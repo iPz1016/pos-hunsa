@@ -12,7 +12,7 @@
                         <th class="float-end p-1">
                             <!-- Add New Table Button -->
                             <a href="index.php?pg=table-new">
-                                <button class="btn btn-primary btn-lg btn-headadmin-size"><i class="fa fa-plus"></i> Add Table</button>
+                                <button class="btn btn-primary btn-lg btn-headadmin-size"><i class="fa fa-plus"></i> New Table</button>
                             </a>
                         </th>
                         <th class="float-end p-1" colspan="2">
