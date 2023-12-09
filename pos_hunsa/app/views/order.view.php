@@ -215,7 +215,7 @@
 
 				</div>
 			</th>
-			<th menu_id=${menu.menu_id} style="padding-bottom: 5px; width: 100%">
+			<th menu_id=${menu.menu_id} style="width: 100%">
 				<div class="card-side m-auto border-0 mx-auto h-100" style="width: 100px;">
 					<button onclick="clear_menu_onhold(${order.menu_id})" class="float-end btn btn-danger btn-lg py-3-1"><i class="fa fa-trash"></i></button>
 				</div>

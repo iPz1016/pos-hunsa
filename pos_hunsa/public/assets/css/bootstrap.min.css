@@ -499,10 +499,6 @@ a {
       margin: 2px;
 }
 
-.edit-menu-size {
-      overflow-y: auto;
-}
-
 .filter-tab {
       height: 112px;
 }
@@ -645,7 +641,6 @@ tr {
       border-color: inherit;
       border-style: solid;
       border-width: 0
-      /* height: 140px */
 }
 
 label {

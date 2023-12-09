@@ -2,7 +2,7 @@
 
 <div class="container-fluid border rounded p-4 m-2 col-lg-6 mx-auto">
 
-	<form method="post" enctype="multipart/form-data" class="edit-menu-size">
+	<form method="post" enctype="multipart/form-data" class="overflow-auto">
 		<div class="m-2">
 			<h3><i class="fa fa-hamburger"></i> Add Menu</h3>
 			<div class="card-editing">

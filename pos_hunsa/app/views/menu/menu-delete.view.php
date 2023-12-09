@@ -4,7 +4,7 @@
 
 	<?php if (!empty($row)) : ?>
 
-		<form method="post" enctype="multipart/form-data" class="edit-menu-size">
+		<form method="post" enctype="multipart/form-data" class="overflow-auto">
 
 			<h3><i class="fa fa-hamburger"></i> Delete Menu</h3>
 			<?php
