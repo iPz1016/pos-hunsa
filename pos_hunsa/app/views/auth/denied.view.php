@@ -1,4 +1,5 @@
 <?php require views_path('partials/header');?>
+
 		<div class="mt-7">
 			<img src='<?= WARNING_ICON ?>'width='150' draggable="false">
 			<h1>Access Denied!</h1>
