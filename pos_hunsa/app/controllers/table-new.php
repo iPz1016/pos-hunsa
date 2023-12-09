@@ -6,8 +6,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $tableClass = new Table_info;
     if ($_POST['number']) {
-        $tableClass->new_table($_POST['number']);
-        redirect('admin&tab=tables');
+        $check = $tableClass->new_table($_POST['number']);
+        if($check)
+        {
+            redirect('admin&tab=tables');
+        }
+        else
+        {
+            $errors['new_table'] = 'Total tables should not greater than 50 tables.';
+        }
+        
     }
 }
 
