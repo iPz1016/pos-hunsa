@@ -4,7 +4,7 @@
 
 	<?php if (!empty($row)) : ?>
 		<form method="post" enctype="multipart/form-data" class="edit-menu-size">
-			<h5 class="text-primary"><i class="fa fa-hamburger"></i> Edit Menu</h5>
+			<h3><i class="fa fa-hamburger"></i> Edit Menu</h3>
 			<div class="card-editing">
 				<div class="me-1" style="width: 50%; float: left;">
 					<div class="form-label">
@@ -19,7 +19,7 @@
 					<div class="form-label">
 						<p class="m-1">Price</p>
 						<div class="input-group mb-3">
-							<span class="input-group-text">Price:</span>
+							<span class="input-group-text">฿</span>
 							<input name="menu_price" value="<?= set_value('menu_price', $row['menu_price']) ?>" type="number" min="1" class="form-control <?= !empty($errors['menu_price']) ? 'border-danger' : '' ?>" placeholder="Price" aria-label="menu_price">
 						</div>
 						<?php if (!empty($errors['menu_price'])) : ?>
@@ -72,7 +72,7 @@
 					<?php if (!empty($errors['menu_img'])) : ?>
 						<small class="text-danger"><?= $errors['menu_img'] ?></small>
 					<?php endif; ?>
-					<img class="mx-auto m-3 d-block" src="<?= $row['menu_img'] ?>" style="height: 120px;">
+					<img class="mx-auto m-2 d-block" src="<?= $row['menu_img'] ?>" style="height: 120px;">
 				</div>
 			</div>
 		
@@ -84,10 +84,12 @@
 			</a>
 
 			<?php endif; ?>
-			<button class="btn btn-primary btn-lg float-end">Save</button>
-			<a href="index.php?pg=admin&tab=menu">
-				<button type="button" class="btn btn-danger float-start">Cancel</button>
-			</a>
+			<div class="mb-3">
+				<button class="btn btn-danger btn-lg float-start">Cancel</button>
+				<a href="index.php?pg=admin&tab=menu">
+					<button type="button" class="btn btn-primary btn-lg float-end">Save</button>
+				</a>
+			</div>
 		</form>
 
 </div>

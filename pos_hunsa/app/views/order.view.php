@@ -157,22 +157,22 @@
 	function button_html(menu_type) {
 
 		if (menu_type == "all") {
-			var html = `<button type="button" class="btn btn-primary btn-lg" onclick="show_menu('all')">ALL</button> `;
+			var html = `<button type="button" class="btn btn-primary btn-lg mb-1" onclick="show_menu('all')">ALL</button> `;
 		}
 		else
 		{
-			var html = `<button type="button" class="btn btn-secondary btn-lg" onclick="show_menu('all')">ALL</button> `;
+			var html = `<button type="button" class="btn btn-secondary btn-lg mb-1" onclick="show_menu('all')">ALL</button> `;
 		}
 
 		for(var i = 0; i < MENU_TYPE.length; i++)
 		{
 			if(menu_type == MENU_TYPE[i]['menu_type'])
 			{
-				html += `<button type="button" class="btn btn-primary btn-lg" onclick="show_menu('${MENU_TYPE[i]['menu_type']}')">${MENU_TYPE[i]['menu_type'].toUpperCase()}</button> `;	
+				html += `<button type="button" class="btn btn-primary btn-lg mb-1" onclick="show_menu('${MENU_TYPE[i]['menu_type']}')">${MENU_TYPE[i]['menu_type'].toUpperCase()}</button> `;	
 			}
 			else
 			{
-				html += `<button type="button" class="btn btn-secondary btn-lg" onclick="show_menu('${MENU_TYPE[i]['menu_type']}')">${MENU_TYPE[i]['menu_type'].toUpperCase()}</button> `;	
+				html += `<button type="button" class="btn btn-secondary btn-lg mb-1" onclick="show_menu('${MENU_TYPE[i]['menu_type']}')">${MENU_TYPE[i]['menu_type'].toUpperCase()}</button> `;	
 			}
 		}
 		
