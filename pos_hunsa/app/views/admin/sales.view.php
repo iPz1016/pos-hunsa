@@ -37,11 +37,7 @@
 						<th class="fw-black">Total</th>
 						<th class="fw-black">Cashier</th>
 						<th class="fw-black">Date</th>
-						<th>
-							<a href="index.php?pg=home">
-								<button class="btn btn-primary btn-sm p-2"><i class="fa fa-plus"></i> Add new</button>
-							</a>
-						</th>
+						<th></th>
 					</tr>
 				</thead>
 
@@ -75,15 +71,6 @@
 						</td>
 				
 						<td><?=date("jS M, Y",strtotime($sale['time']))?></td>
-						<td>
-							<!-- Edit and Delete Sale Buttons -->
-							<a href="index.php?pg=sale-edit&id=<?=$sale['id']?>">
-								<button class="btn btn-success btn-sm">Edit</button>
-							</a>
-							<a href="index.php?pg=sale-delete&id=<?=$sale['id']?>">
-								<button class="btn btn-danger btn-sm">Delete</button>
-							</a>
-						</td>
 					</tr>
 					<?php endforeach;?>
 				<?php endif;?>

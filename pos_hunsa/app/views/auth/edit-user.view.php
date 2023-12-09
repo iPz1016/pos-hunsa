@@ -79,9 +79,9 @@ if (!empty($_SESSION['referer'])) {
 				<?php endif; ?>
 			</div>
 
-			<button class="btn btn-success float-end px-4 py-2">Save</button>
+			<button class="btn btn-success float-end btn-lg">Save</button>
 			<a href="<?= $back_link ?>">
-				<button type="button" class="btn btn-danger float-start px-4 py-2">Cancel</button>
+				<button type="button" class="btn btn-danger float-start btn-lg">Cancel</button>
 			</a>
 			<div class="clearfix"></div>
 		</form>

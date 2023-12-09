@@ -1,6 +1,6 @@
 <?php require views_path('partials/header'); ?>
 
-<div class="container-fluid border col-lg-5 col-md-6 mt-5 p-4">
+<div class="container-fluid border col-lg-5 col-md-6 mt-5 p-4 pb-5">
 
 	<div class="justfy-content-center mb-4">
 		<h3><i class="fa fa-user"></i> Create User</h3>
@@ -70,9 +70,9 @@
 		</div>
 		
 	
-		<button class="btn btn-success float-end px-4 py-2">Create</button>
+		<button class="btn btn-success float-end btn-lg">Create</button>
 		<a href="index.php?pg=admin&tab=users">
-			<button type="button" class="btn btn-danger float-start px-4 py-2">Cancel</button>
+			<button type="button" class="btn btn-danger float-start btn-lg">Cancel</button>
 		</a>
 		
 	</form>

@@ -87,7 +87,7 @@
 			<div class="mb-3">
 				<button class="btn btn-danger btn-lg float-start">Cancel</button>
 				<a href="index.php?pg=admin&tab=menu">
-					<button type="button" class="btn btn-primary btn-lg float-end">Save</button>
+					<button type="button" class="btn btn-success btn-lg float-end">Save</button>
 				</a>
 			</div>
 		</form>
