@@ -39,7 +39,7 @@
 				<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
 				<input  value="<?=set_value('username')?>" autocomplete="off" name="username" type="text" class="form-control  <?=!empty($errors['username']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Username" autofocus>
 					<?php if(!empty($errors['username'])):?>
-						<small class="text-danger"><?=$errors['username']?></small>
+						<small class="text-danger col-12"><?=$errors['username']?></small>
 					<?php endif;?>
 			</div> 
 

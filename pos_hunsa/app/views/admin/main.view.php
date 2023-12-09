@@ -1,5 +1,7 @@
 <?php require views_path('partials/header'); ?>
 
+	
+	<div class="container-fluid" style="height: 820px">
 	<!-- Main Container -->
 	<div class="container-fluid">
 

@@ -14,11 +14,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 			redirect('home');
  		}else
 	 	{
-	 		$errors['password'] = "wrong password";
+	 		$errors['password'] = "Wrong password";
 	 	}
  	}else
  	{
- 		$errors['username'] = "invalid username";
+ 		$errors['username'] = "Invalid username";
  	}
 
 
