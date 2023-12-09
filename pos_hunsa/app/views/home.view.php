@@ -72,59 +72,68 @@
             } catch (Exception $e) {
                 echo "Data query error";
             }
+            
+            // Check if there are tables to list
+            if (!empty($table)) {
 
-            // Loop through each table
-            foreach ($table as $key => $value) :
-                // Check if the table is disabled
-                if ($value['disable'] == 1) {
-            ?>
-                <!-- Disabled Table Section -->
-                    <div class="p-1">
-                        
-                            <div class="box_table text-center border border-3 border-secondary rounded-3 bg-secondary bg-opacity-50 m-2 shadow-xl">
-                                <h6 class="p_table cl mb-2 text-white"><?php echo $value['table_id']; ?></h6>
-                                <div class="color-bar border rounded-pill bg-warning mx-3"></div>
-                            </div>
-                        
-                    </div>
-                <!-- End Disabled Table Section -->
-                <?php
-                } elseif ($value['orders_id'] == NULL) {
+                // Loop through each table
+                foreach ($table as $key => $value) :
+                    // Check if the table is disabled
+                    if ($value['disable'] == 1) {
                 ?>
-
-                <!-- Available Table Section -->
-                    <div class="p-1">
-                        <a href="index.php?pg=order&new_table_id=<?php echo $value['table_id']; ?>">
-                            <div class="box_table text-center border border-3 border-secondary rounded-3 m-2 shadow-xl">
-                                <h6 class="p_table cl mb-2 text-black"><?php echo $value['table_id']; ?> </h6>
-                                <div class="color-bar border rounded-pill bg-available mx-3"></div>
-
-                            </div>
-                        </a>
-                    </div>
-                <!-- End Available Table Section -->
-                    
-
-                <?php
-                } else {
-                ?>
-                    <!-- Busy Table Section -->
+                    <!-- Disabled Table Section -->
                         <div class="p-1">
-                            <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
-                                <div class="box_table text-center border border-3 border-secondary rounded-3 m-2 shadow-xl">
-                                    <h6 class="p_table cl mb-2 text-black"><?php echo $value['table_id']; ?></h6>
-                                    <div class="color-bar border rounded-pill bg-danger mx-3"></div>
+
+                                <div class="box_table text-center border border-3 border-secondary rounded-3 bg-secondary bg-opacity-50 m-2 shadow-xl">
+                                    <h6 class="p_table cl mb-2 text-white"><?php echo $value['table_id']; ?></h6>
+                                    <div class="color-bar border rounded-pill bg-warning mx-3"></div>
                                 </div>
-                                </a>
-                            </div>
-                     <!-- End Busy Table Section -->
-                <?php
 
-                }
-                ?>
+                        </div>
+                    <!-- End Disabled Table Section -->
+                    <?php
+                    } elseif ($value['orders_id'] == NULL) {
+                    ?>
 
-            <?php endforeach ?>
+                    <!-- Available Table Section -->
+                        <div class="p-1">
+                            <a href="index.php?pg=order&new_table_id=<?php echo $value['table_id']; ?>">
+                                <div class="box_table text-center border border-3 border-secondary rounded-3 m-2 shadow-xl">
+                                    <h6 class="p_table cl mb-2 text-black"><?php echo $value['table_id']; ?> </h6>
+                                    <div class="color-bar border rounded-pill bg-available mx-3"></div>
 
+                                </div>
+                            </a>
+                        </div>
+                    <!-- End Available Table Section -->
+
+
+                    <?php
+                    } else {
+                    ?>
+                        <!-- Busy Table Section -->
+                            <div class="p-1">
+                                <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
+                                    <div class="box_table text-center border border-3 border-secondary rounded-3 m-2 shadow-xl">
+                                        <h6 class="p_table cl mb-2 text-black"><?php echo $value['table_id']; ?></h6>
+                                        <div class="color-bar border rounded-pill bg-danger mx-3"></div>
+                                    </div>
+                                    </a>
+                                </div>
+                         <!-- End Busy Table Section -->
+                    <?php
+
+                    }
+                    ?>
+
+                <?php endforeach;
+                } else { ?>
+
+                    <!-- No Tables Section -->
+                    <h3 class="align-center"> No tables to list.</h3>
+                    <!-- End No Tables Section -->
+
+                <?php } ?>
         </div>
     </div>
     <!-- End Table Display Section -->
