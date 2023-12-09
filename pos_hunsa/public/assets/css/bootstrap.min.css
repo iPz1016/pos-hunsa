@@ -499,6 +499,11 @@ a {
       margin: 2px;
 }
 
+.edit-menu-size {
+      height: 700px;
+      overflow-y: auto;
+}
+
 .filter-tab {
       height: 112px;
 }
@@ -2578,7 +2583,13 @@ progress {
 }
 
 .form-label {
-      margin-bottom: .5rem
+      align-items: center;
+      margin-bottom: .5rem;
+}
+
+.form-label .m-1 {
+      margin-bottom: .5rem;
+      font-weight: 700;
 }
 
 .col-form-label {
@@ -5470,6 +5481,11 @@ fieldset:disabled .btn {
       color: #fff
 }
 
+.card-editing {
+      position: relative;
+      display: flex;
+}
+
 .card {
       position: relative;
       display: flex;
@@ -8229,6 +8245,10 @@ fieldset:disabled .btn {
 
 .min-vw-100 {
       min-width: 100vw !important
+}
+
+.height-ipad {
+      height: 100px;
 }
 
 .h-25 {

@@ -1,7 +1,7 @@
 <?php require views_path('partials/header'); ?>
 
 	
-	<div class="container-fluid">
+	<div class="container-fluid" style="height: 820px">
 		<div class="container-fluid d-flex justify-content-center">
 			<a href="index.php?pg=admin&tab=dashboard" class="dashboard m-3 d-flex align-center">
 				<h3>
