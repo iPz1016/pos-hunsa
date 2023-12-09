@@ -25,9 +25,9 @@
         <?php endif; ?>
 
         <br>
-        <button class="btn btn-success float-end px-4 py-2">Save</button>
+        <button class="btn btn-success float-end btn-lg">Save</button>
         <a href="index.php?pg=admin&tab=tables">
-            <button type="button" class="btn btn-danger float-start px-4 py-2">Cancel</button>
+            <button type="button" class="btn btn-danger float-start btn-lg">Cancel</button>
         </a>
         <br>
     </form>

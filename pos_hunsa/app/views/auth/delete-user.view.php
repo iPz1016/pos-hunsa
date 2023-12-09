@@ -34,11 +34,11 @@
 			<?php if(is_array($row) && Auth::get('id')== $id):?>
 				<div class="alert alert-danger text-center">Manager cannot delete yourself!<br>Use another manager account to delete!</div>
 			<?php else:?>
-				<div class="alert alert-danger text-center">That user was not found!</div>
+				<div class="alert alert-danger text-center">User Not Found!</div>
 			<?php endif;?>
 
 			<a href="index.php?pg=admin&tab=users">
-				<button type="button" class="btn btn-danger">Cancel</button>
+				<button type="button" class="btn btn-danger btn-lg">Cancel</button>
 			</a>
 		<?php endif;?>
 	</div>

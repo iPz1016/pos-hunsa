@@ -1,6 +1,6 @@
 <?php require views_path('partials/header'); ?>
 
-<div class="container-fluid border col-lg-5 col-md-6 mt-5 p-4">
+<div class="container-fluid border col-lg-6 col-md-6 mt-5 p-4">
 	<h3 class="mb-3"><i class="fa fa-user"></i> Create User</h3>
 	<form method="post" class="overflow-auto">
 		<div>

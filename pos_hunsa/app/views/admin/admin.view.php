@@ -1,7 +1,7 @@
 <?php require views_path('partials/header'); ?>
 
-<div style="color:#444">
-	<div class="card card-primary card-outline mt-1">
+<div class="container">
+	<div class="card card-primary  mt-1">
             <div class="card-body box-profile">
                 <div class="text-center">
                     <img class="profile-user-img img-fluid img-circle elevation-2" src="./assets/images/avatar_anonymous.png" alt="User profile picture">
