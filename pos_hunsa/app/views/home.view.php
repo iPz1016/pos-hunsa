@@ -2,7 +2,7 @@
 
 <div class="d-flex">
     <div class="col-3 bg-light p-2 pt-2" style="height:820px;">
-        <!--Account-->
+         <!-- Account Section -->
         <div class="card card-primary card-outline">
             <div class="card-body box-profile">
                 <div class="text-center">
@@ -18,9 +18,9 @@
             </div>
         </div>
         <hr>
-        <!--./end Account-->
+         <!-- End Account Section -->
 
-        <!--TakeHome-->
+        <!--TakeHome Section -->
         <h3 class="fs-5"> ALL TAKE HOME ORDERS</h3>
         <div class="box js-products overflow-auto align-takehome flex-sm-column h-47 p-3">
 
@@ -35,24 +35,26 @@
             if ($order) :
                 foreach ($order as $key => $value) :
             ?>
-                    <!--table number box-->
-                    <div class="box_table text-center border border-3 border-secondary bg-dark rounded-3 m-2 shadow-xl">
+                    <!-- Take Home Order Box -->
+                    <div class="box_table text-center border border-3 border-secondary bg-dark rounded-3 m-2 shadow-xl pb-4">
                         <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
-                            <h6 class="p_table cl mb-2 text-white"><?php echo $key + 1; ?></h6>
+                            <h6 class="p_table cl text-white"><?php echo $key + 1; ?></h6>
                             <div class="color-bar border rounded-pill bg-available mx-3"></div>
                         </a>
                     </div>
-                    <!--end box-->
+                    <!--End Box-->
             <?php endforeach;
             endif; ?>
         </div>
-
+        
+        <!-- New Take Home Order Button -->
         <a href="index.php?pg=order&new_takehome=1">
             <div class="align-center border border-3 border-secondary rounded-3 bg-secondary bg-opacity-50 my-2" style="height:75px;">
                 <h3><i class="fa fa-plus-circle"></i> TAKE HOME</h3>
             </div>
         </a>
-        <!--./end TakeHome-->
+        <!-- End Button -->
+        <!--End TakeHome Section -->
 	</div>
 
 
@@ -64,15 +66,19 @@
             <?php
 
             $order_class = new Orders;
+            // Fetch available tables
             try {
                 $table = $order_class->get_available_table();
             } catch (Exception $e) {
                 echo "Data query error";
             }
+
+            // Loop through each table
             foreach ($table as $key => $value) :
+                // Check if the table is disabled
                 if ($value['disable'] == 1) {
             ?>
-                <!--disable table grey color bar-->
+                <!-- Disabled Table Section -->
                     <div class="p-1">
                         
                             <div class="box_table text-center border border-3 border-secondary rounded-3 bg-secondary bg-opacity-50 m-2 shadow-xl">
@@ -81,12 +87,12 @@
                             </div>
                         
                     </div>
-                <!--end box-->
+                <!-- End Disabled Table Section -->
                 <?php
                 } elseif ($value['orders_id'] == NULL) {
                 ?>
 
-                <!--available table green color bar-->
+                <!-- Available Table Section -->
                     <div class="p-1">
                         <a href="index.php?pg=order&new_table_id=<?php echo $value['table_id']; ?>">
                             <div class="box_table text-center border border-3 border-secondary rounded-3 m-2 shadow-xl">
@@ -96,13 +102,13 @@
                             </div>
                         </a>
                     </div>
-                <!--end box-->
+                <!-- End Available Table Section -->
                     
 
                 <?php
                 } else {
                 ?>
-                    <!--busy table red color bar-->
+                    <!-- Busy Table Section -->
                         <div class="p-1">
                             <a href="index.php?pg=order&orders_id=<?php echo $value['orders_id']; ?>">
                                 <div class="box_table text-center border border-3 border-secondary rounded-3 m-2 shadow-xl">
@@ -111,7 +117,7 @@
                                 </div>
                                 </a>
                             </div>
-                    <!--end box-->
+                     <!-- End Busy Table Section -->
                 <?php
 
                 }
@@ -121,6 +127,7 @@
 
         </div>
     </div>
+    <!-- End Table Display Section -->
 </div>
 
 

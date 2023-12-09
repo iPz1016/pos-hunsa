@@ -17,27 +17,22 @@
 
 			switch ($tab) {
 				case 'dashboard':
-					// code...
 					require views_path('admin/btn-main');
 					break;
 
 				case 'menu':
-					// code...
 					require views_path('admin/btn-main');
 					break;
 
 				case 'users':
-					// code...
 					require views_path('admin/btn-main');
 					break;
 
 				case 'sales':
-					// code...
 					require views_path('admin/btn-main');
 					break;
 
 				case 'tables':
-					// code...
 					require views_path('admin/btn-main');
 					break;
 			}
@@ -48,32 +43,26 @@
 
 		switch ($tab) {
 			case 'dashboard':
-				// code...
 				require views_path('admin/dashboard');
 				break;
 
 			case 'menu':
-				// code...
 				require views_path('admin/menu');
 				break;
 
 			case 'users':
-				// code...
 				require views_path('admin/users');
 				break;
 
 			case 'sales':
-				// code...
 				require views_path('admin/sales');
 				break;
 
 			case 'tables':
-				// code...
 				require views_path('admin/tables');
 				break;
 
 			default:
-				// code...
 				require views_path('admin/main');
 				break;
 		}

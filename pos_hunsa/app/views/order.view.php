@@ -63,7 +63,7 @@
 
 		</div>
 	</div>
-	<!--./ ON-HOLD Section ./-->
+	<!-- ON-HOLD Section -->
 
 
 	<!-- MENU Section -->
@@ -80,7 +80,7 @@
 		<!-- .h-menu is in bootstrap.min.css : used to manage all menu scrolling sizes -->
 		<div onclick="add_menu(event)" class="js-menu h-menu d-flex overflow-auto flex-wrap px-2-1"> </div>
 	</div>
-	<!--./ MENU Section ./-->
+	<!--End MENU Section -->
 
 	<!-- SERVED Section -->
 	<div class="col-3 bg-gray p-2 pt-1" style="height: 100%;">
@@ -101,12 +101,12 @@
 			<button onclick="remove_serve_all()" class="btn btn-danger my-2 w-100">Clear All</button>
 		</div>
 	</div>
-	<!--./ SERVED Section ./-->
+	<!-- End SERVED Section -->
 </div>
 
-<!--modals-->
+<!--Modals-->
 
-<!--enter amount modal-->
+<!-- Enter Amount Modal-->
 <div role="close-button" onclick="hide_modal(event,'amount-paid')" class="js-amount-paid-modal hide" style="animation: appear .5s ease;background-color: #000000bb; width: 100%;height: 100%;position: fixed;left:0px;top:0px;z-index: 4;">
 
 	<div class="amount-paid">
@@ -118,9 +118,9 @@
 		<button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-danger btn-lg float-start">Cancel</button>
 	</div>
 </div>
-<!--end enter amount modal-->
+<!--End Enter Amount Modal-->
 
-<!--change modal-->
+<!--Change Modal-->
 <div role="close-button" onclick="hide_modal(event,'change')" class="js-change-modal hide" style="animation: appear .5s ease;background-color: #000000bb; width: 100%;height: 100%;position: fixed;left:0px;top:0px;z-index: 4;">
 
 	<div class="change">
@@ -131,10 +131,10 @@
 		<button role="close-button" onclick="hide_modal(event,'change')" class="js-btn-close-change btn btn-lg btn-success float-end">Continue</button>
 	</div>
 </div>
-<!--end change modal-->
+<!--End Change Modal-->
 
 
-<!--end modals-->
+<!--End Modals-->
 
 <script>
 	
@@ -143,9 +143,8 @@
 	var RECEIPT_WINDOW = null;
 	
 
-	/////////////////////////////////
+
 	// Fetch menu for first run
-	/////////////////////////////////
 	show_menu("all");
 	refresh_order_display();
 	refresh_served_display();
@@ -153,9 +152,8 @@
 	refresh_checkout_button();
 	show_table_id();
 
-	/////////////////////////////////
+	
 	// Filter menu with food type
-	/////////////////////////////////
 	function button_html(menu_type) {
 
 		if (menu_type == "all") {
@@ -174,21 +172,18 @@
 			}
 			else
 			{
-				html += `<button type="button" class="btn btn-secondary btn-menu-size btn-lg" onclick="show_menu('${MENU_TYPE[i]['menu_type']}')">${MENU_TYPE[i]['menu_type'].toUpperCase()}</button> `;	
+				html += `<button type="button" class="btn btn-secondary btn-lg" onclick="show_menu('${MENU_TYPE[i]['menu_type']}')">${MENU_TYPE[i]['menu_type'].toUpperCase()}</button> `;	
 			}
 		}
 		
 		return html;
 	}
 
-	
-	///////////////////////////////////////////////////////////////////
-	// menu_html : used for printing menus into div of the same size.
-	///////////////////////////////////////////////////////////////////
-
+	// Card Of Menu
 	function menu_html(data) {
 
 		return `
+	<!--card-->
 	<div class="card-menu border-0 mx-2 my-1 h-40 menu_size">
 		<a href="#">
 			<img menu_id="${data.menu_id}" src="${data.menu_img}" class="w-100 rounded border">
@@ -198,15 +193,15 @@
 			<div class="text-muted">${data.menu_name}</div>
 		</div>
 	</div>
+	<!--end card-->
 	`;
 	}
 
-	///////////////////////////////////////////////////////////////////
-	// onhold_html : 
-	///////////////////////////////////////////////////////////////////
+	// Card Of On-hold Menu
 	function onhold_html(menu, order) {
 
 		return `
+	<!--item-->
 	<table style="width: 100%;">
 		<tr>
 			<th class="text-primary w-100" menu_id=${menu.menu_id}>
@@ -235,15 +230,15 @@
 			</th>
 		</tr>
 	</table>
+	<!--end item-->
 	`;
 	}
 
-	///////////////////////////////////////////////////////////////////
-	// served_html : 
-	///////////////////////////////////////////////////////////////////
+	// Card Of Served Menu
 	function served_html(menu, order) {
 
 		return `
+	<!--item-->
 	<tr>
 		<td class="text-served" menu_id=${order.menu_id}>
 			<div class="text-start">
@@ -261,12 +256,12 @@
 			</div>
 		</td>
 	</tr>
+	<!--end item-->
 	`;
 	}
+	
 
-	///////////////////////////////////////////////////////////////////
-	// refresh_served_display : 
-	///////////////////////////////////////////////////////////////////
+	// Refresh Cards Of Served Menu
 	function refresh_served_display() {
 		var items_div = document.querySelector(".js-served");
 		items_div.innerHTML = "";
@@ -291,9 +286,7 @@
 		gtotal_div.innerHTML = "Total: ฿ " + grand_total.toFixed(2);
 	}
 
-	///////////////////////////////////////////////////////////////////
-	// refresh_order_display : 
-	///////////////////////////////////////////////////////////////////
+	// Refresh Cards Of On-hold Menu
 	function refresh_order_display() {
 		var items_div = document.querySelector(".js-onhold");
 		items_div.innerHTML = "";
@@ -309,9 +302,7 @@
 		}
 	}
 
-	///////////////////////////////////////////////////////////////////
-	// refresh_checkout_display : 
-	///////////////////////////////////////////////////////////////////
+	// Refresh Checkout Button
 	function refresh_checkout_button() {
 		var items_div = document.querySelector(".js-checkout");
 		items_div.innerHTML = `
@@ -337,9 +328,7 @@
 
 	}
 
-	///////////////////////////////////////////////////////////////////
-	// refresh_qty_display : 
-	///////////////////////////////////////////////////////////////////
+	// Refresh Quantity Count of On-hold and Served Menu
 	function refresh_qty_count()
 	{
 		var onhold_div = document.querySelector(".js-onhold_qty");
@@ -362,18 +351,14 @@
 	}
 
 
-	///////////////////////////////////////////////////////////////////
-	// show_table_id :
-	///////////////////////////////////////////////////////////////////
+	// TABLE & MENU Section
 	function show_table_id() {
 		var button_div = document.querySelector(".js-table");
 		if (ORDER_INFO['table_id'] != null)
 			button_div.innerHTML = "<h1 class='text-center'>TABLE <p1 style='color:#CC3300'>"+ ORDER_INFO['table_id'] + "</p1></h1>";
 	}
 
-	///////////////////////////////////////////////////////////////////
-	// show_menu :
-	///////////////////////////////////////////////////////////////////
+	// Refresh Menu Section For Selected Menu Type
 	function show_menu(menu_type) {
 		//console.log(menu_type);
 		var button_div = document.querySelector(".js-select");

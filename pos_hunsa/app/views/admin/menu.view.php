@@ -1,7 +1,9 @@
 <div class="container-fluid row">
 
+    <!-- Menu Table Section -->
     <div class="col">
         <div class="table-responsive table-h-49">
+            <!-- Table Header -->
             <table class="table table-striped table-hover">
                 <thead>
                     <tr class="fs-5">
@@ -12,6 +14,7 @@
                         <th class="fw-black">Image</th>
                         <th class="fw-black">Disable</th>
                         <th>
+                            <!-- Add New Menu Button -->
                             <a href="index.php?pg=menu-new">
                                 <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
                             </a>
@@ -19,11 +22,13 @@
                     </tr>
                 </thead>
 
+                <!-- Menu Table Data -->
                 <?php if (!empty($products)) : ?>
                     <?php foreach ($products as $product) : ?>
                         <tr>
                             <td><?= esc($product['menu_id']) ?></td>
                             <td>
+                                <!-- Edit Menu Button -->
                                 <a href="index.php?pg=menu-edit&id=<?= $product['menu_id'] ?>">
                                     <?= esc(strtoupper($product['menu_name'])) ?>
                                 </a>
@@ -31,9 +36,11 @@
                             <td><?= esc($product['menu_type']) ?></td>
                             <td><?= esc($product['menu_price']) ?></td>
                             <td>
+                                <!-- Menu Image -->
                                 <img src="<?= crop($product['menu_img']) ?>" style="width: 100%;max-width:100px;">
                             </td>
                             <td>
+                                <!-- Disable/Enable Status -->
                                 <?php
                                     if ($product['disable'] == 0) {
                                         echo "<a class='text-success'><i class='fa fa-check'></i> Enable</a>";
@@ -43,6 +50,7 @@
                                 ?>
                             </td>
                             <td>
+                                <!-- Edit and Delete Menu Buttons -->
                                 <a href="index.php?pg=menu-edit&id=<?= $product['menu_id'] ?>">
                                     <button class="btn btn-success btn-sm">Edit</button>
                                 </a>
