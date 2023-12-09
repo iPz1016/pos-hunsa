@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<td><?= $row['menu_name'] ?></td>
 					<!-- Display price per item  -->
 					<td>฿<?= number_format($row['menu_price'], 2) ?></td>
-					<!-- Display total amount for the item ->
+					<!-- Display total amount for the item -->
 					<td>฿<?= number_format($row['served_qty'] * $row['menu_price'], 2) ?></td>
 				</tr>
 			<?php endforeach; ?>
