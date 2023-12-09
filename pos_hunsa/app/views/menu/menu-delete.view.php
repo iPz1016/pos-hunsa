@@ -68,7 +68,7 @@
 			<div class="mb-5">
 				<button class="btn btn-danger btn-lg float-start">Delete</button>
 				<a href="index.php?pg=admin&tab=menu">
-					<button type="button" class="btn btn-primary btn-lg float-end">Cancel</button>
+					<button type="button" class="btn btn-success btn-lg float-end">Cancel</button>
 				</a>
 			</div>
 		</form>
