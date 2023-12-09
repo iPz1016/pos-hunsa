@@ -499,6 +499,10 @@ a {
       margin: 2px;
 }
 
+.btn-admin-size {
+      width: 250px;
+}
+
 .filter-tab {
       height: 112px;
 }
