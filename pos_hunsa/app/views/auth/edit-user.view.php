@@ -14,11 +14,10 @@ if (!empty($_SESSION['referer'])) {
 
 	<?php if (is_array($row)) : ?>
 		<form method="post" enctype="multipart/form-data">
-			<center>
+			<div class="justfy-content-center mb-4">
 				<h3><i class="fa fa-user"></i> Edit User</h3>
 				<div><?= esc(APP_NAME) ?></div>
-			</center>
-			<br>
+			</div>
 			<div class="input-group mb-3">
 				<span class="input-group-text" id="basic-addon1">Username:</span>
 				<input value="<?= set_value('username', $row['username']) ?>" name="username" type="text" class="form-control <?= !empty($errors['username']) ? 'border-danger' : '' ?>" id="exampleFormControlInput1" placeholder="Username">
@@ -37,12 +36,13 @@ if (!empty($_SESSION['referer'])) {
 			</div>
 
 			<div class="input-group mb-3">
-				<span class="input-group-text">First name:</span>
-				<input name="firstname" value="<?= set_value('firstname', $row['firstname']) ?>" type="text" class="form-control <?= !empty($errors['firstname']) ? 'border-danger' : '' ?>" placeholder="First name" aria-label="Firstname">
+				<span class="input-group-text">First Name:</span>
+				<input name="firstname" value="<?= set_value('firstname', $row['firstname']) ?>" type="text" class="form-control <?= !empty($errors['firstname']) ? 'border-danger' : '' ?>" placeholder="First Name" aria-label="Firstname">
+			</div>
 
-
-				<span class="input-group-text">Last name:</span>
-				<input name="lastname" value="<?= set_value('lastname', $row['lastname']) ?>" type="text" class="form-control <?= !empty($errors['lastname']) ? 'border-danger' : '' ?>" placeholder="Last name" aria-label="Lastname">
+			<div class="input-group mb-3">
+				<span class="input-group-text">Last Name:</span>
+				<input name="lastname" value="<?= set_value('lastname', $row['lastname']) ?>" type="text" class="form-control <?= !empty($errors['lastname']) ? 'border-danger' : '' ?>" placeholder="Last Name" aria-label="Lastname">
 			</div>
 
 			<div class="input-group mb-3">
@@ -79,17 +79,22 @@ if (!empty($_SESSION['referer'])) {
 				<?php endif; ?>
 			</div>
 
-			<br>
-			<button class="btn btn-primary float-end">Save</button>
-
-			<a href="<?= $back_link ?>">
-				<button type="button" class="btn btn-danger">Cancel</button>
-			</a>
+			<div class="row justify-content-center">
+				<div class="col-1">
+					<button class="btn btn-primary float-end px-4">Save</button>
+				</div>
+				<div class="col-1">
+					<a href="<?= $back_link ?>">
+						<button type="button" class="btn btn-danger px-4">Cancel</button>
+					</a>
+				</div>
+			</div>
 
 			<div class="clearfix"></div>
 		</form>
+	
 	<?php else : ?>
-		<div class="alert alert-danger text-center">That user was not found!</div>
+		<div class="alert alert-danger text-center">User Not Found!</div>
 
 		<a href="<?= $back_link ?>">
 			<button type="button" class="btn btn-danger">Cancel</button>

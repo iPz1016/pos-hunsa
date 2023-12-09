@@ -4,11 +4,10 @@
 		
 		<?php if(is_array($row)):?>
 
-			<center>
+			<div class="justfy-content-center mb-4">
 				<h3><i class="fa fa-user"></i> User Profile</h3>
 				<div><?=esc(APP_NAME)?></div>
-			</center>
-			<br>
+			</div>
 
 			<table class="table table-hover table-striped">
 				
