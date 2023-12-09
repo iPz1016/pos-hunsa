@@ -24,9 +24,9 @@
 					<span class="input-group-text">Role:</span>
 					<div class="form-control"><?=esc(strtoupper($row['role']))?></div>
 				</div>
-				<button class="btn btn-danger float-start">Delete</button>
+				<button class="btn btn-danger btn-lg float-start">Delete</button>
 				<a href="index.php?pg=admin&tab=users">
-					<button type="button" class="btn btn-success float-end">Cancel</button>
+					<button type="button" class="btn btn-success btn-lg float-end">Cancel</button>
 				</a>
 			</div>
 		</form>
@@ -38,7 +38,7 @@
 			<?php endif;?>
 
 			<a href="index.php?pg=admin&tab=users">
-				<button type="button" class="btn btn-danger btn-lg">Cancel</button>
+				<button type="button" class="btn btn-success btn-lg float-end">Cancel</button>
 			</a>
 		<?php endif;?>
 	</div>

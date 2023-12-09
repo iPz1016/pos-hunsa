@@ -499,6 +499,18 @@ a {
       margin: 2px;
 }
 
+.btn-bodyadmin-size {
+      height: 85px;
+      width: 85px;
+      margin-right: .25rem;
+}
+
+.btn-headadmin-size {
+      height: 50px;
+      width: 179px;
+      margin-right: .25rem;
+}
+
 .btn-admin-size {
       width: 250px;
 }

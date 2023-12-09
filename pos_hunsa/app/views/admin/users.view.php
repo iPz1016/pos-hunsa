@@ -14,7 +14,7 @@
                         <th>
                             <!-- Add New User Button -->
                             <a href="index.php?pg=signup">
-                                <button class="btn btn-primary btn-lg w-100"><i class="fa fa-plus"></i> Add new</button>
+                                <button class="btn btn-primary btn-lg btn-headadmin-size float-end"><i class="fa fa-plus"></i> New User</button>
                             </a>
                         </th>
                     </tr>
@@ -41,11 +41,11 @@
                             <td><?= esc($user['role']) ?></td>
                             <td>
                                 <!-- Edit User and Delete User Buttons -->
-                                <a href="index.php?pg=edit-user&id=<?= $user['id'] ?>">
-                                    <button class="btn btn-success btn-lg">Edit</button>
-                                </a>
                                 <a href="index.php?pg=delete-user&id=<?= $user['id'] ?>">
-                                    <button class="btn btn-danger btn-lg" <?php if (Auth::get('id') == $user['id']) echo "disabled"; ?>>Delete</button>
+                                    <button class="btn btn-danger btn-lg btn-bodyadmin-size float-end" <?php if (Auth::get('id') == $user['id']) echo "disabled"; ?>>Delete</button>
+                                </a>
+                                <a href="index.php?pg=edit-user&id=<?= $user['id'] ?>">
+                                    <button class="btn btn-success btn-lg btn-bodyadmin-size float-end">Edit</button>
                                 </a>
                             </td>
                         </tr>
