@@ -27,13 +27,19 @@
 				
 			</table>
 			<br>
+			<a href="index.php?pg=admin&tab=users">
+				<button type="button" class="btn btn-primary btn-lg float-start">Back</button>
+			</a>
+
 			<a href="index.php?pg=edit-user&id=<?=$row['id']?>">
-				<button type="button" class="btn btn-primary">Edit</button>
+				<button type="button" class="btn btn-secondary btn-lg">Edit</button>
 			</a>
 
 			<a href="index.php?pg=delete-user&id=<?=$row['id']?>" class="float-end">
-				<button type="button" class="btn btn-danger">Delete</button>
+				<button type="button" class="btn btn-danger btn-lg float-end">Delete</button>
 			</a>
+
+			
 
 
 		<?php else:?>
