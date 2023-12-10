@@ -17,21 +17,9 @@
 
 			switch ($tab) {
 				case 'dashboard':
-					require views_path('admin/btn-main');
-					break;
-
 				case 'menu':
-					require views_path('admin/btn-main');
-					break;
-
 				case 'users':
-					require views_path('admin/btn-main');
-					break;
-
 				case 'sales':
-					require views_path('admin/btn-main');
-					break;
-
 				case 'tables':
 					require views_path('admin/btn-main');
 					break;
