@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		<div class="text-center justify-content-center">
 			<?php echo "<img  src='" . APP_LOGO_WITH_TEXT . "' width='100' height='100'>"; ?>
-			<h1><?php echo APP_NAME; ?></h1>
+			<h3><?php echo APP_NAME; ?></h3>
 			<h4>Receipt</h4>
 			<div>
 				<i>

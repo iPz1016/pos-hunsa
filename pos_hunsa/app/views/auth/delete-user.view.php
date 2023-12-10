@@ -5,7 +5,7 @@
 		<?php if(is_array($row) && Auth::get('id')!= $id):?>
 		<form method="post" class="overflow-auto">
 			<div class="m-2">
-				<h3><i class="fa fa-user"></i> Delete User</h3>
+				<h3 class="text-danger"><i class="fa fa-user"></i> Delete User</h3>
 				<div class="alert alert-danger text-center">Are you sure you want to delete this user?!</div>
 
 				<!-- Display user information -->
