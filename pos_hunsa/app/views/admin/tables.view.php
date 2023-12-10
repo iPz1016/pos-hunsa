@@ -52,7 +52,7 @@
                                 } else if ($table['orders_id'] == 0) {
                                     echo "<a class='text-success'><i class='fa fa-check'></i>  Available</a>";
                                 } else {
-                                    echo "<a class='text-primary' href='index.php?pg=order&orders_id=" . $table['orders_id'] . "' ><i class='fa fa-stop-circle'></i>  Busy</a>";
+                                    echo "<a class='text-primary'><i class='fa fa-stop-circle'></i>  Busy</a>";
                                 }
 
                                 ?>
