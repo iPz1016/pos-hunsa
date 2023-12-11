@@ -7,7 +7,7 @@ To use this website please follow these instruction.
 - There is a extension you need to enable before using, plese follow this instruction: https://www.youtube.com/watch?v=on-xpHtcGy0
 - Import database by using ```'pos_hunsa'``` as a database name by using ```pos_hunsa.sql``` file
 - After finish all process, you can access website from ```http://localhost/pos_hunsa/```
-- 
+
 **Account information**
 
 Manager account
