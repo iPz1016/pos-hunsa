@@ -9,9 +9,8 @@
 				<div><?=esc(APP_NAME)?></div>
 			</div>
 
+			<!-- User information table -->
 			<table class="table table-hover table-striped">
-				
-
 				<tr>
 					<th>Username</th><td><?=$row['username']?></td>
 				</tr>
@@ -27,24 +26,26 @@
 				
 			</table>
 			<br>
+
+			<!-- Back button -->
 			<a href="index.php?pg=admin&tab=users">
 				<button type="button" class="btn btn-primary btn-lg float-start">Back</button>
 			</a>
 
+			<!-- Edit button -->
 			<a href="index.php?pg=edit-user&id=<?=$row['id']?>">
 				<button type="button" class="btn btn-secondary btn-lg">Edit</button>
 			</a>
 
+			<!-- Delete button -->
 			<a href="index.php?pg=delete-user&id=<?=$row['id']?>" class="float-end">
 				<button type="button" class="btn btn-danger btn-lg float-end">Delete</button>
 			</a>
 
-			
-
 
 		<?php else:?>
+			<!-- Error alert -->
 			<div class="alert alert-danger text-center">That user was not found!</div>
-
 		<?php endif;?>
 	</div>
 

@@ -3,7 +3,7 @@
 <div class="container-fluid border rounded p-4 m-2 col-lg-6 mx-auto">
 	<?php if (!empty($row)) : ?>
 		<form method="post" enctype="multipart/form-data" class="overflow-auto">
-			<h3><i class="fa fa-hamburger"></i> Delete Menu</h3>
+			<h3 class="text-danger"><i class="fa fa-hamburger"></i> Delete Menu</h3>
 			<?php
 			if (empty($errors['error'])) { ?>
 				<div class="alert alert-danger text-center">Are you sure you want to delete this menu??!!</div>
