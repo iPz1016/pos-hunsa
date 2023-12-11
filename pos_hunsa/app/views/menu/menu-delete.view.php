@@ -12,8 +12,10 @@
 				echo "<div class='alert alert-danger text-center'>" . $errors['error'] . "</div>";
 			}
 			?>
+
+			 <!-- Menu Details -->
 			<div class="card-editing">
-				<div class="me-1" style="width: 50%; float: left;">
+				<div class="me-1 float-start w-50">
 					<div class="form-label">
 						<p class="m-1">Menu Name</p>
 						<input disabled value="<?= set_value('menu_name', $row['menu_name']) ?>" name="menu_name" type="text" class="form-control <?= !empty($errors['menu_name']) ? 'border-danger' : '' ?>" id="productControlInput1" placeholder="Menu Name">
@@ -22,7 +24,7 @@
 						<?php endif; ?>
 					</div>
 				</div>
-				<div class="ms-1" style="width: 50%; float: right;">
+				<div class="ms-1 float-end w-50">
 					<div class="form-label">
 						<p class="m-1">Price</p>
 						<div class="input-group mb-3">
@@ -35,6 +37,8 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Menu Type -->
 			<div class="form-label">
 				<p class="m-1">Menu Type</p>
 			</div>
@@ -44,6 +48,8 @@
 				</div>
 				<input type="text" class="form-control" name="type" value="<?php echo set_value('menu_type', $row['menu_type']); ?>" aria-label="menu_type" disabled>
 			</div>
+
+			 <!-- Menu Status -->
 			<div class="form-label">
 				<p class="m-1">Menu Status</p>
 				<div class="form-check form-check-inline">
@@ -55,7 +61,11 @@
 					<label class="form-check-label" for="inlineRadio2">Enable</label>
 				</div>
 			</div>
+
+			<!-- Menu Image -->
 			<img class="mx-auto m-3 d-block" src="<?= $row['menu_img'] ?>" style="height: 220px;">
+			
+			<!-- Delete and Cancel Buttons -->
 			<div class="mb-5">
 				<button class="btn btn-danger btn-lg float-start">Delete</button>
 				<a href="index.php?pg=admin&tab=menu">
@@ -63,7 +73,9 @@
 				</a>
 			</div>
 		</form>
+		
 	<?php else : ?>
+		 <!-- Error message if menu not found -->
 		That menu was not found
 		<br><br>
 		<a href="index.php?pg=admin&tab=menu">
