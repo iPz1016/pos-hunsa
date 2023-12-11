@@ -1,12 +1,11 @@
 <?php
 
-
-/**
- * authentication class
- */
+// Authentication Class
 class Auth
-{
-	
+{	
+     // Get the value of a specific column for the authenticated user
+     // @param string $column Column name
+     // @return Value of the specified column or "Unknown" if not found
 	public static function get($column)
 	{
 		if(!empty($_SESSION['USER'][$column])){
@@ -16,9 +15,11 @@ class Auth
 		return "Unknown";
 	}
 
+
+     // Check if a user is logged in     
+     // @return bool True if logged in, false otherwise
 	public static function logged_in()
 	{
-
 		if(!empty($_SESSION['USER'])){
 
 			$db = new Database();
@@ -27,13 +28,14 @@ class Auth
 				return true;
 			}
 		}
-
 		return false;
 	}
 
+	// Check if the authenticated user has the specified role access
+     	// @param string $role Role to check access for
+     	// @return bool True if user has access, false otherwise
 	public static function access($role)
 	{
-
 		$access['manager'] = ['manager'];
 		$access['cashier'] = ['cashier'];
 
@@ -42,15 +44,19 @@ class Auth
 		{
 			return true;
 		}
-
 		return false;
 	}
 
+	// Set a message in the session to be retrieved later
+      // @param string $message Message to set
+     	// @return void
 	public static function setMessage($message)
 	{
 		$_SESSION['MESSAGE'] = $message;
 	}
 
+	// Get and unset a previously set message from the session
+     	// @return string|null Retrieved message or null if not set
 	public static function getMessage()
 	{
 		if(!empty($_SESSION['MESSAGE'])){
@@ -60,7 +66,4 @@ class Auth
 			return $message;
 		}
 	}
-
-	
-
 }

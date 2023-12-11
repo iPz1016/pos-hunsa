@@ -1,11 +1,9 @@
 <?php 
 
-/**
- * graph creator
- */
+// Graph Creator Class
 class Graph
-{
-	
+{	
+	// Graph Properties
 	public $canvasX = 1000;
 	public $canvasY = 400;
 	public $font_size = 16;
@@ -13,6 +11,9 @@ class Graph
 	public $title = "Graph Title";
 	public $xtitle = "Title X";
 
+     	// Display the graph based on the provided data     
+     	// @param array $data Data for the graph
+     	// @return void
 	public function display($data)
 	{
 			$canvasX = $this->canvasX;
@@ -20,10 +21,12 @@ class Graph
 
 			if(!is_array($data) || empty($data))
 			{
-				echo "There is no record for $this->title !!";
+				//Display message if there is no data record
+				echo "There is no record for $this->title";
 				return;
 			}
 
+			// Prepare data for plotting
 			$xText = array_keys($data);
 
 			$maxY = max($data);
@@ -43,12 +46,12 @@ class Graph
 
 			$extraX = 100;
 			$extraY = 50;
-
 		?>
 
+		<!-- SVG Container for the Graph -->
 		<svg viewBox="0 -<?=$extraY?> <?=$canvasX + $extraX?> <?=$canvasY + ($extraY * 2.5)?>" class="border" style="width:100%;<?=$this->styles?>">
 		
-			<!-- top to bottom lines-->
+			<!-- Top to Bottom lines-->
 			<?php 
 				for ($i=0; $i < $maxX; $i++) {
 					
@@ -64,7 +67,7 @@ class Graph
 
 			?>
 
-			<!-- left to right lines-->
+			<!-- Left to Right lines-->
 			<?php
 				
 				$max_lines = count($data);
@@ -83,11 +86,11 @@ class Graph
 
 			?>
 
-			
+			<!-- Graph Line -->
 			<polyline points="<?=$points?>"  style="stroke-width:4;stroke:white;fill:#cccccc66"/>
 			
+			<!-- Plotting Data Points -->
 			<?php 
-
 				$num = 1;
 				$points = "0,$canvasY ";
 				foreach ($data as $key => $value) {
@@ -122,24 +125,22 @@ class Graph
 					if(round($num) < 0){
 						break;
 					}
-
 					?>
 					<text x="<?=$x + ($multiplierX/8)?>" y="<?=$y?>" style="fill:black;font-size: <?=$this->font_size?>px"><?=round($num)?></text>
 					<?php
 
 					$max_lines = $max_lines ? $max_lines : 1;
 					$num -= $maxY / $max_lines;
-
 				}
 
 			?>
 
-			<!--graph title-->
+			<!--Graph title-->
 			<text x="10" y="-<?=($extraY / 2.5)?>" style="font-size:24px">
 				<?=$this->title?>
 			</text>
 
-			<!--x axis title-->
+			<!--X-axis title-->
 			<?php 
 
 				$textoffset = (strlen($this->xtitle) / 2) * 9;
@@ -147,11 +148,7 @@ class Graph
 			<text x="<?=($canvasX/2) - $textoffset?>" y="<?=($canvasY+$extraY+10)?>" style="font-size:18px">
 				<?=$this->xtitle?>
 			</text>
-
-			
-		 
 		</svg>
-
 		<?php 
 	}
 }

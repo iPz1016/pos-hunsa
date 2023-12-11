@@ -1,13 +1,11 @@
 <?php
-
-
-/**
- * orders class
- */
+// Orders class
 class Orders extends Model
-{
-
+{   
+    // Database orders table
     protected $table = "orders";
+    
+    // Allowed columns that can be accessed or modified
     protected $allowed_columns = [
 
         'orders_id',
@@ -17,13 +15,17 @@ class Orders extends Model
         'served_qty'
     ];
 
-
+    // Validate input data for orders.
+    // @param array $data The data to be validated.
+    // @return array An array containing validation errors, if any.
     public function validate($data)
     {
         $errors = [];
-
         return $errors;
     }
+
+    // Retrieve distinct orders for take-home.
+    // @return array An array containing distinct order IDs for take-home orders.
     public function get_take_home_order()
     {
         $query = "SELECT DISTINCT o.orders_id
@@ -34,9 +36,10 @@ class Orders extends Model
         return $db->query($query);
     }
 
+    // Retrieve available tables with associated orders.
+    // @return array An array containing available tables with associated orders.
     public function get_available_table()
     {
-
         $query = "SELECT t.table_id,t.disable,o.orders_id FROM table_info t
         LEFT JOIN 
         (
@@ -50,6 +53,8 @@ class Orders extends Model
         return $db->query($query);
     }
 
+    // Update order details.
+    // @param array $data The data to be updated.
     public function update_order($data)
     {
         $clean_array = $this->get_allowed_columns($data, $this->table);
@@ -60,6 +65,8 @@ class Orders extends Model
         $db->query($query, $clean_array);
     }
 
+    // Delete menu in specific order using order ID and menu ID.
+    // @param array $data The data for the order to be deleted.
     public function delete_order($data)
     {
         $clean_array = $this->get_allowed_columns($data, $this->table);
@@ -70,6 +77,8 @@ class Orders extends Model
         $db->query($query, $clean_array);
     }
 
+    // Delete all orders for a specific order ID.
+    // @param array $data The data for the orders to be deleted.
     public function delete_all_order($data)
     {
         $clean_array = $this->get_allowed_columns($data, $this->table);

@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $row) {
 		// Redirect to the admin menu page
 		redirect('admin&tab=menu');
 	} else {
-		// If the menu is currently in orders, set an error message
-		$errors['error'] = 'This menu is not currently in order(s).<br> Please try again later.';
+		// If the menu is currently in customer orders, set an error message
+		$errors['error'] = 'This menu is currently in order(s).<br> Please try again later.';
 	}
 }
 

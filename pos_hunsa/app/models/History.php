@@ -1,13 +1,12 @@
 <?php
 
-
-/**
- * History class
- */
+// History class
 class History extends Model
 {
-
+    // Database table name
     protected $table = "history";
+
+    // Allowed columns for insertion and updating
     protected $allowed_columns = [
         'id',
         'orders_id',
@@ -19,35 +18,41 @@ class History extends Model
         'menu_price',
         'time'
     ];
+
+    // Validates the data before insertion or updating.
+    // @param array $data Data to be validated
+    // @param int|null $id ID for updating (optional)
+    // @return array Array of validation errors (empty if no errors)
     public function validate($data, $id = null)
     {
         $errors = [];
 
-        //check description
+        // Check Menu name and validate input from users.
+        // Display error massage if input text is not valid.
         if (empty($data['menu_name'])) {
-            $errors['menu_name'] = "Menu name is required";
+            $errors['menu_name'] = "Menu Name is required";
         } else
 			if (!preg_match('/[a-zA-Z0-9 _\-\&\(\)]+/', $data['menu_name'])) {
-            $errors['menu_name'] = "Only letters allowed in menu name";
+            $errors['menu_name'] = "Only letters are allowed in the Menu Name.";
         }
 
-        //check qty
+        // Check Quantity and validate input from users.
+        // Display an error message if users do not input a number.
         if (empty($data['qty'])) {
-            $errors['qty'] = "Menu quantity is required";
+            $errors['qty'] = "Menu Quantity is required";
         } else
 			if (!preg_match('/^[0-9]+$/', $data['qty'])) {
-            $errors['qty'] = "quantity must be a number";
+            $errors['qty'] = "Quantity must be a number";
         }
 
-        //check amount
+        // Check Amount and validate input from users.
+        // Display an error message if users do not input a number.
         if (empty($data['menu_price'])) {
-            $errors['menu_price'] = "Menu price is required";
+            $errors['menu_price'] = "Menu Price is required";
         } else
 			if (!preg_match('/^[0-9.]+$/', $data['menu_price'])) {
-            $errors['menu_price'] = "amount must be a number";
+            $errors['menu_price'] = "Amount must be a number";
         }
-
-
         return $errors;
     }
 }
