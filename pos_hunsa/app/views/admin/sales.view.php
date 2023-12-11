@@ -2,7 +2,7 @@
 	<!-- Sales Section -->
     	<div class="col">
 		<!-- Total Sales for Today -->
-		<h3 class="text m-3">Today's Total: $<?=number_format($sales_total,2)?></h3>
+		<h3 class="text m-3">Today's Total: ฿<?=number_format($sales_total,2)?></h3>
 		<!-- Sales Search Form -->
 		<form class="row d-flex justify-content-center m-2">
 			<div class="col-sm-3 fw-bold">
