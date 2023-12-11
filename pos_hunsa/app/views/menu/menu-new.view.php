@@ -10,10 +10,8 @@
 				<div class="me-1 w-50 float-start">
 					<div class="form-label">
 						<p class="m-1">Menu Name</p>
-						<input name="menu_name" type="text"
-							class="form-control <?= !empty($errors['menu_name']) ? 'border-danger' : '' ?>"
-							id="productControlInput1" placeholder="Menu Name">
-						<?php if (!empty($errors['menu_name'])): ?>
+						<input name="menu_name" type="text" class="form-control <?= !empty($errors['menu_name']) ? 'border-danger' : '' ?>" id="productControlInput1" placeholder="Menu Name">
+						<?php if (!empty($errors['menu_name'])) : ?>
 							<small class="text-danger col-12">
 								<?= $errors['menu_name'] ?>
 							</small>
@@ -25,11 +23,9 @@
 						<p class="m-1">Price</p>
 						<div class="input-group">
 							<span class="input-group-text">฿</span>
-							<input name="menu_price" type="number" min="1"
-								class="form-control <?= !empty($errors['menu_price']) ? 'border-danger' : '' ?>"
-								placeholder="Price" aria-label="menu_price">
+							<input name="menu_price" type="number" min="1" class="form-control <?= !empty($errors['menu_price']) ? 'border-danger' : '' ?>" placeholder="Price" aria-label="menu_price">
 						</div>
-						<?php if (!empty($errors['menu_price'])): ?>
+						<?php if (!empty($errors['menu_price'])) : ?>
 							<small class="text-danger col-12">
 								<?= $errors['menu_price'] ?>
 							</small>
@@ -43,26 +39,24 @@
 				<p class="m-1">Menu Type</p>
 			</div>
 			<?php
-			foreach ($menu_type as $type):
-				?>
-				<div class="input-group mb-1">
-					<div class="input-group-text">
-						<input class="form-check-input mt-0" type="radio" name="menu_type"
-							value="<?php echo $type['menu_type']; ?>" aria-label="menu_type">
+			if ($menu_type) :
+				foreach ($menu_type as $type) :
+			?>
+					<div class="input-group mb-1">
+						<div class="input-group-text">
+							<input class="form-check-input mt-0" type="radio" name="menu_type" value="<?php echo $type['menu_type']; ?>" aria-label="menu_type">
+						</div>
+						<input type="text" class="form-control" name="type" value="<?php echo $type['menu_type']; ?>" aria-label="menu_type" disabled>
 					</div>
-					<input type="text" class="form-control" name="type" value="<?php echo $type['menu_type']; ?>"
-						aria-label="menu_type" disabled>
-				</div>
-			<?php endforeach; ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			
 			<div class="input-group mb-3">
 				<div class="input-group-text">
-					<input class="form-check-input mt-0" type="radio" name="menu_type" value="-1"
-						aria-label="menu_type" checked>
+					<input class="form-check-input mt-0" type="radio" name="menu_type" value="-1" aria-label="menu_type" checked>
 				</div>
-				<input type="text"
-					class="form-control <?= !empty($errors['menu_type']) ? 'border-danger' : '' ?>"
-					name="type" value="" aria-label="menu_type" placeholder="etc">
-				<?php if (!empty($errors['menu_type'])): ?>
+				<input type="text" class="form-control <?= !empty($errors['menu_type']) ? 'border-danger' : '' ?>" name="type" value="" aria-label="menu_type" placeholder="etc">
+				<?php if (!empty($errors['menu_type'])) : ?>
 					<small class="text-danger col-12">
 						<?= $errors['menu_type'] ?>
 					</small>
@@ -71,10 +65,8 @@
 			<div class="mb-3">
 				<div class="form-label">
 					<p class="m-1">Menu Image</p>
-					<input name="menu_img"
-						class="form-control <?= !empty($errors['menu_img']) ? 'border-danger' : '' ?>"
-						type="file" id="formFile">
-					<?php if (!empty($errors['menu_img'])): ?>
+					<input name="menu_img" class="form-control <?= !empty($errors['menu_img']) ? 'border-danger' : '' ?>" type="file" id="formFile">
+					<?php if (!empty($errors['menu_img'])) : ?>
 						<small class="text-danger col-12">
 							<?= $errors['menu_img'] ?>
 						</small>
