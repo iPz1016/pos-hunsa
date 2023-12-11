@@ -3,11 +3,14 @@
 <div class="container-fluid border rounded p-4 m-2 col-lg-6 mx-auto">
 
 	<?php if (!empty($row)) : ?>
+		<!-- Form for editing menu details -->
 		<form method="post" enctype="multipart/form-data" class="overflow-auto">
 			<div class="m-2">
 				<h3><i class="fa fa-hamburger"></i> Edit Menu</h3>
+				
+				<!-- Menu Name and Price fields -->
 				<div class="card-editing">
-					<div class="me-1" style="width: 50%; float: left;">
+					<div class="me-1 w-50 float-start">
 						<div class="form-label">
 							<p class="m-1">Menu Name</p>
 							<input value="<?= set_value('menu_name', $row['menu_name']) ?>" name="menu_name" type="text" class="form-control <?= !empty($errors['menu_name']) ? 'border-danger' : '' ?>" id="productControlInput1" placeholder="Menu Name">
@@ -16,7 +19,7 @@
 							<?php endif; ?>
 						</div>
 					</div>
-					<div class="ms-1" style="width: 50%; float: right;">
+					<div class="ms-1 w-50 float-end">
 						<div class="form-label">
 							<p class="m-1">Price</p>
 							<div class="input-group">
@@ -29,6 +32,8 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- Menu Type -->
 				<div class="form-label">
 					<p class="m-1">Menu Type</p>
 				</div>
@@ -51,7 +56,9 @@
 						<small class="text-danger col-12"><?= $errors['menu_type'] ?></small>
 					<?php endif; ?>
 				</div>
-				<div class="mb-2"  style="width: 50%; float: left">
+
+				<!-- Menu Status -->
+				<div class="mb-2 w-50 float-start"  style="width: 50%; float: left">
 					<div class="form-label">
 						<p class="m-1">Menu Status</p>
 						<div class="form-check form-check-inline">
@@ -64,7 +71,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="mb-2" style="width: 50%; float: left">
+
+				<!-- Menu Image -->
+				<div class="mb-2 w-50 float-start">
 					<div class="form-label">
 						<p class="m-1">Menu Image</p>
 						<input name="menu_img" class="form-control <?= !empty($errors['menu_img']) ? 'border-danger' : '' ?>" type="file" id="formFile">
@@ -74,6 +83,8 @@
 						<img class="mx-auto m-3 d-block" src="<?= $row['menu_img'] ?>" style="height: 120px;">
 					</div>
 				</div>
+
+				<!-- Error message -->
 				<?php else : ?>
 					<h3>That menu was not found</h3>
 				<br><br>
@@ -81,6 +92,8 @@
 					<button type="button" class="btn btn-primary">Back to menu</button>
 				</a>
 				<?php endif; ?>
+
+				<!-- Save and Cancel buttons -->
 				<button class="btn btn-success btn-lg float-end">Save</button>
 				<a href="index.php?pg=admin&tab=menu">
 					<button type="button" class="btn btn-danger btn-lg float-start">Cancel</button>
