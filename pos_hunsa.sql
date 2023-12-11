@@ -187,9 +187,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `role`) VALUES
-(1, 'om2546', '$2y$10$Gr.7h0mgwIBP8N4nWWuOX.JUA2EhEgYMZKE5BvousbEqmQfsxNlIe', 'ChayaABC', 'Chan', 'manager'),
-(2, 'Mary', '$2y$10$kxoJW56qGmYO56EILS8CpeINaR0XP09DroQGpwveniunL6dsdhl6G', 'FnameeeeABCD', 'Lname', 'cashier'),
-(7, 'ipz', '$2y$10$hJT3OPAEWTDID4MiWk4K6.mBxhJ073Xa1.v0AKCpNQPdSK2KA2Wwy', 'neramit', 'matarat', 'cashier');
+(1, 'manager', '$2y$10$Gr.7h0mgwIBP8N4nWWuOX.JUA2EhEgYMZKE5BvousbEqmQfsxNlIe', 'Manager', 'POS', 'manager'),
+(2, 'cashier', '$2y$10$kxoJW56qGmYO56EILS8CpeINaR0XP09DroQGpwveniunL6dsdhl6G', 'Cashier', 'POS', 'cashier'),
+(3, 'om2546', '$2y$10$hJT3OPAEWTDID4MiWk4K6.mBxhJ073Xa1.v0AKCpNQPdSK2KA2Wwy', 'Chayarob', 'Chan', 'cashier');
 
 --
 -- Indexes for dumped tables
