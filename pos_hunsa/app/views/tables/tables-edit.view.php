@@ -2,26 +2,33 @@
 
 <div class="container-fluid border rounded p-4 m-2 col-lg-6 mx-auto mt-4 pb-5">
 
+    <!-- Header for editing a table with the table number -->
     <div class="justfy-content-center mb-4">
 		<h3><i class="fa fa-chair"></i> Edit Table #<?= esc($id) ?></h3>
 	</div>
 
+    <!-- Form for updating table information -->
     <form method="post" enctype="multipart/form-data">
         <div class="m-2">
+            
+            <!-- Radio buttons for enabling or disabling the table -->
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="disable" id="inlineRadio2" value="0" <?php if ($row['disable'] == 0) echo "checked"; ?>>
                 <label class="form-check-label" for="inlineRadio2">Enable</label>
             </div>
-
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="disable" id="inlineRadio1" value="1" <?php if ($row['disable'] == 1) echo "checked"; ?>>
                 <label class="form-check-label" for="inlineRadio1">Disable</label>
             </div>
             <br>
+
+            <!-- Error message -->
             <?php if (!empty($errors['disable'])) : ?>
                 <small class="text-danger"><?= $errors['disable'] ?></small><br>
             <?php endif; ?>
             <br>
+
+            <!-- Save and Cancel Buttons -->
             <button class="btn btn-success float-end btn-lg">Save</button>
             <a href="index.php?pg=admin&tab=tables">
                 <button type="button" class="btn btn-danger float-start btn-lg">Cancel</button>
