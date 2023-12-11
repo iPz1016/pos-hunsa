@@ -14,7 +14,7 @@
 				<span class="input-group-text">Amount:</span>
 				<input name="number" type="number" min="1" value="1" step="1" class="form-control <?= !empty($errors['new_table']) ? 'border-danger' : '' ?>">
 				<?php if (!empty($errors['new_table'])) : ?>
-					<small class="text-danger"><?= $errors['new_table'] ?></small>
+					<small class="text-danger col-12"><?= $errors['new_table'] ?></small>
 				<?php endif; ?>
 			</div>
 

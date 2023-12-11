@@ -1,9 +1,5 @@
 <?php require views_path('partials/header');
 ?>
-
-
-
-
 <style>
 	.hide {
 		display: none;
@@ -23,7 +19,6 @@
 	}
 </style>
 <div class="d-flex h-100">
-
 	<!-- ON-HOLD Section -->
 	<div class="col-4 bg-light p-2 pt-2">
 		<div class="side">
@@ -39,7 +34,6 @@
 				</tbody>
 			</table>
 		</div>
-
 		<div class="my-2">
 			<table style="width: 100%;">
 				<tr>
@@ -260,7 +254,6 @@
 	`;
 	}
 	
-
 	// Refresh Cards Of Served Menu
 	function refresh_served_display() {
 		var items_div = document.querySelector(".js-served");
